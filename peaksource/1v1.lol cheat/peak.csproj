@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34A25C04-C085-4FB2-BB21-66401E668575}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_1v1.lol_cheat</RootNamespace>
+    <AssemblyName>peak</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\libs\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\libs\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>..\..\libs\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\libs\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>..\..\libs\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Photon3Unity3D">
+      <HintPath>..\..\libs\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonChat">
+      <HintPath>..\..\libs\PhotonChat.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonRealtime">
+      <HintPath>..\..\libs\PhotonRealtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>..\..\libs\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking.Utilities">
+      <HintPath>..\..\libs\PhotonUnityNetworking.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\libs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\libs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\libs\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\libs\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\libs\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\libs\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\libs\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\libs\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\libs\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\libs\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\libs\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.Core.Runtime">
+      <HintPath>..\..\libs\Zorro.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.ControllerSupport">
+      <HintPath>..\..\libs\Zorro.ControllerSupport.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Loading.cs" />
+    <Compile Include="Cheat.cs" />
+    <Compile Include="CheatConfig.cs" />
+    <Compile Include="ConfigManager.cs" />
+    <Compile Include="HotkeyManager.cs" />
+    <Compile Include="InputHandler.cs" />
+    <Compile Include="AntiFallOver.cs" />
+    <Compile Include="AutoPathfinder.cs" />
+    <Compile Include="ClimbingPrediction.cs" />
+    <Compile Include="ChamsRenderer.cs" />
+    <Compile Include="ESP.cs" />
+    <Compile Include="FieldOfView.cs" />
+    <Compile Include="Godmode.cs" />
+    <Compile Include="InfiniteAmmo.cs" />
+    <Compile Include="ItemSpawning.cs" />
+    <Compile Include="MiscFeatures.cs" />
+    <Compile Include="Movement.cs" />
+    <Compile Include="NoClip.cs" />
+    <Compile Include="NoInteractCooldown.cs" />
+    <Compile Include="PlayerModifications.cs" />
+    <Compile Include="RapidFire.cs" />
+    <Compile Include="Stamina.cs" />
+    <Compile Include="StatusEffects.cs" />
+    <Compile Include="TrollFeatures.cs" />
+    <Compile Include="EntityControl.cs" />
+    <Compile Include="EntityManager.cs" />
+    <Compile Include="LobbyJoiner.cs" />
+    <Compile Include="SteamSpoofing.cs" />
+    <Compile Include="VersionBypass.cs" />
+    <Compile Include="CheaterDetection.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="GUI.cs" />
+    <Compile Include="GUIHelpers.cs" />
+    <Compile Include="GUIEntityManagement.cs" />
+    <Compile Include="GUIItemManagement.cs" />
+    <Compile Include="GUIPlayerManagement.cs" />
+    <Compile Include="GUINetworkTab.cs" />
+    <Compile Include="GUIPlayersTab.cs" />
+    <Compile Include="GUISelfOptionsTab.cs" />
+    <Compile Include="GUISettingsTab.cs" />
+    <Compile Include="GUITrollTab.cs" />
+    <Compile Include="GUIVisualsTab.cs" />
+    <Compile Include="GUIWorldTab.cs" />
+    <Compile Include="TrollHelpers.cs" />
+    <Compile Include="TrollEntityControl.cs" />
+    <Compile Include="PlayerManipulation.cs" />
+    <Compile Include="ItemManipulation.cs" />
+    <Compile Include="CrashMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
