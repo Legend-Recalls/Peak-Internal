@@ -15,20 +15,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v2
-
-    - name: Restore NuGet packages
-      run: nuget restore peak.sln
-
-    - name: Build
-      run: msbuild "1v1.lol cheat/peak.csproj" /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin/Release
-
-    - name: Upload artifact
+    - name: Upload peak.dll
       uses: actions/upload-artifact@v4
       with:
         name: peak-dll
-        path: 1v1.lol cheat/bin/Release/peak.dll
+        path: peak.dll
