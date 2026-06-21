@@ -43,13 +43,13 @@ public static class AutoPathfinder
 
 	private static void StartPathfinding()
 	{
-		if (!((Object)(object)Character.localCharacter == (Object)null))
+		if (!(Character.localCharacter == null))
 		{
 			StopFollowing();
 			Vector3 val = FindCampfire();
 			if (val == Vector3.zero)
 			{
-				Debug.Log((object)"[AutoPathfinder] No campfire found - disabling feature");
+				Debug.Log("[AutoPathfinder] No campfire found - disabling feature");
 				enabled = false;
 				CheatConfig.AutoPathfinderEnabled = false;
 			}
@@ -57,7 +57,7 @@ public static class AutoPathfinder
 			{
 				targetPosition = val;
 				followingPath = true;
-				Debug.Log((object)$"[AutoPathfinder] Started pathfinding to campfire at {targetPosition}");
+				Debug.Log($"[AutoPathfinder] Started pathfinding to campfire at {targetPosition}");
 			}
 		}
 	}
@@ -71,7 +71,7 @@ public static class AutoPathfinder
 
 	public static void Update()
 	{
-		if (!enabled || (Object)(object)Character.localCharacter == (Object)null)
+		if (!enabled || Character.localCharacter == null)
 		{
 			if (followingPath)
 			{
@@ -87,7 +87,7 @@ public static class AutoPathfinder
 				Vector3 val = FindCampfire();
 				if (val == Vector3.zero)
 				{
-					Debug.Log((object)"[AutoPathfinder] Lost campfire - disabling feature");
+					Debug.Log("[AutoPathfinder] Lost campfire - disabling feature");
 					enabled = false;
 					CheatConfig.AutoPathfinderEnabled = false;
 					StopFollowing();
@@ -105,7 +105,7 @@ public static class AutoPathfinder
 
 	private static void WalkTowardsTarget()
 	{
-		if ((Object)(object)Character.localCharacter == (Object)null || (Object)(object)Character.localCharacter.input == (Object)null)
+		if (Character.localCharacter == null || Character.localCharacter.input == null)
 		{
 			return;
 		}
@@ -127,12 +127,12 @@ public static class AutoPathfinder
 			}
 		}
 		Character.localCharacter.input.movementInput = new Vector2(0f, num2);
-		if ((Object)(object)Character.localCharacter.refs?.climbing != (Object)null)
+		if (Character.localCharacter.refs?.climbing != null)
 		{
 			TryClimb(Character.localCharacter.refs.climbing);
 		}
 		RaycastHit val2 = HelperFunctions.LineCheck(center, center + Vector3.down * 3f, (LayerType)1, 0f, (QueryTriggerInteraction)1);
-		if ((Object)(object)((RaycastHit)(ref val2)).transform == (Object)null)
+		if (val2.transform == null)
 		{
 			Character.localCharacter.input.jumpWasPressed = true;
 		}
@@ -150,7 +150,7 @@ public static class AutoPathfinder
 
 	private static void LookAtTarget(Vector3 targetPos)
 	{
-		if ((Object)(object)Character.localCharacter == (Object)null)
+		if (Character.localCharacter == null)
 		{
 			return;
 		}
@@ -178,9 +178,9 @@ public static class AutoPathfinder
 		}
 		catch (Exception ex)
 		{
-			Debug.LogWarning((object)("[AutoPathfinder] Error calling DirectionToLook: " + ex.Message));
+			Debug.LogWarning(("[AutoPathfinder] Error calling DirectionToLook: " + ex.Message));
 		}
-		Vector3 normalized = ((Vector3)(ref val)).normalized;
+		Vector3 normalized = val.normalized;
 		float num = Mathf.Atan2(normalized.x, normalized.z) * 57.29578f;
 		float num2 = (0f - Mathf.Asin(normalized.y)) * 57.29578f;
 		Character.localCharacter.data.lookValues = new Vector2(num, num2);
@@ -202,17 +202,16 @@ public static class AutoPathfinder
 		}
 		catch (Exception ex)
 		{
-			Debug.LogWarning((object)("[AutoPathfinder] Error calling FlatDistance: " + ex.Message));
+			Debug.LogWarning(("[AutoPathfinder] Error calling FlatDistance: " + ex.Message));
 		}
 		Vector3 val = new Vector3(from.x, 0f, from.z);
-		Vector3 val2 = default(Vector3);
-		((Vector3)(ref val2))..ctor(to.x, 0f, to.z);
+		Vector3 val2 = new Vector3(to.x, 0f, to.z);
 		return Vector3.Distance(val, val2);
 	}
 
 	private static void TryClimb(CharacterClimbing climbing)
 	{
-		if ((Object)(object)climbing == (Object)null)
+		if (climbing == null)
 		{
 			return;
 		}
@@ -227,7 +226,7 @@ public static class AutoPathfinder
 		}
 		catch (Exception ex)
 		{
-			Debug.LogWarning((object)("[AutoPathfinder] Error calling TryClimb: " + ex.Message));
+			Debug.LogWarning(("[AutoPathfinder] Error calling TryClimb: " + ex.Message));
 		}
 		try
 		{
@@ -248,7 +247,7 @@ public static class AutoPathfinder
 
 	private static void UpdatePathLine()
 	{
-		if ((Object)(object)Character.localCharacter == (Object)null || targetPosition == Vector3.zero)
+		if (Character.localCharacter == null || targetPosition == Vector3.zero)
 		{
 			return;
 		}
@@ -264,7 +263,7 @@ public static class AutoPathfinder
 			Vector3 val2 = Vector3.Lerp(center, val, num2);
 			if (Physics.Raycast(val2 + Vector3.up * 10f, Vector3.down, ref val3, 20f))
 			{
-				val2.y = ((RaycastHit)(ref val3)).point.y + 1f;
+				val2.y = val3.point.y + 1f;
 			}
 			pathLine.Add(val2);
 		}
@@ -272,7 +271,7 @@ public static class AutoPathfinder
 
 	private static Vector3 FindCampfire()
 	{
-		if ((Object)(object)Character.localCharacter == (Object)null)
+		if (Character.localCharacter == null)
 		{
 			return Vector3.zero;
 		}
@@ -287,14 +286,14 @@ public static class AutoPathfinder
 				Object[] array = Object.FindObjectsByType(type, (FindObjectsSortMode)0);
 				foreach (Object obj in array)
 				{
-					MonoBehaviour val2 = (MonoBehaviour)(object)((obj is MonoBehaviour) ? obj : null);
-					if (val2 != null && (Object)(object)val2 != (Object)null)
+					MonoBehaviour val2 = obj as MonoBehaviour;
+					if (val2 != null)
 					{
-						float num2 = Vector3.Distance(center, ((Component)val2).transform.position);
+						float num2 = Vector3.Distance(center, val2.transform.position);
 						if (num2 < num)
 						{
 							num = num2;
-							val = ((Component)val2).transform.position;
+							val = val2.transform.position;
 						}
 					}
 				}
@@ -302,18 +301,18 @@ public static class AutoPathfinder
 		}
 		catch (Exception ex)
 		{
-			Debug.LogWarning((object)("[AutoPathfinder] Error finding campfires via component: " + ex.Message));
+			Debug.LogWarning(("[AutoPathfinder] Error finding campfires via component: " + ex.Message));
 		}
 		if (val == Vector3.zero)
 		{
 			GameObject[] array2 = Object.FindObjectsByType<GameObject>((FindObjectsSortMode)0);
 			foreach (GameObject val3 in array2)
 			{
-				if ((Object)(object)val3 == (Object)null)
+				if (val3 == null)
 				{
 					continue;
 				}
-				string text = ((Object)val3).name.ToLower();
+				string text = val3.name.ToLower();
 				if (text.Contains("campfire") || text.Contains("fire") || text.Contains("checkpoint"))
 				{
 					float num3 = Vector3.Distance(center, val3.transform.position);
@@ -330,7 +329,7 @@ public static class AutoPathfinder
 
 	public static void DrawPath()
 	{
-		if (enabled && pathLine.Count >= 2 && !((Object)(object)Camera.main == (Object)null))
+		if (enabled && pathLine.Count >= 2 && !(Camera.main == null))
 		{
 			CheatConfig.ESPMaterial.SetPass(0);
 			GL.PushMatrix();
