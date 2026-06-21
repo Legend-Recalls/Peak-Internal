@@ -48,18 +48,18 @@ namespace Loading
 		{
 			if (gameObject != null)
 			{
-				Debug.Log((object)"[Loader] Destroying old cheat instance");
-				Object.DestroyImmediate((Object)(object)gameObject);
+				Debug.Log("[Loader] Destroying old cheat instance");
+				Object.DestroyImmediate(gameObject);
 				gameObject = null;
 			}
 			if (Cheat.instance != null)
 			{
-				Debug.Log((object)"[Loader] Destroying existing Cheat instance");
+				Debug.Log("[Loader] Destroying existing Cheat instance");
 				try
 				{
-					if ((Object)(object)Cheat.instance.gameObject != (Object)null)
+					if (Cheat.instance.gameObject != null)
 					{
-						Object.DestroyImmediate((Object)(object)Cheat.instance.gameObject);
+						Object.DestroyImmediate(Cheat.instance.gameObject);
 					}
 				}
 				catch
@@ -67,15 +67,15 @@ namespace Loading
 				}
 			}
 			gameObject = new GameObject();
-			((Object)gameObject).name = "PEAKCheatLoader";
+			gameObject.name = "PEAKCheatLoader";
 			gameObject.AddComponent<Cheat>();
-			Object.DontDestroyOnLoad((Object)(object)gameObject);
-			Debug.Log((object)"[Loader] Cheat component created");
+			Object.DontDestroyOnLoad(gameObject);
+			Debug.Log("[Loader] Cheat component created");
 		}
 
 		public static void Unload()
 		{
-			Object.Destroy((Object)(object)gameObject);
+			Object.Destroy(gameObject);
 		}
 	}
 }
@@ -126,13 +126,13 @@ namespace _1v1.lol_cheat
 					return false;
 				case 0:
 					<>1__state = -1;
-					<>2__current = (object)new WaitForSeconds(2f);
+					<>2__current = new WaitForSeconds(2f);
 					<>1__state = 1;
 					return true;
 				case 1:
 					<>1__state = -1;
 					cheat.InitializeItems();
-					<>2__current = (object)new WaitForSeconds(3f);
+					<>2__current = new WaitForSeconds(3f);
 					<>1__state = 2;
 					return true;
 				case 2:
@@ -206,9 +206,9 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogError((object)("[Cheat] Error updating targets: " + ex.Message));
+					Debug.LogError(("[Cheat] Error updating targets: " + ex.Message));
 				}
-				<>2__current = (object)new WaitForSeconds(0.5f);
+				<>2__current = new WaitForSeconds(0.5f);
 				<>1__state = 1;
 				return true;
 			}
@@ -263,19 +263,19 @@ namespace _1v1.lol_cheat
 
 		private void Awake()
 		{
-			if (instance != null && (Object)(object)instance != (Object)(object)this)
+			if (instance != null && instance != this)
 			{
-				Debug.Log((object)"[Cheat] Destroying old cheat instance");
+				Debug.Log("[Cheat] Destroying old cheat instance");
 				try
 				{
-					if ((Object)(object)instance.gameObject != (Object)null)
+					if (instance.gameObject != null)
 					{
-						Object.DestroyImmediate((Object)(object)instance.gameObject);
+						Object.DestroyImmediate(instance.gameObject);
 					}
 				}
 				catch (Exception ex)
 				{
-					Debug.LogWarning((object)("[Cheat] Error destroying old instance: " + ex.Message));
+					Debug.LogWarning(("[Cheat] Error destroying old instance: " + ex.Message));
 				}
 			}
 			instance = this;
@@ -298,7 +298,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing items: " + ex.Message));
+					Debug.LogError(("[Cheat] Error initializing items: " + ex.Message));
 				}
 				((MonoBehaviour)this).StartCoroutine(DelayedItemInitialization());
 				try
@@ -307,7 +307,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex2)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing troll features: " + ex2.Message));
+					Debug.LogError(("[Cheat] Error initializing troll features: " + ex2.Message));
 				}
 				try
 				{
@@ -315,7 +315,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex3)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing climbing prediction: " + ex3.Message));
+					Debug.LogError(("[Cheat] Error initializing climbing prediction: " + ex3.Message));
 				}
 				try
 				{
@@ -323,7 +323,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex4)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing auto pathfinder: " + ex4.Message));
+					Debug.LogError(("[Cheat] Error initializing auto pathfinder: " + ex4.Message));
 				}
 				try
 				{
@@ -331,7 +331,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex5)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing Steam spoofing: " + ex5.Message));
+					Debug.LogError(("[Cheat] Error initializing Steam spoofing: " + ex5.Message));
 				}
 				try
 				{
@@ -339,7 +339,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex6)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing version bypass: " + ex6.Message));
+					Debug.LogError(("[Cheat] Error initializing version bypass: " + ex6.Message));
 				}
 				try
 				{
@@ -347,7 +347,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex7)
 				{
-					Debug.LogError((object)("[Cheat] Error loading default config: " + ex7.Message));
+					Debug.LogError(("[Cheat] Error loading default config: " + ex7.Message));
 				}
 				try
 				{
@@ -355,12 +355,12 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex8)
 				{
-					Debug.LogError((object)("[Cheat] Error initializing cheater detection: " + ex8.Message));
+					Debug.LogError(("[Cheat] Error initializing cheater detection: " + ex8.Message));
 				}
 			}
 			catch (Exception ex9)
 			{
-				Debug.LogError((object)("[Cheat] Critical error in Start(): " + ex9.Message + "\n" + ex9.StackTrace));
+				Debug.LogError(("[Cheat] Critical error in Start(): " + ex9.Message + "\n" + ex9.StackTrace));
 			}
 		}
 
@@ -389,24 +389,24 @@ namespace _1v1.lol_cheat
 				string text = "";
 				float num = Screen.width;
 				float num2 = Screen.height;
-				if (((Rect)(ref GUI.GUIRect)).width <= 0f)
+				if (GUI.GUIRect.width <= 0f)
 				{
-					((Rect)(ref GUI.GUIRect)).width = 1000f;
+					GUI.GUIRect.width = 1000f;
 				}
-				if (((Rect)(ref GUI.GUIRect)).height <= 0f)
+				if (GUI.GUIRect.height <= 0f)
 				{
-					((Rect)(ref GUI.GUIRect)).height = 850f;
+					GUI.GUIRect.height = 850f;
 				}
-				if (((Rect)(ref GUI.GUIRect)).x < 0f - ((Rect)(ref GUI.GUIRect)).width || ((Rect)(ref GUI.GUIRect)).x > num || ((Rect)(ref GUI.GUIRect)).y < 0f - ((Rect)(ref GUI.GUIRect)).height || ((Rect)(ref GUI.GUIRect)).y > num2)
+				if (GUI.GUIRect.x < 0f - GUI.GUIRect.width || GUI.GUIRect.x > num || GUI.GUIRect.y < 0f - GUI.GUIRect.height || GUI.GUIRect.y > num2)
 				{
-					((Rect)(ref GUI.GUIRect)).x = 50f;
-					((Rect)(ref GUI.GUIRect)).y = 50f;
+					GUI.GUIRect.x = 50f;
+					GUI.GUIRect.y = 50f;
 				}
-				((Rect)(ref GUI.GUIRect)).x = Mathf.Clamp(((Rect)(ref GUI.GUIRect)).x, 0f, num - ((Rect)(ref GUI.GUIRect)).width);
-				((Rect)(ref GUI.GUIRect)).y = Mathf.Clamp(((Rect)(ref GUI.GUIRect)).y, 0f, num2 - ((Rect)(ref GUI.GUIRect)).height);
+				GUI.GUIRect.x = Mathf.Clamp(GUI.GUIRect.x, 0f, num - GUI.GUIRect.width);
+				GUI.GUIRect.y = Mathf.Clamp(GUI.GUIRect.y, 0f, num2 - GUI.GUIRect.height);
 				GUI.GUIRect = GUI.Window(69, GUI.GUIRect, new WindowFunction(GUI.GUIMain), text);
-				((Rect)(ref GUI.GUIRect)).x = Mathf.Clamp(((Rect)(ref GUI.GUIRect)).x, 0f, num - ((Rect)(ref GUI.GUIRect)).width);
-				((Rect)(ref GUI.GUIRect)).y = Mathf.Clamp(((Rect)(ref GUI.GUIRect)).y, 0f, num2 - ((Rect)(ref GUI.GUIRect)).height);
+				GUI.GUIRect.x = Mathf.Clamp(GUI.GUIRect.x, 0f, num - GUI.GUIRect.width);
+				GUI.GUIRect.y = Mathf.Clamp(GUI.GUIRect.y, 0f, num2 - GUI.GUIRect.height);
 			}
 		}
 
@@ -522,7 +522,7 @@ namespace _1v1.lol_cheat
 					if (!(photonView == null))
 					{
 						Vector3 val = default(Vector3);
-						(val)..ctor(x, y, z);
+						new val(x, y, z);
 						photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2] { val, true });
 					}
 				}
@@ -534,7 +534,7 @@ namespace _1v1.lol_cheat
 
 		public static void Uninject()
 		{
-			Debug.Log((object)"[Cheat] Uninjecting cheat...");
+			Debug.Log("[Cheat] Uninjecting cheat...");
 			PlayerModifications.DisableAll();
 			CheatConfig.BoxESP = false;
 			CheatConfig.Speed = false;
@@ -558,7 +558,7 @@ namespace _1v1.lol_cheat
 			Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 			foreach (Character val in array)
 			{
-				if (val.player != null && (Object)(object)val.player.photonView != (Object)null)
+				if (val.player != null && val.player.photonView != null)
 				{
 					string nickName = val.player.photonView.Owner.NickName;
 					if (!string.IsNullOrEmpty(nickName) && !CheatConfig.PlayerDict.ContainsKey(nickName))
@@ -616,7 +616,7 @@ namespace _1v1.lol_cheat
 												Item val = (Item)((item is Item) ? item : null);
 												if (val != null && val != null)
 												{
-													string name2 = ((Object)val).name;
+													string name2 = val.name;
 													if (!string.IsNullOrEmpty(name2) && !list.Contains(name2))
 													{
 														list.Add(name2);
@@ -635,7 +635,7 @@ namespace _1v1.lol_cheat
 									Item val2 = (Item)((item2 is Item) ? item2 : null);
 									if (val2 != null && val2 != null)
 									{
-										string name3 = ((Object)val2).name;
+										string name3 = val2.name;
 										if (!string.IsNullOrEmpty(name3) && !list.Contains(name3))
 										{
 											list.Add(name3);
@@ -648,16 +648,16 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogWarning((object)("[Cheat] Could not get items from SingletonAsset<ItemDatabase>.Instance: " + ex.Message));
+					Debug.LogWarning(("[Cheat] Could not get items from SingletonAsset<ItemDatabase>.Instance: " + ex.Message));
 				}
 				try
 				{
 					GameObject[] array2 = Resources.LoadAll<GameObject>("0_Items");
 					foreach (GameObject val3 in array2)
 					{
-						if (val3 != null && (Object)(object)val3.GetComponent<Item>() != (Object)null)
+						if (val3 != null && val3.GetComponent<Item>() != null)
 						{
-							string name4 = ((Object)val3).name;
+							string name4 = val3.name;
 							if (!string.IsNullOrEmpty(name4) && !list.Contains(name4))
 							{
 								list.Add(name4);
@@ -667,20 +667,20 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex2)
 				{
-					Debug.LogWarning((object)("[Cheat] Could not load items from Resources: " + ex2.Message));
+					Debug.LogWarning(("[Cheat] Could not load items from Resources: " + ex2.Message));
 				}
 				try
 				{
 					if (PhotonNetwork.PrefabPool != null)
 					{
-						FieldInfo field2 = ((object)PhotonNetwork.PrefabPool).GetType().GetField("resourceCache", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						FieldInfo field2 = PhotonNetwork.PrefabPool.GetType().GetField("resourceCache", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (field2 != null && field2.GetValue(PhotonNetwork.PrefabPool) is Dictionary<string, GameObject> dictionary)
 						{
 							foreach (KeyValuePair<string, GameObject> item3 in dictionary)
 							{
-								if (item3.Value != null && (Object)(object)item3.Value.GetComponent<Item>() != (Object)null)
+								if (item3.Value != null && item3.Value.GetComponent<Item>() != null)
 								{
-									string name5 = ((Object)item3.Value).name;
+									string name5 = item3.Value.name;
 									if (!string.IsNullOrEmpty(name5) && !list.Contains(name5))
 									{
 										list.Add(name5);
@@ -692,14 +692,14 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex3)
 				{
-					Debug.LogWarning((object)("[Cheat] Could not get items from PhotonNetwork prefab pool: " + ex3.Message));
+					Debug.LogWarning(("[Cheat] Could not get items from PhotonNetwork prefab pool: " + ex3.Message));
 				}
 				CheatConfig.Items = list.ToArray();
-				Debug.Log((object)$"[Cheat] Initialized {CheatConfig.Items.Length} items");
+				Debug.Log($"[Cheat] Initialized {CheatConfig.Items.Length} items");
 			}
 			catch (Exception ex4)
 			{
-				Debug.LogError((object)("[Cheat] Error initializing items: " + ex4.Message));
+				Debug.LogError(("[Cheat] Error initializing items: " + ex4.Message));
 				CheatConfig.Items = new string[0];
 			}
 		}
@@ -745,7 +745,7 @@ namespace _1v1.lol_cheat
 				if (Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), ref val2, laserRange))
 				{
 					Item componentInParent = ((Component)(val2).collider).GetComponentInParent<Item>();
-					if (componentInParent != null && (Object)(object)componentInParent.photonView != (Object)null)
+					if (componentInParent != null && componentInParent.photonView != null)
 					{
 						GrabbedItem = componentInParent;
 						gravityGunDistance = 6f;
@@ -757,7 +757,7 @@ namespace _1v1.lol_cheat
 						});
 					}
 				}
-				if (GrabbedItem != null && (Object)(object)GrabbedItem.photonView != (Object)null)
+				if (GrabbedItem != null && GrabbedItem.photonView != null)
 				{
 					GrabbedItem.photonView.RPC("SetKinematicRPC", RpcTarget.All, new object[3]
 					{
@@ -767,7 +767,7 @@ namespace _1v1.lol_cheat
 					});
 				}
 			}
-			else if (GrabbedItem != null && (Object)(object)GrabbedItem.photonView != (Object)null)
+			else if (GrabbedItem != null && GrabbedItem.photonView != null)
 			{
 				GrabbedItem.photonView.RPC("SetKinematicRPC", RpcTarget.All, new object[3]
 				{
@@ -784,11 +784,11 @@ namespace _1v1.lol_cheat
 		{
 			if (VersionBypass.ShouldBypassJoinError(returnCode, message))
 			{
-				Debug.Log((object)$"[Cheat] Version mismatch detected and bypassed. Error message: {message} (ReturnCode: {returnCode})");
-				Debug.Log((object)"[Cheat] Bypassing version check and allowing join to proceed...");
+				Debug.Log($"[Cheat] Version mismatch detected and bypassed. Error message: {message} (ReturnCode: {returnCode})");
+				Debug.Log("[Cheat] Bypassing version check and allowing join to proceed...");
 				if (VersionBypass.GetDetectedHostVersion() != null)
 				{
-					Debug.Log((object)"[Cheat] Retrying join with spoofed version...");
+					Debug.Log("[Cheat] Retrying join with spoofed version...");
 				}
 			}
 			else
@@ -824,11 +824,11 @@ namespace _1v1.lol_cheat
 					}
 				}
 				rpcHooked = true;
-				Debug.Log((object)"[Cheat] Photon RPC hook initialized");
+				Debug.Log("[Cheat] Photon RPC hook initialized");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Cheat] Failed to hook Photon RPCs: " + ex.Message));
+				Debug.LogError(("[Cheat] Failed to hook Photon RPCs: " + ex.Message));
 			}
 		}
 
@@ -1300,7 +1300,7 @@ namespace _1v1.lol_cheat
 			{
 				configs = configs
 			};
-			PlayerPrefs.SetString("PEAK_CONFIG_LIST", JsonUtility.ToJson((object)configListWrapper));
+			PlayerPrefs.SetString("PEAK_CONFIG_LIST", JsonUtility.ToJson(configListWrapper));
 			PlayerPrefs.Save();
 		}
 
@@ -1371,7 +1371,7 @@ namespace _1v1.lol_cheat
 					PlayerPrefs.SetInt("PEAK_CHEAT_MenuToggleKey", Cheat.instance.toggleKey);
 				}
 				PlayerPrefs.SetInt("PEAK_CHEAT_ShowWatermark", CheatConfig.ShowWatermark ? 1 : 0);
-				PlayerPrefs.SetString("PEAK_CHEAT_CONFIG_" + configName, JsonUtility.ToJson((object)new ConfigData
+				PlayerPrefs.SetString("PEAK_CHEAT_CONFIG_" + configName, JsonUtility.ToJson(new ConfigData
 				{
 					playerBoxESP = CheatConfig.PlayerBoxESP,
 					godmode = CheatConfig.Godmode,
@@ -1385,11 +1385,11 @@ namespace _1v1.lol_cheat
 					SaveConfigList(configList);
 				}
 				PlayerPrefs.Save();
-				Debug.Log((object)("[ConfigManager] Configuration '" + configName + "' saved successfully"));
+				Debug.Log(("[ConfigManager] Configuration '" + configName + "' saved successfully"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ConfigManager] Error saving config: " + ex.Message));
+				Debug.LogError(("[ConfigManager] Error saving config: " + ex.Message));
 			}
 		}
 
@@ -1633,11 +1633,11 @@ namespace _1v1.lol_cheat
 				{
 					CheatConfig.ShowWatermark = PlayerPrefs.GetInt("PEAK_CHEAT_ShowWatermark") == 1;
 				}
-				Debug.Log((object)("[ConfigManager] Configuration '" + configName + "' loaded successfully"));
+				Debug.Log(("[ConfigManager] Configuration '" + configName + "' loaded successfully"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ConfigManager] Error loading config: " + ex.Message));
+				Debug.LogError(("[ConfigManager] Error loading config: " + ex.Message));
 			}
 		}
 
@@ -1645,7 +1645,7 @@ namespace _1v1.lol_cheat
 		{
 			if (configName == "default")
 			{
-				Debug.LogWarning((object)"[ConfigManager] Cannot delete default config");
+				Debug.LogWarning("[ConfigManager] Cannot delete default config");
 				return;
 			}
 			PlayerPrefs.DeleteKey("PEAK_CHEAT_CONFIG_" + configName);
@@ -1658,7 +1658,7 @@ namespace _1v1.lol_cheat
 				LoadConfig("default");
 			}
 			PlayerPrefs.Save();
-			Debug.Log((object)("[ConfigManager] Configuration '" + configName + "' deleted"));
+			Debug.Log(("[ConfigManager] Configuration '" + configName + "' deleted"));
 		}
 	}
 	public static class HotkeyManager
@@ -1872,7 +1872,7 @@ namespace _1v1.lol_cheat
 				KeyValuePair<string, KeyCode> keyValuePair = hotkeys.FirstOrDefault((KeyValuePair<string, KeyCode> kvp) => kvp.Value == keyCode && kvp.Key != featureName);
 				if (keyValuePair.Key != null)
 				{
-					Debug.LogWarning((object)$"[HotkeyManager] Key {keyCode} is already assigned to {keyValuePair.Key}. Removing old assignment.");
+					Debug.LogWarning($"[HotkeyManager] Key {keyCode} is already assigned to {keyValuePair.Key}. Removing old assignment.");
 					hotkeys.Remove(keyValuePair.Key);
 				}
 				hotkeys[featureName] = keyCode;
@@ -1895,7 +1895,7 @@ namespace _1v1.lol_cheat
 			{
 				return "None";
 			}
-			string text = ((object)(KeyCode)(ref keyCode)).ToString();
+			string text = keyCode.ToString();
 			if (text.StartsWith("Alpha"))
 			{
 				return text.Substring(5);
@@ -1933,11 +1933,11 @@ namespace _1v1.lol_cheat
 					{
 						toggleActions[key]();
 						lastPressTime[key] = time;
-						Debug.Log((object)$"[HotkeyManager] Toggled {key} with {value}");
+						Debug.Log($"[HotkeyManager] Toggled {key} with {value}");
 					}
 					catch (Exception ex)
 					{
-						Debug.LogError((object)("[HotkeyManager] Error toggling " + key + ": " + ex.Message));
+						Debug.LogError(("[HotkeyManager] Error toggling " + key + ": " + ex.Message));
 					}
 				}
 			}
@@ -1959,7 +1959,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[HotkeyManager] Error saving hotkeys: " + ex.Message));
+				Debug.LogError(("[HotkeyManager] Error saving hotkeys: " + ex.Message));
 			}
 		}
 
@@ -1985,11 +1985,11 @@ namespace _1v1.lol_cheat
 						}
 					}
 				}
-				Debug.Log((object)$"[HotkeyManager] Loaded {hotkeys.Count} hotkeys");
+				Debug.Log($"[HotkeyManager] Loaded {hotkeys.Count} hotkeys");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[HotkeyManager] Error loading hotkeys: " + ex.Message));
+				Debug.LogError(("[HotkeyManager] Error loading hotkeys: " + ex.Message));
 			}
 		}
 
@@ -2080,7 +2080,7 @@ namespace _1v1.lol_cheat
 					{
 						Character.localCharacter.data.fallSeconds = 0f;
 					}
-					if ((Object)(object)Character.localCharacter.refs?.view != (Object)null)
+					if (Character.localCharacter.refs?.view != null)
 					{
 						Character.localCharacter.refs.view.RPC("RPCA_UnFall", RpcTarget.All, Array.Empty<object>());
 					}
@@ -2142,7 +2142,7 @@ namespace _1v1.lol_cheat
 				Vector3 val = FindCampfire();
 				if (val == Vector3.zero)
 				{
-					Debug.Log((object)"[AutoPathfinder] No campfire found - disabling feature");
+					Debug.Log("[AutoPathfinder] No campfire found - disabling feature");
 					enabled = false;
 					CheatConfig.AutoPathfinderEnabled = false;
 				}
@@ -2150,7 +2150,7 @@ namespace _1v1.lol_cheat
 				{
 					targetPosition = val;
 					followingPath = true;
-					Debug.Log((object)$"[AutoPathfinder] Started pathfinding to campfire at {targetPosition}");
+					Debug.Log($"[AutoPathfinder] Started pathfinding to campfire at {targetPosition}");
 				}
 			}
 		}
@@ -2180,7 +2180,7 @@ namespace _1v1.lol_cheat
 					Vector3 val = FindCampfire();
 					if (val == Vector3.zero)
 					{
-						Debug.Log((object)"[AutoPathfinder] Lost campfire - disabling feature");
+						Debug.Log("[AutoPathfinder] Lost campfire - disabling feature");
 						enabled = false;
 						CheatConfig.AutoPathfinderEnabled = false;
 						StopFollowing();
@@ -2220,12 +2220,12 @@ namespace _1v1.lol_cheat
 				}
 			}
 			Character.localCharacter.input.movementInput = new Vector2(0f, num2);
-			if ((Object)(object)Character.localCharacter.refs?.climbing != (Object)null)
+			if (Character.localCharacter.refs?.climbing != null)
 			{
 				TryClimb(Character.localCharacter.refs.climbing);
 			}
 			RaycastHit val2 = HelperFunctions.LineCheck(center, center + Vector3.down * 3f, (LayerType)1, 0f, (QueryTriggerInteraction)1);
-			if ((Object)(object)(val2).transform == (Object)null)
+			if ((val2).transform == null)
 			{
 				Character.localCharacter.input.jumpWasPressed = true;
 			}
@@ -2271,7 +2271,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[AutoPathfinder] Error calling DirectionToLook: " + ex.Message));
+				Debug.LogWarning(("[AutoPathfinder] Error calling DirectionToLook: " + ex.Message));
 			}
 			Vector3 normalized = (val).normalized;
 			float num = Mathf.Atan2(normalized.x, normalized.z) * 57.29578f;
@@ -2295,11 +2295,11 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[AutoPathfinder] Error calling FlatDistance: " + ex.Message));
+				Debug.LogWarning(("[AutoPathfinder] Error calling FlatDistance: " + ex.Message));
 			}
 			Vector3 val = new Vector3(from.x, 0f, from.z);
 			Vector3 val2 = default(Vector3);
-			(val2)..ctor(to.x, 0f, to.z);
+			new val2(to.x, 0f, to.z);
 			return Vector3.Distance(val, val2);
 		}
 
@@ -2320,7 +2320,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[AutoPathfinder] Error calling TryClimb: " + ex.Message));
+				Debug.LogWarning(("[AutoPathfinder] Error calling TryClimb: " + ex.Message));
 			}
 			try
 			{
@@ -2380,7 +2380,7 @@ namespace _1v1.lol_cheat
 					Object[] array = Object.FindObjectsByType(type, FindObjectsSortMode.None);
 					foreach (Object obj in array)
 					{
-						MonoBehaviour val2 = (MonoBehaviour)(object)((obj is MonoBehaviour) ? obj : null);
+						MonoBehaviour val2 = (MonoBehaviour)((obj is MonoBehaviour) ? obj : null);
 						if (val2 != null && val2 != null)
 						{
 							float num2 = Vector3.Distance(center, val2.transform.position);
@@ -2395,7 +2395,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[AutoPathfinder] Error finding campfires via component: " + ex.Message));
+				Debug.LogWarning(("[AutoPathfinder] Error finding campfires via component: " + ex.Message));
 			}
 			if (val == Vector3.zero)
 			{
@@ -2406,7 +2406,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					string text = ((Object)val3).name.ToLower();
+					string text = val3.name.ToLower();
 					if (text.Contains("campfire") || text.Contains("fire") || text.Contains("checkpoint"))
 					{
 						float num3 = Vector3.Distance(center, val3.transform.position);
@@ -2487,7 +2487,7 @@ namespace _1v1.lol_cheat
 					RaycastHit val = default(RaycastHit);
 					if (Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), ref val, 5f))
 					{
-						if ((Object)(object)((Component)(val).collider).GetComponent<ClimbHandle>() != (Object)null || Vector3.Angle((val).normal, Vector3.up) > 45f)
+						if (((Component)(val).collider).GetComponent<ClimbHandle>() != null || Vector3.Angle((val).normal, Vector3.up) > 45f)
 						{
 							CalculatePredictionLine(localCharacter, (val).point, (val).normal);
 						}
@@ -2519,13 +2519,13 @@ namespace _1v1.lol_cheat
 		private static void CalculatePredictionLine(Character character, Vector3 startPos, Vector3 surfaceNormal)
 		{
 			predictionLine.Clear();
-			if (character == null || (Object)(object)character.refs?.climbing == (Object)null)
+			if (character == null || character.refs?.climbing == null)
 			{
 				return;
 			}
 			try
 			{
-				Type type = ((object)character.refs.climbing).GetType();
+				Type type = character.refs.climbing.GetType();
 				FieldInfo field = type.GetField("climbSpeed", BindingFlags.Instance | BindingFlags.Public);
 				FieldInfo field2 = type.GetField("climbSpeedMod", BindingFlags.Instance | BindingFlags.Public);
 				FieldInfo field3 = type.GetField("maxStaminaUsage", BindingFlags.Instance | BindingFlags.Public);
@@ -2541,7 +2541,7 @@ namespace _1v1.lol_cheat
 				float num4 = ((field5 != null) ? ((float)field5.GetValue(character.refs.climbing)) : 1f);
 				float num5 = character.data.currentStamina;
 				Vector2 val = ((character.input != null) ? character.input.movementInput : Vector2.zero);
-				if (((Vector2)(ref val)).magnitude < 0.1f)
+				if (val.magnitude < 0.1f)
 				{
 					val = Vector2.up;
 				}
@@ -2576,14 +2576,14 @@ namespace _1v1.lol_cheat
 					{
 						typeof(Vector3),
 						typeof(Vector3),
-						typeof(object)
+						typeof
 					}, null);
 				}
 				while (num5 > 0f && num9 < num8)
 				{
 					Vector3 samplePos = val2 + val7 * num6;
 					RaycastHit val8 = SampleWallAtPosition(samplePos, val3, type2, lineCheckMethod);
-					if ((Object)(object)(val8).transform == (Object)null)
+					if ((val8).transform == null)
 					{
 						break;
 					}
@@ -2591,7 +2591,7 @@ namespace _1v1.lol_cheat
 					ClimbModifierSurface component = ((Component)(val8).collider).GetComponent<ClimbModifierSurface>();
 					if (component != null)
 					{
-						MethodInfo method = ((object)component).GetType().GetMethod("OverrideClimbAngle", BindingFlags.Instance | BindingFlags.NonPublic);
+						MethodInfo method = component.GetType().GetMethod("OverrideClimbAngle", BindingFlags.Instance | BindingFlags.NonPublic);
 						if (method != null)
 						{
 							object obj = method.Invoke(component, new object[2] { character, num10 });
@@ -2621,7 +2621,7 @@ namespace _1v1.lol_cheat
 					samplePos = (val8).point;
 					val3 = (val8).normal;
 					val4 = component;
-					float num12 = num2 * Mathf.Clamp(((Vector2)(ref val)).magnitude, 0f, 1f);
+					float num12 = num2 * Mathf.Clamp(val.magnitude, 0f, 1f);
 					float num13 = num3 * num4;
 					num12 = Mathf.Clamp(num12, num13, num2);
 					float num14 = 1f;
@@ -2633,7 +2633,7 @@ namespace _1v1.lol_cheat
 					num12 *= num14;
 					if (val4 != null)
 					{
-						FieldInfo field6 = ((object)val4).GetType().GetField("staminaUsageMultiplier", BindingFlags.Instance | BindingFlags.Public);
+						FieldInfo field6 = val4.GetType().GetField("staminaUsageMultiplier", BindingFlags.Instance | BindingFlags.Public);
 						if (field6 != null)
 						{
 							float num16 = (float)field6.GetValue(val4);
@@ -2665,7 +2665,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[ClimbingPrediction] Error calculating prediction: " + ex.Message));
+				Debug.LogWarning(("[ClimbingPrediction] Error calculating prediction: " + ex.Message));
 				predictionLine.Clear();
 			}
 		}
@@ -2690,7 +2690,7 @@ namespace _1v1.lol_cheat
 							if (obj2 != null)
 							{
 								result = (RaycastHit)obj2;
-								if ((Object)(object)(result).transform != (Object)null)
+								if ((result).transform != null)
 								{
 									return result;
 								}
@@ -2699,7 +2699,7 @@ namespace _1v1.lol_cheat
 							if (obj2 != null)
 							{
 								result = (RaycastHit)obj2;
-								if ((Object)(object)(result).transform != (Object)null)
+								if ((result).transform != null)
 								{
 									return result;
 								}
@@ -2711,7 +2711,7 @@ namespace _1v1.lol_cheat
 				{
 				}
 			}
-			if ((Object)(object)(result).transform == (Object)null)
+			if ((result).transform == null)
 			{
 				Vector3 val4 = val2 - val;
 				if (Physics.Raycast(val, (val4).normalized, ref result, 2f))
@@ -2921,7 +2921,7 @@ namespace _1v1.lol_cheat
 			if (_lineMaterial == null)
 			{
 				_lineMaterial = new Material(Shader.Find("Hidden/Internal-Colored"));
-				((Object)_lineMaterial).hideFlags = HideFlags.HideAndDontSave;
+				(_lineMaterial).hideFlags = HideFlags.HideAndDontSave;
 				_lineMaterial.SetInt("_SrcBlend", 5);
 				_lineMaterial.SetInt("_DstBlend", 10);
 				_lineMaterial.SetInt("_Cull", 0);
@@ -2941,7 +2941,7 @@ namespace _1v1.lol_cheat
 				val = Shader.Find("Standard");
 			}
 			_chamsMaterial = new Material(val);
-			((Object)_chamsMaterial).hideFlags = HideFlags.HideAndDontSave;
+			(_chamsMaterial).hideFlags = HideFlags.HideAndDontSave;
 			_chamsMaterial.renderQueue = 5000;
 			try
 			{
@@ -2981,7 +2981,7 @@ namespace _1v1.lol_cheat
 
 		private static Vector3 GetLocalPlayerPosition(Vector3 fallbackPos)
 		{
-			if (Character.localCharacter != null && (Object)(object)Character.localCharacter.photonView != (Object)null && Character.localCharacter.photonView.IsMine && Character.localCharacter.player != null)
+			if (Character.localCharacter != null && Character.localCharacter.photonView != null && Character.localCharacter.photonView.IsMine && Character.localCharacter.player != null)
 			{
 				return Character.localCharacter.Center;
 			}
@@ -2989,7 +2989,7 @@ namespace _1v1.lol_cheat
 			{
 				foreach (Character allCharacter in Character.AllCharacters)
 				{
-					if (allCharacter != null && (Object)(object)allCharacter.photonView != (Object)null && allCharacter.photonView.IsMine && allCharacter.player != null)
+					if (allCharacter != null && allCharacter.photonView != null && allCharacter.photonView.IsMine && allCharacter.player != null)
 					{
 						return allCharacter.Center;
 					}
@@ -3015,7 +3015,7 @@ namespace _1v1.lol_cheat
 			_sporeShroomCacheTime = 0f;
 			_environmentalCacheTime = 0f;
 			_targetsCacheTime = 0f;
-			Debug.Log((object)"[ESP] Caches reset - ready for new level");
+			Debug.Log("[ESP] Caches reset - ready for new level");
 		}
 
 		public static void RenderAll()
@@ -3039,7 +3039,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ESP] Error in RenderAll: " + ex.Message));
+				Debug.LogError(("[ESP] Error in RenderAll: " + ex.Message));
 			}
 		}
 
@@ -3080,7 +3080,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ESP] Error in RenderWithGL: " + ex.Message));
+				Debug.LogError(("[ESP] Error in RenderWithGL: " + ex.Message));
 				try
 				{
 					GL.End();
@@ -3189,13 +3189,13 @@ namespace _1v1.lol_cheat
 		private static void UpdateItemCache(Vector3 cameraPos)
 		{
 			Vector3 localPlayerPosition = GetLocalPlayerPosition(cameraPos);
-			_cachedItems.RemoveAll((Item item) => item == null || (Object)(object)item.gameObject == (Object)null);
+			_cachedItems.RemoveAll((Item item) => item == null || item.gameObject == null);
 			Item[] array = Object.FindObjectsByType<Item>(FindObjectsSortMode.None);
 			HashSet<Item> currentItemsInRange = new HashSet<Item>();
 			Item[] array2 = array;
 			foreach (Item val in array2)
 			{
-				if (!(val == null) && !((Object)(object)val.gameObject == (Object)null) && Vector3.Distance(localPlayerPosition, val.transform.position) <= CheatConfig.ItemESPMaxDistance)
+				if (!(val == null) && !(val.gameObject == null) && Vector3.Distance(localPlayerPosition, val.transform.position) <= CheatConfig.ItemESPMaxDistance)
 				{
 					currentItemsInRange.Add(val);
 					if (!_cachedItems.Contains(val))
@@ -3236,7 +3236,7 @@ namespace _1v1.lol_cheat
 				MonoBehaviour[] array3 = array2;
 				foreach (MonoBehaviour val in array3)
 				{
-					if (!(val == null) && !((Object)(object)val.gameObject == (Object)null) && Vector3.Distance(localPlayerPosition, val.transform.position) <= CheatConfig.LuggageESPMaxDistance)
+					if (!(val == null) && !(val.gameObject == null) && Vector3.Distance(localPlayerPosition, val.transform.position) <= CheatConfig.LuggageESPMaxDistance)
 					{
 						currentLuggageInRange.Add(val.gameObject);
 						if (!_cachedLuggage.Contains(val.gameObject))
@@ -3249,11 +3249,11 @@ namespace _1v1.lol_cheat
 			PhotonView[] array4 = Object.FindObjectsByType<PhotonView>(FindObjectsSortMode.None);
 			foreach (PhotonView val2 in array4)
 			{
-				if (val2 == null || (Object)(object)val2.gameObject == (Object)null)
+				if (val2 == null || val2.gameObject == null)
 				{
 					continue;
 				}
-				string text = ((Object)val2.gameObject).name.ToLower();
+				string text = val2.gameObject.name.ToLower();
 				if ((text.Contains("luggage") || text.Contains("suitcase") || text.Contains("chest") || text.Contains("container") || text.Contains("bag") || text.Contains("case")) && !currentLuggageInRange.Contains(val2.gameObject) && Vector3.Distance(localPlayerPosition, val2.transform.position) <= CheatConfig.LuggageESPMaxDistance)
 				{
 					currentLuggageInRange.Add(val2.gameObject);
@@ -3277,7 +3277,7 @@ namespace _1v1.lol_cheat
 				Character[] array2 = array;
 				foreach (Character val in array2)
 				{
-					if (val == null || (Object)(object)val.gameObject == (Object)null || (Object)(object)val == (Object)(object)Character.localCharacter || (_initialCacheComplete && _checkedGameObjects.Contains(val.gameObject) && !_cachedEntities.Contains(val.gameObject)))
+					if (val == null || val.gameObject == null || val == Character.localCharacter || (_initialCacheComplete && _checkedGameObjects.Contains(val.gameObject) && !_cachedEntities.Contains(val.gameObject)))
 					{
 						continue;
 					}
@@ -3306,7 +3306,7 @@ namespace _1v1.lol_cheat
 							{
 								flag2 = true;
 							}
-							else if ((Object)(object)val.gameObject.GetComponent<Player>() != (Object)null)
+							else if (val.gameObject.GetComponent<Player>() != null)
 							{
 								flag2 = true;
 							}
@@ -3342,9 +3342,9 @@ namespace _1v1.lol_cheat
 						Object[] array3 = Object.FindObjectsByType(type, FindObjectsSortMode.None);
 						foreach (Object val2 in array3)
 						{
-							if (!(val2 == (Object)null))
+							if (!(val2 == null))
 							{
-								GameObject val3 = (GameObject)(object)((val2 is GameObject) ? val2 : null);
+								GameObject val3 = (GameObject)((val2 is GameObject) ? val2 : null);
 								if (!(val3 == null) && !_cachedEntities.Contains(val3) && !_cachedEntities.Contains(val3))
 								{
 									_cachedEntities.Add(val3);
@@ -3359,10 +3359,10 @@ namespace _1v1.lol_cheat
 						Object[] array3 = Object.FindObjectsByType(type2, FindObjectsSortMode.None);
 						foreach (Object val4 in array3)
 						{
-							if (!(val4 == (Object)null))
+							if (!(val4 == null))
 							{
-								GameObject val5 = (GameObject)(object)((val4 is GameObject) ? val4 : null);
-								if (!(val5 == null) && !_cachedEntities.Contains(val5) && !((Object)(object)val5.GetComponent<Character>() != (Object)null))
+								GameObject val5 = (GameObject)((val4 is GameObject) ? val4 : null);
+								if (!(val5 == null) && !_cachedEntities.Contains(val5) && !(val5.GetComponent<Character>() != null))
 								{
 									_cachedEntities.Add(val5);
 									num++;
@@ -3373,16 +3373,16 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.Log((object)("[ESP] Error finding additional entities: " + ex.Message));
+					Debug.Log(("[ESP] Error finding additional entities: " + ex.Message));
 				}
 				if (num > 0)
 				{
-					Debug.Log((object)$"[ESP] Updated entity cache: {num} entities found (all non-player entities)");
+					Debug.Log($"[ESP] Updated entity cache: {num} entities found (all non-player entities)");
 				}
 			}
 			catch (Exception ex2)
 			{
-				Debug.LogError((object)("[ESP] Error updating entity cache: " + ex2.Message + "\n" + ex2.StackTrace));
+				Debug.LogError(("[ESP] Error updating entity cache: " + ex2.Message + "\n" + ex2.StackTrace));
 			}
 		}
 
@@ -3412,13 +3412,13 @@ namespace _1v1.lol_cheat
 					{
 						foreach (Character allCharacter in Character.AllCharacters)
 						{
-							if (!(allCharacter == null) && !((Object)(object)allCharacter == (Object)(object)Character.localCharacter) && !((Object)(object)allCharacter.photonView == (Object)null) && !allCharacter.photonView.IsMine)
+							if (!(allCharacter == null) && !(allCharacter == Character.localCharacter) && !(allCharacter.photonView == null) && !allCharacter.photonView.IsMine)
 							{
 								bool flag = allCharacter.player != null;
 								if (!flag)
 								{
 									GameObject gameObject = allCharacter.gameObject;
-									flag = (Object)(object)((gameObject != null) ? gameObject.GetComponent<Player>() : null) != (Object)null;
+									flag = ((gameObject != null) ? gameObject.GetComponent<Player>() : null) != null;
 								}
 								if (flag)
 								{
@@ -3435,7 +3435,7 @@ namespace _1v1.lol_cheat
 			int num2 = 0;
 			foreach (Character item in cachedTargets)
 			{
-				if (item == null || (Object)(object)item == (Object)(object)Character.localCharacter || (Object)(object)item.transform == (Object)null || (item.data != null && item.data.dead))
+				if (item == null || item == Character.localCharacter || item.transform == null || (item.data != null && item.data.dead))
 				{
 					continue;
 				}
@@ -3486,13 +3486,13 @@ namespace _1v1.lol_cheat
 					{
 						foreach (Character allCharacter in Character.AllCharacters)
 						{
-							if (!(allCharacter == null) && !((Object)(object)allCharacter == (Object)(object)Character.localCharacter) && !((Object)(object)allCharacter.photonView == (Object)null) && !allCharacter.photonView.IsMine)
+							if (!(allCharacter == null) && !(allCharacter == Character.localCharacter) && !(allCharacter.photonView == null) && !allCharacter.photonView.IsMine)
 							{
 								bool flag = allCharacter.player != null;
 								if (!flag)
 								{
 									GameObject gameObject = allCharacter.gameObject;
-									flag = (Object)(object)((gameObject != null) ? gameObject.GetComponent<Player>() : null) != (Object)null;
+									flag = ((gameObject != null) ? gameObject.GetComponent<Player>() : null) != null;
 								}
 								if (flag)
 								{
@@ -3506,7 +3506,7 @@ namespace _1v1.lol_cheat
 			}
 			foreach (Character cachedTarget in _cachedTargets)
 			{
-				if (cachedTarget == null || (Object)(object)cachedTarget == (Object)(object)Character.localCharacter || (Object)(object)cachedTarget.transform == (Object)null || (cachedTarget.data != null && cachedTarget.data.dead))
+				if (cachedTarget == null || cachedTarget == Character.localCharacter || cachedTarget.transform == null || (cachedTarget.data != null && cachedTarget.data.dead))
 				{
 					continue;
 				}
@@ -3606,7 +3606,7 @@ namespace _1v1.lol_cheat
 			int num3 = 0;
 			foreach (GameObject cachedEntity in _cachedEntities)
 			{
-				if (cachedEntity == null || (currentlyControlledEntity != null && (Object)(object)cachedEntity == (Object)(object)currentlyControlledEntity))
+				if (cachedEntity == null || (currentlyControlledEntity != null && cachedEntity == currentlyControlledEntity))
 				{
 					continue;
 				}
@@ -3622,7 +3622,7 @@ namespace _1v1.lol_cheat
 					if (selectedEntityIndex >= 0)
 					{
 						List<GameObject> allEntitiesInGame = GUI.GetAllEntitiesInGame();
-						if (allEntitiesInGame != null && selectedEntityIndex < allEntitiesInGame.Count && (Object)(object)allEntitiesInGame[selectedEntityIndex] == (Object)(object)cachedEntity)
+						if (allEntitiesInGame != null && selectedEntityIndex < allEntitiesInGame.Count && allEntitiesInGame[selectedEntityIndex] == cachedEntity)
 						{
 							flag = true;
 						}
@@ -3729,7 +3729,7 @@ namespace _1v1.lol_cheat
 			int num = 0;
 			foreach (Item cachedItem in _cachedItems)
 			{
-				if (cachedItem == null || (Object)(object)cachedItem.gameObject == (Object)null || IsItemHeld(cachedItem))
+				if (cachedItem == null || cachedItem.gameObject == null || IsItemHeld(cachedItem))
 				{
 					continue;
 				}
@@ -3762,7 +3762,7 @@ namespace _1v1.lol_cheat
 			try
 			{
 				FieldInfo field = typeof(Item).GetField("_holderCharacter", BindingFlags.Instance | BindingFlags.NonPublic);
-				if (field != null && (Object)/*isinst with value type is only supported in some contexts*/ != (Object)null)
+				if (field != null && /*isinst with value type is only supported in some contexts*/ != null)
 				{
 					return true;
 				}
@@ -3797,7 +3797,7 @@ namespace _1v1.lol_cheat
 			Vector3 localPlayerPosition = GetLocalPlayerPosition(cameraPos);
 			foreach (Item cachedItem in _cachedItems)
 			{
-				if (cachedItem == null || (Object)(object)cachedItem.gameObject == (Object)null || IsItemHeld(cachedItem))
+				if (cachedItem == null || cachedItem.gameObject == null || IsItemHeld(cachedItem))
 				{
 					continue;
 				}
@@ -3810,7 +3810,7 @@ namespace _1v1.lol_cheat
 					val.a = 0.6f;
 					if (val.r > 0.7f && val.g > 0.7f && val.b < 0.4f)
 					{
-						((Color)(ref val))..ctor(val.r, val.g * 0.6f, val.b * 0.3f);
+						new Color(val.r, val.g * 0.6f, val.b * 0.3f);
 					}
 					RenderChamsForItem(cachedItem.gameObject, val);
 				}
@@ -3829,7 +3829,7 @@ namespace _1v1.lol_cheat
 			MeshFilter[] array = componentsInChildren2;
 			foreach (MeshFilter val in array)
 			{
-				if (val != null && (Object)(object)val.transform != (Object)null)
+				if (val != null && val.transform != null)
 				{
 					dictionary[val.transform] = val;
 				}
@@ -3865,7 +3865,7 @@ namespace _1v1.lol_cheat
 			}
 			if (val2 != null)
 			{
-				Object.DestroyImmediate((Object)(object)val2);
+				Object.DestroyImmediate(val2);
 			}
 		}
 
@@ -3877,7 +3877,7 @@ namespace _1v1.lol_cheat
 			}
 			foreach (Item cachedItem in _cachedItems)
 			{
-				if (cachedItem == null || (Object)(object)cachedItem.gameObject == (Object)null || IsItemHeld(cachedItem))
+				if (cachedItem == null || cachedItem.gameObject == null || IsItemHeld(cachedItem))
 				{
 					continue;
 				}
@@ -3944,7 +3944,7 @@ namespace _1v1.lol_cheat
 				return result;
 			}
 			Bounds result2 = default(Bounds);
-			((Bounds)(ref result2))..ctor(luggage.transform.position, Vector3.zero);
+			new Bounds(luggage.transform.position, Vector3.zero);
 			bool flag = false;
 			Renderer[] componentsInChildren = luggage.GetComponentsInChildren<Renderer>(true);
 			foreach (Renderer val in componentsInChildren)
@@ -3954,7 +3954,7 @@ namespace _1v1.lol_cheat
 					continue;
 				}
 				result = val.bounds;
-				Vector3 size = ((Bounds)(ref result)).size;
+				Vector3 size = result.size;
 				if ((size).magnitude > 0.01f)
 				{
 					if (!flag)
@@ -3964,7 +3964,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val.bounds);
+						result2.Encapsulate(val.bounds);
 					}
 				}
 			}
@@ -3980,7 +3980,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val2.bounds);
+						result2.Encapsulate(val2.bounds);
 					}
 				}
 			}
@@ -3993,9 +3993,9 @@ namespace _1v1.lol_cheat
 					if (val3 != null && val3.sharedMesh != null)
 					{
 						Bounds bounds = val3.sharedMesh.bounds;
-						Vector3 val4 = val3.transform.TransformPoint(((Bounds)(ref bounds)).center);
-						Vector3 val5 = val3.transform.TransformVector(((Bounds)(ref bounds)).size);
-						((Bounds)(ref val6))..ctor(val4, val5);
+						Vector3 val4 = val3.transform.TransformPoint(bounds.center);
+						Vector3 val5 = val3.transform.TransformVector(bounds.size);
+						new Bounds(val4, val5);
 						if (!flag)
 						{
 							result2 = val6;
@@ -4003,14 +4003,14 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							((Bounds)(ref result2)).Encapsulate(val6);
+							result2.Encapsulate(val6);
 						}
 					}
 				}
 			}
 			if (!flag)
 			{
-				((Bounds)(ref result2))..ctor(luggage.transform.position, Vector3.one * 1.5f);
+				new Bounds(luggage.transform.position, Vector3.one * 1.5f);
 			}
 			return result2;
 		}
@@ -4069,7 +4069,7 @@ namespace _1v1.lol_cheat
 					array = Object.FindObjectsByType<PhotonView>(FindObjectsSortMode.None);
 					foreach (PhotonView val in array)
 					{
-						if (!(val == null) && !((Object)(object)val.gameObject == (Object)null))
+						if (!(val == null) && !(val.gameObject == null))
 						{
 							GameObject gameObject = val.gameObject;
 							if (IsSporeShroom(gameObject))
@@ -4082,10 +4082,10 @@ namespace _1v1.lol_cheat
 					array2 = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
 					foreach (MonoBehaviour val2 in array2)
 					{
-						if (!(val2 == null) && !((Object)(object)val2.gameObject == (Object)null))
+						if (!(val2 == null) && !(val2.gameObject == null))
 						{
 							GameObject gameObject2 = val2.gameObject;
-							if (!_checkedGameObjects.Contains(gameObject2) && ((object)val2).GetType().Name == "TriggerEvent" && IsSporeShroom(gameObject2))
+							if (!_checkedGameObjects.Contains(gameObject2) && val2.GetType().Name == "TriggerEvent" && IsSporeShroom(gameObject2))
 							{
 								_checkedGameObjects.Add(gameObject2);
 								_cachedSporeShrooms.Add(gameObject2);
@@ -4097,7 +4097,7 @@ namespace _1v1.lol_cheat
 				array = Object.FindObjectsByType<PhotonView>(FindObjectsSortMode.None);
 				foreach (PhotonView val3 in array)
 				{
-					if (val3 == null || (Object)(object)val3.gameObject == (Object)null)
+					if (val3 == null || val3.gameObject == null)
 					{
 						continue;
 					}
@@ -4114,12 +4114,12 @@ namespace _1v1.lol_cheat
 				array2 = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
 				foreach (MonoBehaviour val4 in array2)
 				{
-					if (val4 == null || (Object)(object)val4.gameObject == (Object)null)
+					if (val4 == null || val4.gameObject == null)
 					{
 						continue;
 					}
 					GameObject gameObject4 = val4.gameObject;
-					if (!_checkedGameObjects.Contains(gameObject4) && ((object)val4).GetType().Name == "TriggerEvent")
+					if (!_checkedGameObjects.Contains(gameObject4) && val4.GetType().Name == "TriggerEvent")
 					{
 						_checkedGameObjects.Add(gameObject4);
 						if (IsSporeShroom(gameObject4))
@@ -4131,7 +4131,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.Log((object)("[ESP] Error updating spore shroom cache: " + ex.Message));
+				Debug.Log(("[ESP] Error updating spore shroom cache: " + ex.Message));
 			}
 		}
 
@@ -4141,19 +4141,19 @@ namespace _1v1.lol_cheat
 			{
 				return false;
 			}
-			if ((Object)(object)obj.GetComponent<Item>() != (Object)null)
+			if (obj.GetComponent<Item>() != null)
 			{
 				return false;
 			}
-			if ((Object)(object)obj.GetComponent<Character>() != (Object)null)
+			if (obj.GetComponent<Character>() != null)
 			{
 				return false;
 			}
-			if (_luggageComponentType != null && (Object)(object)obj.GetComponent(_luggageComponentType) != (Object)null)
+			if (_luggageComponentType != null && obj.GetComponent(_luggageComponentType) != null)
 			{
 				return false;
 			}
-			string text = (((Object)obj).name ?? "").ToLower();
+			string text = (obj.name ?? "").ToLower();
 			bool result = text.Contains("sporeshroom") || text.Contains("sporefungus") || text.Contains("spore_shroom") || text.Contains("spore_fungus") || (text.Contains("spore") && text.Contains("shroom")) || (text.Contains("spore") && text.Contains("fungus"));
 			bool flag = false;
 			bool flag2 = false;
@@ -4162,7 +4162,7 @@ namespace _1v1.lol_cheat
 			{
 				if (!(val == null))
 				{
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					if (name == "TriggerEvent")
 					{
 						flag = true;
@@ -4202,7 +4202,7 @@ namespace _1v1.lol_cheat
 					if (!(num > 200f) && !(Camera.main.WorldToScreenPoint(position).z <= 0f))
 					{
 						Bounds objectBounds = GetObjectBounds(cachedSporeShroom);
-						((Color)(ref distanceColor))..ctor(0.8f, 0.2f, 1f, 1f);
+						new Color(0.8f, 0.2f, 1f, 1f);
 						distanceColor = GetDistanceColor(num, distanceColor);
 						Draw3DBox(objectBounds, distanceColor, 2f);
 					}
@@ -4230,9 +4230,9 @@ namespace _1v1.lol_cheat
 					Vector3 val = Camera.main.WorldToScreenPoint(position);
 					if (!(val.z <= 0f))
 					{
-						string text = ((Object)cachedSporeShroom).name ?? "SporeShroom";
+						string text = cachedSporeShroom.name ?? "SporeShroom";
 						text = text.Replace("(Clone)", "").Trim();
-						((Color)(ref distanceColor))..ctor(0.8f, 0.2f, 1f, 1f);
+						new Color(0.8f, 0.2f, 1f, 1f);
 						distanceColor = GetDistanceColor(num, distanceColor);
 						DrawTextWithOutline(new Vector2(val.x, (float)Screen.height - val.y), text, distanceColor, 12, num);
 					}
@@ -4305,7 +4305,7 @@ namespace _1v1.lol_cheat
 					Object[] cachedStormVisuals = _cachedStormVisuals;
 					foreach (Object val in cachedStormVisuals)
 					{
-						if (val == (Object)null)
+						if (val == null)
 						{
 							continue;
 						}
@@ -4388,7 +4388,7 @@ namespace _1v1.lol_cheat
 						if (property != null)
 						{
 							object value3 = property.GetValue(null);
-							_cachedLavaRising = (Object)((value3 is Object) ? value3 : null);
+							_cachedLavaRising = ((value3 is Object) ? value3 : null);
 						}
 						else
 						{
@@ -4401,7 +4401,7 @@ namespace _1v1.lol_cheat
 				}
 				_lavaRisingCacheTime = time;
 			}
-			if (!(_cachedLavaRising != (Object)null) || !(_lavaRisingType != null))
+			if (!(_cachedLavaRising != null) || !(_lavaRisingType != null))
 			{
 				return;
 			}
@@ -4483,7 +4483,7 @@ namespace _1v1.lol_cheat
 						string text6 = FormatTime(num6);
 						string text7 = "Lava Rising" + ": " + text6 + " remaining";
 						Color textColor3 = default(Color);
-						((Color)(ref textColor3))..ctor(1f, 0.4f, 0.2f);
+						new Color(1f, 0.4f, 0.2f);
 						DrawTextWithOutline(new Vector2(150f, num), text7, textColor3, 14);
 						num += 20f;
 					}
@@ -4491,7 +4491,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.Log((object)("[ESP] Error displaying lava timer: " + ex.Message));
+				Debug.Log(("[ESP] Error displaying lava timer: " + ex.Message));
 			}
 		}
 
@@ -4503,7 +4503,7 @@ namespace _1v1.lol_cheat
 			}
 			InitializeStyles();
 			Color baseColor = default(Color);
-			((Color)(ref baseColor))..ctor(0.8f, 0.6f, 1f, 1f);
+			new Color(0.8f, 0.6f, 1f, 1f);
 			float time = Time.time;
 			if (_cachedObjects.Count == 0 || time - _objectCacheTime > 2f)
 			{
@@ -4528,7 +4528,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					string text = ((Object)cachedObject).name ?? "GameObject";
+					string text = cachedObject.name ?? "GameObject";
 					text = text.Replace("(Clone)", "").Trim();
 					MonoBehaviour[] components = cachedObject.GetComponents<MonoBehaviour>();
 					List<string> list = new List<string>();
@@ -4537,7 +4537,7 @@ namespace _1v1.lol_cheat
 					{
 						if (!(val2 == null))
 						{
-							string name = ((object)val2).GetType().Name;
+							string name = val2.GetType().Name;
 							if (name.Contains("Emitter") || name.Contains("Trigger") || name.Contains("Spawn") || name.Contains("Break") || name.Contains("AOE") || name.Contains("Fungus") || name.Contains("Shroom") || name.Contains("Cluster") || name.Contains("Spore") || name.Contains("Pod") || name.Contains("Puff") || name.Contains("Cloud"))
 							{
 								list.Add(name);
@@ -4555,7 +4555,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.Log((object)("[ESP] Error in RenderObjectNames: " + ex.Message));
+				Debug.Log(("[ESP] Error in RenderObjectNames: " + ex.Message));
 			}
 		}
 
@@ -4565,9 +4565,9 @@ namespace _1v1.lol_cheat
 			{
 				return;
 			}
-			Vector3 center = ((Bounds)(ref bounds)).center;
-			Vector3 extents = ((Bounds)(ref bounds)).extents;
-			Vector3[] array = (Vector3[])(object)new Vector3[8]
+			Vector3 center = bounds.center;
+			Vector3 extents = bounds.extents;
+			Vector3[] array = (Vector3[])new Vector3[8]
 			{
 				center + new Vector3(0f - extents.x, 0f - extents.y, 0f - extents.z),
 				center + new Vector3(extents.x, 0f - extents.y, 0f - extents.z),
@@ -4679,8 +4679,8 @@ namespace _1v1.lol_cheat
 		{
 			if (!(Camera.main == null))
 			{
-				Vector3 center = ((Bounds)(ref bounds)).center;
-				Vector3 extents = ((Bounds)(ref bounds)).extents;
+				Vector3 center = bounds.center;
+				Vector3 extents = bounds.extents;
 				Vector3[] obj = new Vector3[8]
 				{
 					center + new Vector3(0f - extents.x, 0f - extents.y, 0f - extents.z),
@@ -4726,9 +4726,9 @@ namespace _1v1.lol_cheat
 			{
 				return;
 			}
-			Vector3 center = ((Bounds)(ref bounds)).center;
-			Vector3 extents = ((Bounds)(ref bounds)).extents;
-			Vector3[] array = (Vector3[])(object)new Vector3[8]
+			Vector3 center = bounds.center;
+			Vector3 extents = bounds.extents;
+			Vector3[] array = (Vector3[])new Vector3[8]
 			{
 				center + new Vector3(0f - extents.x, 0f - extents.y, 0f - extents.z),
 				center + new Vector3(extents.x, 0f - extents.y, 0f - extents.z),
@@ -4739,7 +4739,7 @@ namespace _1v1.lol_cheat
 				center + new Vector3(extents.x, extents.y, extents.z),
 				center + new Vector3(0f - extents.x, extents.y, extents.z)
 			};
-			Vector3[] screenCorners = (Vector3[])(object)new Vector3[8];
+			Vector3[] screenCorners = (Vector3[])new Vector3[8];
 			bool[] array2 = new bool[8];
 			int num = 0;
 			for (int i = 0; i < 8; i++)
@@ -4896,24 +4896,24 @@ namespace _1v1.lol_cheat
 			Dictionary<BodypartType, Bodypart> partDict = character.refs.ragdoll.partDict;
 			if (partDict != null)
 			{
-				Transform val = ((partDict.ContainsKey((BodypartType)4) && (Object)(object)partDict[(BodypartType)4] != (Object)null) ? ((Component)partDict[(BodypartType)4]).transform : null);
-				Transform val2 = ((partDict.ContainsKey((BodypartType)3) && (Object)(object)partDict[(BodypartType)3] != (Object)null) ? ((Component)partDict[(BodypartType)3]).transform : null);
-				Transform val3 = ((partDict.ContainsKey((BodypartType)2) && (Object)(object)partDict[(BodypartType)2] != (Object)null) ? ((Component)partDict[(BodypartType)2]).transform : null);
-				Transform val4 = ((partDict.ContainsKey((BodypartType)0) && (Object)(object)partDict[(BodypartType)0] != (Object)null) ? ((Component)partDict[(BodypartType)0]).transform : null);
-				Transform val5 = ((partDict.ContainsKey((BodypartType)25) && (Object)(object)partDict[(BodypartType)25] != (Object)null) ? ((Component)partDict[(BodypartType)25]).transform : null);
-				Transform val6 = ((partDict.ContainsKey((BodypartType)5) && (Object)(object)partDict[(BodypartType)5] != (Object)null) ? ((Component)partDict[(BodypartType)5]).transform : null);
-				Transform val7 = ((partDict.ContainsKey((BodypartType)6) && (Object)(object)partDict[(BodypartType)6] != (Object)null) ? ((Component)partDict[(BodypartType)6]).transform : null);
-				Transform val8 = ((partDict.ContainsKey((BodypartType)7) && (Object)(object)partDict[(BodypartType)7] != (Object)null) ? ((Component)partDict[(BodypartType)7]).transform : null);
-				Transform val9 = ((partDict.ContainsKey((BodypartType)26) && (Object)(object)partDict[(BodypartType)26] != (Object)null) ? ((Component)partDict[(BodypartType)26]).transform : null);
-				Transform val10 = ((partDict.ContainsKey((BodypartType)8) && (Object)(object)partDict[(BodypartType)8] != (Object)null) ? ((Component)partDict[(BodypartType)8]).transform : null);
-				Transform val11 = ((partDict.ContainsKey((BodypartType)9) && (Object)(object)partDict[(BodypartType)9] != (Object)null) ? ((Component)partDict[(BodypartType)9]).transform : null);
-				Transform val12 = ((partDict.ContainsKey((BodypartType)10) && (Object)(object)partDict[(BodypartType)10] != (Object)null) ? ((Component)partDict[(BodypartType)10]).transform : null);
-				Transform val13 = ((partDict.ContainsKey((BodypartType)11) && (Object)(object)partDict[(BodypartType)11] != (Object)null) ? ((Component)partDict[(BodypartType)11]).transform : null);
-				Transform val14 = ((partDict.ContainsKey((BodypartType)12) && (Object)(object)partDict[(BodypartType)12] != (Object)null) ? ((Component)partDict[(BodypartType)12]).transform : null);
-				Transform val15 = ((partDict.ContainsKey((BodypartType)13) && (Object)(object)partDict[(BodypartType)13] != (Object)null) ? ((Component)partDict[(BodypartType)13]).transform : null);
-				Transform val16 = ((partDict.ContainsKey((BodypartType)14) && (Object)(object)partDict[(BodypartType)14] != (Object)null) ? ((Component)partDict[(BodypartType)14]).transform : null);
-				Transform val17 = ((partDict.ContainsKey((BodypartType)15) && (Object)(object)partDict[(BodypartType)15] != (Object)null) ? ((Component)partDict[(BodypartType)15]).transform : null);
-				Transform val18 = ((partDict.ContainsKey((BodypartType)16) && (Object)(object)partDict[(BodypartType)16] != (Object)null) ? ((Component)partDict[(BodypartType)16]).transform : null);
+				Transform val = ((partDict.ContainsKey((BodypartType)4) && partDict[(BodypartType)4] != null) ? ((Component)partDict[(BodypartType)4]).transform : null);
+				Transform val2 = ((partDict.ContainsKey((BodypartType)3) && partDict[(BodypartType)3] != null) ? ((Component)partDict[(BodypartType)3]).transform : null);
+				Transform val3 = ((partDict.ContainsKey((BodypartType)2) && partDict[(BodypartType)2] != null) ? ((Component)partDict[(BodypartType)2]).transform : null);
+				Transform val4 = ((partDict.ContainsKey((BodypartType)0) && partDict[(BodypartType)0] != null) ? ((Component)partDict[(BodypartType)0]).transform : null);
+				Transform val5 = ((partDict.ContainsKey((BodypartType)25) && partDict[(BodypartType)25] != null) ? ((Component)partDict[(BodypartType)25]).transform : null);
+				Transform val6 = ((partDict.ContainsKey((BodypartType)5) && partDict[(BodypartType)5] != null) ? ((Component)partDict[(BodypartType)5]).transform : null);
+				Transform val7 = ((partDict.ContainsKey((BodypartType)6) && partDict[(BodypartType)6] != null) ? ((Component)partDict[(BodypartType)6]).transform : null);
+				Transform val8 = ((partDict.ContainsKey((BodypartType)7) && partDict[(BodypartType)7] != null) ? ((Component)partDict[(BodypartType)7]).transform : null);
+				Transform val9 = ((partDict.ContainsKey((BodypartType)26) && partDict[(BodypartType)26] != null) ? ((Component)partDict[(BodypartType)26]).transform : null);
+				Transform val10 = ((partDict.ContainsKey((BodypartType)8) && partDict[(BodypartType)8] != null) ? ((Component)partDict[(BodypartType)8]).transform : null);
+				Transform val11 = ((partDict.ContainsKey((BodypartType)9) && partDict[(BodypartType)9] != null) ? ((Component)partDict[(BodypartType)9]).transform : null);
+				Transform val12 = ((partDict.ContainsKey((BodypartType)10) && partDict[(BodypartType)10] != null) ? ((Component)partDict[(BodypartType)10]).transform : null);
+				Transform val13 = ((partDict.ContainsKey((BodypartType)11) && partDict[(BodypartType)11] != null) ? ((Component)partDict[(BodypartType)11]).transform : null);
+				Transform val14 = ((partDict.ContainsKey((BodypartType)12) && partDict[(BodypartType)12] != null) ? ((Component)partDict[(BodypartType)12]).transform : null);
+				Transform val15 = ((partDict.ContainsKey((BodypartType)13) && partDict[(BodypartType)13] != null) ? ((Component)partDict[(BodypartType)13]).transform : null);
+				Transform val16 = ((partDict.ContainsKey((BodypartType)14) && partDict[(BodypartType)14] != null) ? ((Component)partDict[(BodypartType)14]).transform : null);
+				Transform val17 = ((partDict.ContainsKey((BodypartType)15) && partDict[(BodypartType)15] != null) ? ((Component)partDict[(BodypartType)15]).transform : null);
+				Transform val18 = ((partDict.ContainsKey((BodypartType)16) && partDict[(BodypartType)16] != null) ? ((Component)partDict[(BodypartType)16]).transform : null);
 				if (val != null && val2 != null)
 				{
 					DrawGLLineWorldSpace(val.position, val2.position, color);
@@ -5032,9 +5032,9 @@ namespace _1v1.lol_cheat
 			{
 				return;
 			}
-			Vector3 center = ((Bounds)(ref bounds)).center;
-			Vector3 extents = ((Bounds)(ref bounds)).extents;
-			Vector3[] array = (Vector3[])(object)new Vector3[4]
+			Vector3 center = bounds.center;
+			Vector3 extents = bounds.extents;
+			Vector3[] array = (Vector3[])new Vector3[4]
 			{
 				center + new Vector3(0f - extents.x, 0f - extents.y, 0f - extents.z),
 				center + new Vector3(extents.x, 0f - extents.y, 0f - extents.z),
@@ -5087,7 +5087,7 @@ namespace _1v1.lol_cheat
 						array2[2].Value.y,
 						array2[3].Value.y
 					});
-					GUI.DrawTexture(new Rect(num, num3, num2 - num, num4 - num3), (Texture)(object)_whiteTexture);
+					GUI.DrawTexture(new Rect(num, num3, num2 - num, num4 - num3), (Texture)_whiteTexture);
 					Color color2 = color;
 					color2.a = 1f;
 					DrawLineScreenSpace(array2[0].Value, array2[1].Value, color2, 2f);
@@ -5104,13 +5104,13 @@ namespace _1v1.lol_cheat
 			if (!(_whiteTexture == null))
 			{
 				Vector2 val = end - start;
-				Vector2 normalized = ((Vector2)(ref val)).normalized;
+				Vector2 normalized = val.normalized;
 				float num = Mathf.Atan2(normalized.y, normalized.x) * 57.29578f;
 				float num2 = Vector2.Distance(start, end);
 				Matrix4x4 matrix = GUI.matrix;
 				GUI.color = color;
 				GUIUtility.RotateAroundPivot(num, start);
-				GUI.DrawTexture(new Rect(start.x, start.y - width / 2f, num2, width), (Texture)(object)_whiteTexture);
+				GUI.DrawTexture(new Rect(start.x, start.y - width / 2f, num2, width), (Texture)_whiteTexture);
 				GUI.matrix = matrix;
 				GUI.color = Color.white;
 			}
@@ -5137,7 +5137,7 @@ namespace _1v1.lol_cheat
 			_outlineStyle.normal.textColor = new Color(0f, 0f, 0f, 0.9f);
 			Vector2 val = _textStyle.CalcSize(new GUIContent(text));
 			Vector2 val2 = default(Vector2);
-			((Vector2)(ref val2))..ctor(position.x - val.x / 2f, position.y);
+			new Vector2(position.x - val.x / 2f, position.y);
 			for (int i = -num; i <= num; i++)
 			{
 				for (int j = -num; j <= num; j++)
@@ -5161,14 +5161,14 @@ namespace _1v1.lol_cheat
 			}
 			Vector3 position = character.transform.position;
 			Bounds result2 = default(Bounds);
-			((Bounds)(ref result2))..ctor(position, Vector3.zero);
+			new Bounds(position, Vector3.zero);
 			bool flag = false;
 			Vector3 size;
 			if (character.refs != null && character.refs.ragdoll != null && character.refs.ragdoll.partDict != null)
 			{
 				foreach (KeyValuePair<BodypartType, Bodypart> item in character.refs.ragdoll.partDict)
 				{
-					if (!(item.Value != null) || !((Object)(object)item.Value.transform != (Object)null))
+					if (!(item.Value != null) || !(item.Value.transform != null))
 					{
 						continue;
 					}
@@ -5176,7 +5176,7 @@ namespace _1v1.lol_cheat
 					if (component != null)
 					{
 						result = component.bounds;
-						size = ((Bounds)(ref result)).size;
+						size = result.size;
 						if ((size).magnitude > 0.01f)
 						{
 							if (!flag)
@@ -5186,7 +5186,7 @@ namespace _1v1.lol_cheat
 							}
 							else
 							{
-								((Bounds)(ref result2)).Encapsulate(component.bounds);
+								result2.Encapsulate(component.bounds);
 							}
 							continue;
 						}
@@ -5199,7 +5199,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(position2);
+						result2.Encapsulate(position2);
 					}
 				}
 			}
@@ -5213,7 +5213,7 @@ namespace _1v1.lol_cheat
 						continue;
 					}
 					result = val.bounds;
-					size = ((Bounds)(ref result)).size;
+					size = result.size;
 					if ((size).magnitude > 0.01f)
 					{
 						if (!flag)
@@ -5223,7 +5223,7 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							((Bounds)(ref result2)).Encapsulate(val.bounds);
+							result2.Encapsulate(val.bounds);
 						}
 					}
 				}
@@ -5236,7 +5236,7 @@ namespace _1v1.lol_cheat
 					continue;
 				}
 				result = val2.bounds;
-				size = ((Bounds)(ref result)).size;
+				size = result.size;
 				if ((size).magnitude > 0.01f)
 				{
 					if (!flag)
@@ -5246,7 +5246,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val2.bounds);
+						result2.Encapsulate(val2.bounds);
 					}
 				}
 			}
@@ -5256,7 +5256,7 @@ namespace _1v1.lol_cheat
 				Vector3 position4 = character.refs.hip.transform.position;
 				float num = Vector3.Distance(position3, position4) * 1.5f;
 				Vector3 val3 = (position3 + position4) / 2f;
-				((Bounds)(ref result2))..ctor(val3, new Vector3(0.5f, num, 0.5f));
+				new Bounds(val3, new Vector3(0.5f, num, 0.5f));
 				flag = true;
 			}
 			if (!flag)
@@ -5269,19 +5269,19 @@ namespace _1v1.lol_cheat
 					if (boneTransform != null && boneTransform2 != null)
 					{
 						float num2 = Vector3.Distance(boneTransform.position, boneTransform2.position);
-						((Bounds)(ref result2))..ctor(position + Vector3.up * (num2 / 2f), new Vector3(0.5f, num2, 0.5f));
+						new Bounds(position + Vector3.up * (num2 / 2f), new Vector3(0.5f, num2, 0.5f));
 						flag = true;
 					}
 				}
 			}
 			if (!flag)
 			{
-				((Bounds)(ref result2))..ctor(position + Vector3.up * 0.875f, new Vector3(0.5f, 1.75f, 0.5f));
+				new Bounds(position + Vector3.up * 0.875f, new Vector3(0.5f, 1.75f, 0.5f));
 			}
-			size = ((Bounds)(ref result2)).size;
+			size = result2.size;
 			if ((size).magnitude < 0.1f)
 			{
-				((Bounds)(ref result2))..ctor(((Bounds)(ref result2)).center, new Vector3(0.5f, 1.75f, 0.5f));
+				new Bounds(result2.center, new Vector3(0.5f, 1.75f, 0.5f));
 			}
 			return result2;
 		}
@@ -5289,13 +5289,13 @@ namespace _1v1.lol_cheat
 		private static Bounds GetItemBounds(Item item)
 		{
 			Bounds result;
-			if (item == null || (Object)(object)item.gameObject == (Object)null)
+			if (item == null || item.gameObject == null)
 			{
 				result = default(Bounds);
 				return result;
 			}
 			Bounds result2 = default(Bounds);
-			((Bounds)(ref result2))..ctor(item.transform.position, Vector3.zero);
+			new Bounds(item.transform.position, Vector3.zero);
 			bool flag = false;
 			Renderer[] componentsInChildren = ((Component)item).GetComponentsInChildren<Renderer>(true);
 			foreach (Renderer val in componentsInChildren)
@@ -5305,7 +5305,7 @@ namespace _1v1.lol_cheat
 					continue;
 				}
 				result = val.bounds;
-				Vector3 size = ((Bounds)(ref result)).size;
+				Vector3 size = result.size;
 				if ((size).magnitude > 0.01f)
 				{
 					if (!flag)
@@ -5315,7 +5315,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val.bounds);
+						result2.Encapsulate(val.bounds);
 					}
 				}
 			}
@@ -5331,7 +5331,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val2.bounds);
+						result2.Encapsulate(val2.bounds);
 					}
 				}
 			}
@@ -5344,9 +5344,9 @@ namespace _1v1.lol_cheat
 					if (val3 != null && val3.sharedMesh != null)
 					{
 						Bounds bounds = val3.sharedMesh.bounds;
-						Vector3 val4 = val3.transform.TransformPoint(((Bounds)(ref bounds)).center);
-						Vector3 val5 = val3.transform.TransformVector(((Bounds)(ref bounds)).size);
-						((Bounds)(ref val6))..ctor(val4, val5);
+						Vector3 val4 = val3.transform.TransformPoint(bounds.center);
+						Vector3 val5 = val3.transform.TransformVector(bounds.size);
+						new Bounds(val4, val5);
 						if (!flag)
 						{
 							result2 = val6;
@@ -5354,14 +5354,14 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							((Bounds)(ref result2)).Encapsulate(val6);
+							result2.Encapsulate(val6);
 						}
 					}
 				}
 			}
 			if (!flag)
 			{
-				((Bounds)(ref result2))..ctor(item.transform.position, Vector3.one * 0.5f);
+				new Bounds(item.transform.position, Vector3.one * 0.5f);
 			}
 			return result2;
 		}
@@ -5375,7 +5375,7 @@ namespace _1v1.lol_cheat
 				return result;
 			}
 			Bounds result2 = default(Bounds);
-			((Bounds)(ref result2))..ctor(obj.transform.position, Vector3.zero);
+			new Bounds(obj.transform.position, Vector3.zero);
 			bool flag = false;
 			Renderer[] componentsInChildren = obj.GetComponentsInChildren<Renderer>(true);
 			foreach (Renderer val in componentsInChildren)
@@ -5385,7 +5385,7 @@ namespace _1v1.lol_cheat
 					continue;
 				}
 				result = val.bounds;
-				Vector3 size = ((Bounds)(ref result)).size;
+				Vector3 size = result.size;
 				if ((size).magnitude > 0.01f)
 				{
 					if (!flag)
@@ -5395,7 +5395,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val.bounds);
+						result2.Encapsulate(val.bounds);
 					}
 				}
 			}
@@ -5411,7 +5411,7 @@ namespace _1v1.lol_cheat
 					}
 					else
 					{
-						((Bounds)(ref result2)).Encapsulate(val2.bounds);
+						result2.Encapsulate(val2.bounds);
 					}
 				}
 			}
@@ -5424,9 +5424,9 @@ namespace _1v1.lol_cheat
 					if (val3 != null && val3.sharedMesh != null)
 					{
 						Bounds bounds = val3.sharedMesh.bounds;
-						Vector3 val4 = val3.transform.TransformPoint(((Bounds)(ref bounds)).center);
-						Vector3 val5 = val3.transform.TransformVector(((Bounds)(ref bounds)).size);
-						((Bounds)(ref val6))..ctor(val4, val5);
+						Vector3 val4 = val3.transform.TransformPoint(bounds.center);
+						Vector3 val5 = val3.transform.TransformVector(bounds.size);
+						new Bounds(val4, val5);
 						if (!flag)
 						{
 							result2 = val6;
@@ -5434,14 +5434,14 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							((Bounds)(ref result2)).Encapsulate(val6);
+							result2.Encapsulate(val6);
 						}
 					}
 				}
 			}
 			if (!flag)
 			{
-				((Bounds)(ref result2))..ctor(obj.transform.position, Vector3.one * 0.5f);
+				new Bounds(obj.transform.position, Vector3.one * 0.5f);
 			}
 			return result2;
 		}
@@ -5500,7 +5500,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					switch (name)
 					{
 					case "Scoutmaster":
@@ -5523,7 +5523,7 @@ namespace _1v1.lol_cheat
 						return "Beetle";
 					}
 				}
-				if ((Object)(object)component.gameObject.GetComponent<Player>() != (Object)null && (Object)(object)component.photonView != (Object)null && component.photonView.Owner != null)
+				if (component.gameObject.GetComponent<Player>() != null && component.photonView != null && component.photonView.Owner != null)
 				{
 					if (!component.photonView.IsMine)
 					{
@@ -5550,7 +5550,7 @@ namespace _1v1.lol_cheat
 				{
 					continue;
 				}
-				string name2 = ((object)val2).GetType().Name;
+				string name2 = val2.GetType().Name;
 				switch (name2)
 				{
 				case "Scoutmaster":
@@ -5581,7 +5581,7 @@ namespace _1v1.lol_cheat
 					return "NPC";
 				}
 			}
-			string name3 = ((Object)entity).name;
+			string name3 = entity.name;
 			if (name3.Contains("Scoutmaster") || name3.Contains("ScoutMaster") || name3.Contains("Scout Master"))
 			{
 				return "Scoutmaster";
@@ -5609,7 +5609,7 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				if ((Object)(object)target.photonView != (Object)null && target.photonView.Owner != null)
+				if (target.photonView != null && target.photonView.Owner != null)
 				{
 					string text = target.photonView.Owner.NickName ?? "Unknown";
 					if (text.Length > 20)
@@ -5618,7 +5618,7 @@ namespace _1v1.lol_cheat
 					}
 					return text;
 				}
-				if ((Object)(object)target == (Object)(object)Character.localCharacter)
+				if (target == Character.localCharacter)
 				{
 					return "You";
 				}
@@ -5678,7 +5678,7 @@ namespace _1v1.lol_cheat
 			catch
 			{
 			}
-			string text = ((Object)item).name;
+			string text = item.name;
 			if (text.Contains("(Clone)"))
 			{
 				text = text.Replace("(Clone)", "");
@@ -5719,7 +5719,7 @@ namespace _1v1.lol_cheat
 				if (_luggageComponentType != null)
 				{
 					Component component = luggage.GetComponent(_luggageComponentType);
-					MonoBehaviour val = (MonoBehaviour)(object)((component is MonoBehaviour) ? component : null);
+					MonoBehaviour val = (MonoBehaviour)((component is MonoBehaviour) ? component : null);
 					if (val != null)
 					{
 						FieldInfo field = _luggageComponentType.GetField("name", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
@@ -5737,7 +5737,7 @@ namespace _1v1.lol_cheat
 			catch
 			{
 			}
-			string text = ((Object)luggage).name;
+			string text = luggage.name;
 			if (text.Contains("(Clone)"))
 			{
 				text = text.Replace("(Clone)", "");
@@ -5810,13 +5810,13 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					if (name == "MushroomZombie")
 					{
-						FieldInfo field = ((object)val).GetType().GetField("_currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						FieldInfo field = val.GetType().GetField("_currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (field == null)
 						{
-							field = ((object)val).GetType().GetField("currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+							field = val.GetType().GetField("currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						}
 						if (field != null)
 						{
@@ -5824,10 +5824,10 @@ namespace _1v1.lol_cheat
 							if (value != null)
 							{
 								string text = value.ToString();
-								FieldInfo field2 = ((object)val).GetType().GetField("_currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+								FieldInfo field2 = val.GetType().GetField("_currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 								if (field2 == null)
 								{
-									PropertyInfo property = ((object)val).GetType().GetProperty("currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+									PropertyInfo property = val.GetType().GetProperty("currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 									if (property != null)
 									{
 										object value2 = property.GetValue(val);
@@ -5857,7 +5857,7 @@ namespace _1v1.lol_cheat
 					{
 					case "Scoutmaster":
 					{
-						PropertyInfo property2 = ((object)val).GetType().GetProperty("currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						PropertyInfo property2 = val.GetType().GetProperty("currentTarget", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (property2 != null)
 						{
 							object value4 = property2.GetValue(val);
@@ -5865,7 +5865,7 @@ namespace _1v1.lol_cheat
 							if (val4 != null)
 							{
 								string targetName3 = GetTargetName(val4);
-								FieldInfo field3 = ((object)val).GetType().GetField("isThrowing", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+								FieldInfo field3 = val.GetType().GetField("isThrowing", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 								if (field3 != null && (bool)field3.GetValue(val))
 								{
 									return "Throwing  " + targetName3;
@@ -5878,14 +5878,14 @@ namespace _1v1.lol_cheat
 					case "Beetle":
 					case "Mob":
 					{
-						FieldInfo field4 = ((object)val).GetType().GetField("_mobState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						FieldInfo field4 = val.GetType().GetField("_mobState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (field4 != null)
 						{
 							object value5 = field4.GetValue(val);
 							if (value5 != null)
 							{
 								string text2 = value5.ToString();
-								FieldInfo field5 = ((object)val).GetType().GetField("_targetChar", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+								FieldInfo field5 = val.GetType().GetField("_targetChar", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 								if (field5 != null)
 								{
 									object value6 = field5.GetValue(val);
@@ -5901,7 +5901,7 @@ namespace _1v1.lol_cheat
 						}
 						if (charComponent != null && charComponent.input != null)
 						{
-							if (((Vector2)(ref charComponent.input.movementInput)).magnitude > 0.1f)
+							if (charComponent.input.movementInput.$3 > 0.1f)
 							{
 								return "Moving";
 							}
@@ -5914,7 +5914,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					PropertyInfo property3 = ((object)val).GetType().GetProperty("State", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					PropertyInfo property3 = val.GetType().GetProperty("State", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (property3 != null)
 					{
 						object value7 = property3.GetValue(val);
@@ -5923,7 +5923,7 @@ namespace _1v1.lol_cheat
 							return value7.ToString();
 						}
 					}
-					FieldInfo field6 = ((object)val).GetType().GetField("currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					FieldInfo field6 = val.GetType().GetField("currentState", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (field6 != null)
 					{
 						object value8 = field6.GetValue(val);
@@ -5935,7 +5935,7 @@ namespace _1v1.lol_cheat
 				}
 				if (charComponent != null && charComponent.input != null)
 				{
-					if (((Vector2)(ref charComponent.input.movementInput)).magnitude > 0.1f)
+					if (charComponent.input.movementInput.$3 > 0.1f)
 					{
 						return "Moving";
 					}
@@ -5976,7 +5976,7 @@ namespace _1v1.lol_cheat
 				{
 					continue;
 				}
-				Type type = ((object)val).GetType();
+				Type type = val.GetType();
 				string text = type.Name.ToLower();
 				if (text.Contains("wind") || text.Contains("root"))
 				{
@@ -6044,7 +6044,7 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				Type type = ((object)comp).GetType();
+				Type type = comp.GetType();
 				FieldInfo field = type.GetField("nextWindTime", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				FieldInfo field2 = type.GetField("windTimer", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				if (field != null && field.GetValue(comp) is float result)
@@ -6074,7 +6074,7 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				Type type = ((object)comp).GetType();
+				Type type = comp.GetType();
 				FieldInfo field = type.GetField("nextColdStormTime", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				FieldInfo field2 = type.GetField("coldTimer", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				FieldInfo field3 = type.GetField("stormTimer", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
@@ -6177,7 +6177,7 @@ namespace _1v1.lol_cheat
 			{
 				if (val != null)
 				{
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					if (name == "MushroomZombie")
 					{
 						flag = true;
@@ -6219,7 +6219,7 @@ namespace _1v1.lol_cheat
 				if (field != null)
 				{
 					object value = field.GetValue(component.data);
-					flag3 = (Object)((value is Character) ? value : null) != (Object)null;
+					flag3 = ((value is Character) ? value : null) != null;
 				}
 			}
 			catch
@@ -6349,7 +6349,7 @@ namespace _1v1.lol_cheat
 				try
 				{
 					Item currentItem = Character.localCharacter.data.currentItem;
-					if ((Object)(object)_lastInfiniteAmmoItem != (Object)(object)currentItem)
+					if (_lastInfiniteAmmoItem != currentItem)
 					{
 						_lastInfiniteAmmoItem = currentItem;
 						_patchedItems.Remove(currentItem);
@@ -6473,14 +6473,14 @@ namespace _1v1.lol_cheat
 			try
 			{
 				Vector3 val = ((targetPlayer != null && targetPlayer.refs != null && targetPlayer.refs.head != null) ? (targetPlayer.refs.head.transform.position + Vector3.up * 2f) : ((!(Character.localCharacter != null) || Character.localCharacter.refs == null || !(Character.localCharacter.refs.head != null)) ? ((Camera.main != null) ? (Camera.main.transform.position + Camera.main.transform.forward * 2f) : Vector3.zero) : (Character.localCharacter.refs.head.transform.position + Vector3.up * 2f)));
-				if ((Object)(object)PhotonNetwork.Instantiate(itemName, val, Quaternion.identity, (byte)0, (object[])null) != (Object)null)
+				if (PhotonNetwork.Instantiate(itemName, val, Quaternion.identity, (byte)0, (object[])null) != null)
 				{
-					Debug.Log((object)$"[ItemSpawning] Spawned {itemName} at {val}");
+					Debug.Log($"[ItemSpawning] Spawned {itemName} at {val}");
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ItemSpawning] Failed to spawn item " + itemName + ": " + ex.Message));
+				Debug.LogError(("[ItemSpawning] Failed to spawn item " + itemName + ": " + ex.Message));
 			}
 		}
 
@@ -6493,14 +6493,14 @@ namespace _1v1.lol_cheat
 			try
 			{
 				Vector3 val = ((targetPlayer != null && targetPlayer.refs != null && targetPlayer.refs.head != null) ? (targetPlayer.refs.head.transform.position + Vector3.up * 2f) : ((!(Character.localCharacter != null) || Character.localCharacter.refs == null || !(Character.localCharacter.refs.head != null)) ? ((Camera.main != null) ? (Camera.main.transform.position + Camera.main.transform.forward * 2f) : Vector3.zero) : (Character.localCharacter.refs.head.transform.position + Vector3.up * 2f)));
-				if ((Object)(object)PhotonNetwork.Instantiate(entityName, val, Quaternion.identity, (byte)0, (object[])null) != (Object)null)
+				if (PhotonNetwork.Instantiate(entityName, val, Quaternion.identity, (byte)0, (object[])null) != null)
 				{
-					Debug.Log((object)$"[ItemSpawning] Spawned entity {entityName} at {val}");
+					Debug.Log($"[ItemSpawning] Spawned entity {entityName} at {val}");
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[ItemSpawning] Failed to spawn entity " + entityName + ": " + ex.Message));
+				Debug.LogError(("[ItemSpawning] Failed to spawn entity " + entityName + ": " + ex.Message));
 			}
 		}
 
@@ -6518,7 +6518,7 @@ namespace _1v1.lol_cheat
 				{
 					try
 					{
-						FieldInfo field = ((object)PhotonNetwork.PrefabPool).GetType().GetField("resourceCache", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						FieldInfo field = PhotonNetwork.PrefabPool.GetType().GetField("resourceCache", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (field != null && field.GetValue(PhotonNetwork.PrefabPool) is Dictionary<string, GameObject> dictionary)
 						{
 							foreach (string key in dictionary.Keys)
@@ -6535,14 +6535,14 @@ namespace _1v1.lol_cheat
 								GameObject val = dictionary[key];
 								if (val != null)
 								{
-									bool flag = (Object)(object)val.GetComponent<PhotonView>() != (Object)null;
-									bool flag2 = (Object)(object)val.GetComponent<Character>() != (Object)null;
-									bool flag3 = (Object)(object)val.GetComponent<Item>() != (Object)null;
+									bool flag = val.GetComponent<PhotonView>() != null;
+									bool flag2 = val.GetComponent<Character>() != null;
+									bool flag3 = val.GetComponent<Item>() != null;
 									if ((flag || flag2) && !flag3 && !hashSet.Contains(key))
 									{
 										list.Add(key);
 										hashSet.Add(key);
-										Debug.Log((object)("[ItemSpawning] Found entity in pool: " + key));
+										Debug.Log(("[ItemSpawning] Found entity in pool: " + key));
 									}
 								}
 							}
@@ -6550,7 +6550,7 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex)
 					{
-						Debug.Log((object)("[ItemSpawning] Could not access PhotonNetwork prefab pool: " + ex.Message));
+						Debug.Log(("[ItemSpawning] Could not access PhotonNetwork prefab pool: " + ex.Message));
 					}
 				}
 				string[] array = new string[13]
@@ -6569,7 +6569,7 @@ namespace _1v1.lol_cheat
 							{
 								continue;
 							}
-							string name = ((Object)val2).name;
+							string name = val2.name;
 							string text3 = (string.IsNullOrEmpty(text2) ? name : (text2 + "/" + name));
 							if (hashSet.Contains(text3) || hashSet.Contains(name))
 							{
@@ -6578,22 +6578,22 @@ namespace _1v1.lol_cheat
 							string text4 = name.ToLower();
 							if ((!text4.Contains("item") || text4.Contains("zombie") || text4.Contains("scoutmaster") || text4.Contains("beetle")) && !(name == "Player") && !(name == "Character"))
 							{
-								bool flag4 = (Object)(object)val2.GetComponent<PhotonView>() != (Object)null;
-								bool flag5 = (Object)(object)val2.GetComponent<Character>() != (Object)null;
-								bool flag6 = (Object)(object)val2.GetComponent<Item>() != (Object)null;
+								bool flag4 = val2.GetComponent<PhotonView>() != null;
+								bool flag5 = val2.GetComponent<Character>() != null;
+								bool flag6 = val2.GetComponent<Item>() != null;
 								if ((flag4 || flag5) && !flag6)
 								{
 									list.Add(text3);
 									hashSet.Add(text3);
 									hashSet.Add(name);
-									Debug.Log((object)("[ItemSpawning] Found entity in Resources: " + text3));
+									Debug.Log(("[ItemSpawning] Found entity in Resources: " + text3));
 								}
 							}
 						}
 					}
 					catch (Exception ex2)
 					{
-						Debug.Log((object)("[ItemSpawning] Could not load prefabs from folder '" + text2 + "': " + ex2.Message));
+						Debug.Log(("[ItemSpawning] Could not load prefabs from folder '" + text2 + "': " + ex2.Message));
 					}
 				}
 				array = new string[13]
@@ -6612,14 +6612,14 @@ namespace _1v1.lol_cheat
 						GameObject val3 = Resources.Load<GameObject>(text5);
 						if (val3 != null)
 						{
-							bool flag7 = (Object)(object)val3.GetComponent<Item>() != (Object)null;
-							bool flag8 = (Object)(object)val3.GetComponent<PhotonView>() != (Object)null;
-							bool flag9 = (Object)(object)val3.GetComponent<Character>() != (Object)null;
+							bool flag7 = val3.GetComponent<Item>() != null;
+							bool flag8 = val3.GetComponent<PhotonView>() != null;
+							bool flag9 = val3.GetComponent<Character>() != null;
 							if (!flag7 && (flag8 || flag9))
 							{
 								list.Add(text5);
 								hashSet.Add(text5);
-								Debug.Log((object)("[ItemSpawning] Found common entity: " + text5));
+								Debug.Log(("[ItemSpawning] Found common entity: " + text5));
 							}
 						}
 					}
@@ -6630,7 +6630,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex3)
 			{
-				Debug.LogError((object)("[ItemSpawning] Error discovering entities: " + ex3.Message));
+				Debug.LogError(("[ItemSpawning] Error discovering entities: " + ex3.Message));
 			}
 			List<string> list2 = new List<string>();
 			HashSet<string> hashSet2 = new HashSet<string>();
@@ -6674,7 +6674,7 @@ namespace _1v1.lol_cheat
 			}
 			CheatConfig.AvailableEntities = list2.ToArray();
 			CheatConfig.EntitiesInitialized = true;
-			Debug.Log((object)string.Format("[ItemSpawning] Discovered {0} spawnable entities: {1}...", CheatConfig.AvailableEntities.Length, string.Join(", ", CheatConfig.AvailableEntities.Take(10))));
+			Debug.Log(string.Format("[ItemSpawning] Discovered {0} spawnable entities: {1}...", CheatConfig.AvailableEntities.Length, string.Join(", ", CheatConfig.AvailableEntities.Take(10))));
 		}
 
 		public static string[] FilterEntities(string searchText)
@@ -6745,7 +6745,7 @@ namespace _1v1.lol_cheat
 
 		public static void ApplySpeedHack()
 		{
-			if ((Object)(object)Character.localCharacter?.refs?.movement == (Object)null)
+			if (Character.localCharacter?.refs?.movement == null)
 			{
 				return;
 			}
@@ -6769,7 +6769,7 @@ namespace _1v1.lol_cheat
 
 		public static void ApplySuperJump()
 		{
-			if ((Object)(object)Character.localCharacter?.refs?.movement == (Object)null)
+			if (Character.localCharacter?.refs?.movement == null)
 			{
 				return;
 			}
@@ -6793,7 +6793,7 @@ namespace _1v1.lol_cheat
 
 		public static void ApplyClimbingSpeed()
 		{
-			if ((Object)(object)Character.localCharacter?.refs?.climbing == (Object)null)
+			if (Character.localCharacter?.refs?.climbing == null)
 			{
 				return;
 			}
@@ -6810,7 +6810,7 @@ namespace _1v1.lol_cheat
 
 		public static void ApplyFlyMode()
 		{
-			if (Character.localCharacter == null || (Object)(object)Character.localCharacter.refs?.ragdoll == (Object)null)
+			if (Character.localCharacter == null || Character.localCharacter.refs?.ragdoll == null)
 			{
 				return;
 			}
@@ -6819,7 +6819,7 @@ namespace _1v1.lol_cheat
 				_isFlying = CheatConfig.FlyMode;
 				foreach (Bodypart part in Character.localCharacter.refs.ragdoll.partList)
 				{
-					if ((Object)(object)((part != null) ? part.Rig : null) != (Object)null)
+					if (((part != null) ? part.Rig : null) != null)
 					{
 						part.Rig.useGravity = !_isFlying;
 					}
@@ -6833,7 +6833,7 @@ namespace _1v1.lol_cheat
 
 		private static void HandleFlying()
 		{
-			if (!_isFlying || Character.localCharacter == null || (Object)(object)Character.localCharacter.refs?.ragdoll == (Object)null)
+			if (!_isFlying || Character.localCharacter == null || Character.localCharacter.refs?.ragdoll == null)
 			{
 				return;
 			}
@@ -6842,7 +6842,7 @@ namespace _1v1.lol_cheat
 			localCharacter.data.sinceGrounded = 0f;
 			localCharacter.data.sinceJump = 0f;
 			Vector3 val = Vector2.op_Implicit(localCharacter.input.movementInput);
-			Vector3 normalized = ((Vector3)(ref localCharacter.data.lookDirection_Flat)).normalized;
+			Vector3 normalized = localCharacter.data.lookDirection_Flat.$3;
 			Vector3 val2 = Vector3.Cross(Vector3.up, normalized);
 			Vector3 normalized2 = (val2).normalized;
 			Vector3 val3 = normalized * val.y + normalized2 * val.x;
@@ -6857,7 +6857,7 @@ namespace _1v1.lol_cheat
 			_flyVelocity = Vector3.Lerp(_flyVelocity, (val3).normalized * CheatConfig.FlySpeed, Time.deltaTime * _acceleration);
 			foreach (Bodypart part in localCharacter.refs.ragdoll.partList)
 			{
-				if ((Object)(object)((part != null) ? part.Rig : null) != (Object)null)
+				if (((part != null) ? part.Rig : null) != null)
 				{
 					part.Rig.useGravity = false;
 					part.Rig.linearVelocity = _flyVelocity;
@@ -6878,13 +6878,13 @@ namespace _1v1.lol_cheat
 		{
 			try
 			{
-				if ((Object)(object)Character.localCharacter?.refs?.ragdoll == (Object)null || Character.localCharacter.refs.ragdoll.partList == null)
+				if (Character.localCharacter?.refs?.ragdoll == null || Character.localCharacter.refs.ragdoll.partList == null)
 				{
 					return;
 				}
 				foreach (Bodypart part in Character.localCharacter.refs.ragdoll.partList)
 				{
-					if ((Object)(object)((part != null) ? part.gameObject : null) == (Object)null)
+					if (((part != null) ? part.gameObject : null) == null)
 					{
 						continue;
 					}
@@ -6909,7 +6909,7 @@ namespace _1v1.lol_cheat
 					{
 					}
 				}
-				if (!((Object)(object)Character.localCharacter.gameObject != (Object)null))
+				if (!(Character.localCharacter.gameObject != null))
 				{
 					return;
 				}
@@ -6942,13 +6942,13 @@ namespace _1v1.lol_cheat
 		public static void Disable()
 		{
 			CheatConfig.NoClip = false;
-			if (!(Character.localCharacter != null) || !((Object)(object)Character.localCharacter.refs?.ragdoll != (Object)null))
+			if (!(Character.localCharacter != null) || !(Character.localCharacter.refs?.ragdoll != null))
 			{
 				return;
 			}
 			foreach (Bodypart part in Character.localCharacter.refs.ragdoll.partList)
 			{
-				if ((Object)(object)((part != null) ? part.gameObject : null) != (Object)null)
+				if (((part != null) ? part.gameObject : null) != null)
 				{
 					Collider component = part.gameObject.GetComponent<Collider>();
 					if (component != null && component.isTrigger)
@@ -7158,7 +7158,7 @@ namespace _1v1.lol_cheat
 	{
 		public static void ClearAll()
 		{
-			if (Character.localCharacter == null || (Object)(object)Character.localCharacter.refs?.afflictions == (Object)null)
+			if (Character.localCharacter == null || Character.localCharacter.refs?.afflictions == null)
 			{
 				return;
 			}
@@ -7689,10 +7689,10 @@ namespace _1v1.lol_cheat
 		{
 			if (entity == null)
 			{
-				Debug.LogError((object)"[EntityControl] Cannot enable control - entity is null");
+				Debug.LogError("[EntityControl] Cannot enable control - entity is null");
 				return;
 			}
-			if (CheatConfig.CurrentlyControlledEntity != null && (Object)(object)CheatConfig.CurrentlyControlledEntity != (Object)(object)entity)
+			if (CheatConfig.CurrentlyControlledEntity != null && CheatConfig.CurrentlyControlledEntity != entity)
 			{
 				DisableControl(CheatConfig.CurrentlyControlledEntity);
 			}
@@ -7701,7 +7701,7 @@ namespace _1v1.lol_cheat
 				Character component = entity.GetComponent<Character>();
 				if (component == null)
 				{
-					Debug.LogError((object)("[EntityControl] Entity " + ((Object)entity).name + " has no Character component"));
+					Debug.LogError(("[EntityControl] Entity " + entity.name + " has no Character component"));
 					return;
 				}
 				FreezePlayer();
@@ -7712,24 +7712,24 @@ namespace _1v1.lol_cheat
 				SetEntitySpectatable(component);
 				CheatConfig.CurrentlyControlledEntity = entity;
 				SwitchCameraToEntity(entity);
-				Debug.Log((object)("[EntityControl] Successfully enabled control for entity: " + ((Object)entity).name));
+				Debug.Log(("[EntityControl] Successfully enabled control for entity: " + entity.name));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityControl] Failed to enable control: " + ex.Message));
+				Debug.LogError(("[EntityControl] Failed to enable control: " + ex.Message));
 			}
 		}
 
 		public static void DisableControl(GameObject entity)
 		{
-			if (!(entity == null) && (Object)(object)CheatConfig.CurrentlyControlledEntity == (Object)(object)entity)
+			if (!(entity == null) && CheatConfig.CurrentlyControlledEntity == entity)
 			{
 				CheatConfig.CurrentlyControlledEntity = null;
 				UnfreezePlayer();
 				RestoreHeadVisibility(entity);
 				RestoreEntityAI(entity);
 				RestoreCameraToPlayer();
-				Debug.Log((object)"[EntityControl] Disabled entity control");
+				Debug.Log("[EntityControl] Disabled entity control");
 			}
 		}
 
@@ -7767,7 +7767,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityControl] Error processing input: " + ex.Message));
+				Debug.LogError(("[EntityControl] Error processing input: " + ex.Message));
 			}
 		}
 
@@ -7794,16 +7794,16 @@ namespace _1v1.lol_cheat
 			{
 				zero.x += 1f;
 			}
-			if (((Vector2)(ref zero)).magnitude > 1f)
+			if (zero.magnitude > 1f)
 			{
-				((Vector2)(ref zero)).Normalize();
+				zero.Normalize();
 			}
 			charComponent.input.movementInput = zero;
-			if (((Vector2)(ref zero)).magnitude < 0.1f)
+			if (zero.magnitude < 0.1f)
 			{
 				charComponent.input.movementInput = Vector2.zero;
 			}
-			if (!(((Vector2)(ref zero)).magnitude > 0.1f) || charComponent.data.isGrounded)
+			if (!(zero.magnitude > 0.1f) || charComponent.data.isGrounded)
 			{
 				return;
 			}
@@ -7869,7 +7869,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					Type type = ((object)val).GetType();
+					Type type = val.GetType();
 					string name = type.Name;
 					if (name == "MushroomZombie")
 					{
@@ -7927,11 +7927,11 @@ namespace _1v1.lol_cheat
 			{
 				val.x += 1f;
 			}
-			if (((Vector2)(ref val)).magnitude > 1f)
+			if (val.magnitude > 1f)
 			{
-				val = ((Vector2)(ref val)).normalized;
+				val = val.normalized;
 			}
-			if (((Vector2)(ref val)).magnitude < 0.1f)
+			if (val.magnitude < 0.1f)
 			{
 				return charComponent.Center;
 			}
@@ -7964,7 +7964,7 @@ namespace _1v1.lol_cheat
 				{
 					if (!(val == null))
 					{
-						string name = ((object)val).GetType().Name;
+						string name = val.GetType().Name;
 						if (name == "MushroomZombie")
 						{
 							SetZombieAITarget(val, charComponent, targetPosition);
@@ -7986,7 +7986,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] Error setting AI target: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] Error setting AI target: " + ex.Message));
 				ProcessMovementInputDirectly(charComponent, targetPosition);
 			}
 		}
@@ -7995,7 +7995,7 @@ namespace _1v1.lol_cheat
 		{
 			try
 			{
-				Type type = ((object)zombieComponent).GetType();
+				Type type = zombieComponent.GetType();
 				PropertyInfo property = type.GetProperty("currentTarget");
 				if (property != null && property.CanWrite)
 				{
@@ -8038,7 +8038,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] Error setting zombie AI target: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] Error setting zombie AI target: " + ex.Message));
 			}
 		}
 
@@ -8046,7 +8046,7 @@ namespace _1v1.lol_cheat
 		{
 			try
 			{
-				PropertyInfo property = ((object)scoutmasterComponent).GetType().GetProperty("currentTarget");
+				PropertyInfo property = scoutmasterComponent.GetType().GetProperty("currentTarget");
 				if (property != null && property.CanWrite)
 				{
 					property.SetValue(scoutmasterComponent, null);
@@ -8059,7 +8059,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] Error setting scoutmaster AI target: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] Error setting scoutmaster AI target: " + ex.Message));
 			}
 		}
 
@@ -8098,7 +8098,7 @@ namespace _1v1.lol_cheat
 			{
 				zero.x += 1f;
 			}
-			if (((Vector2)(ref zero)).magnitude > 0.1f)
+			if (zero.magnitude > 0.1f)
 			{
 				EntityWalkTowards(charComponent, targetPosition);
 				if (Input.GetKey((KeyCode)304))
@@ -8127,7 +8127,7 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				Type type = ((object)component).GetType();
+				Type type = component.GetType();
 				if (type.Name != "MushroomZombie")
 				{
 					return;
@@ -8191,7 +8191,7 @@ namespace _1v1.lol_cheat
 					if (method != null)
 					{
 						method.Invoke(component, null);
-						Debug.Log((object)"[EntityControl] Force recovered zombie from lunge");
+						Debug.Log("[EntityControl] Force recovered zombie from lunge");
 					}
 				}
 			}
@@ -8242,10 +8242,10 @@ namespace _1v1.lol_cheat
 			MonoBehaviour[] array = components;
 			foreach (MonoBehaviour val2 in array)
 			{
-				if (val2 != null && ((object)val2).GetType().Name == "MushroomZombie")
+				if (val2 != null && val2.GetType().Name == "MushroomZombie")
 				{
 					val = val2;
-					type = ((object)val2).GetType();
+					type = val2.GetType();
 					break;
 				}
 			}
@@ -8333,7 +8333,7 @@ namespace _1v1.lol_cheat
 					if (method4 != null)
 					{
 						method4.Invoke(val, null);
-						Debug.Log((object)$"[EntityControl] Triggered zombie lunge at distance {num:F1}m");
+						Debug.Log($"[EntityControl] Triggered zombie lunge at distance {num:F1}m");
 						return;
 					}
 					object value4 = Enum.Parse(nestedType, "Lunging");
@@ -8345,7 +8345,7 @@ namespace _1v1.lol_cheat
 						field4.SetValue(val, val4);
 					}
 					charComponent.input.jumpWasPressed = true;
-					Debug.Log((object)$"[EntityControl] Manually triggered zombie lunge state at distance {num:F1}m");
+					Debug.Log($"[EntityControl] Manually triggered zombie lunge state at distance {num:F1}m");
 				}
 				else if (num > num2 * 1.5f)
 				{
@@ -8372,7 +8372,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] Could not trigger zombie lunge: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] Could not trigger zombie lunge: " + ex.Message));
 			}
 		}
 
@@ -8384,10 +8384,10 @@ namespace _1v1.lol_cheat
 			MonoBehaviour[] array = components;
 			foreach (MonoBehaviour val2 in array)
 			{
-				if (val2 != null && ((object)val2).GetType().Name == "Scoutmaster")
+				if (val2 != null && val2.GetType().Name == "Scoutmaster")
 				{
 					val = val2;
-					type = ((object)val2).GetType();
+					type = val2.GetType();
 					break;
 				}
 			}
@@ -8430,7 +8430,7 @@ namespace _1v1.lol_cheat
 					if (!flag)
 					{
 						component.RPC("RPCA_Throw", RpcTarget.All, Array.Empty<object>());
-						Debug.Log((object)"[EntityControl] Triggered scoutmaster throw");
+						Debug.Log("[EntityControl] Triggered scoutmaster throw");
 					}
 					return;
 				}
@@ -8456,7 +8456,7 @@ namespace _1v1.lol_cheat
 						{
 							component.RPC("RPCA_StartReaching", RpcTarget.All, Array.Empty<object>());
 						}
-						Debug.Log((object)$"[EntityControl] Scoutmaster grab active - target at distance {num:F1}m");
+						Debug.Log($"[EntityControl] Scoutmaster grab active - target at distance {num:F1}m");
 					}
 					else
 					{
@@ -8490,7 +8490,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] Could not trigger scoutmaster throw: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] Could not trigger scoutmaster throw: " + ex.Message));
 			}
 		}
 
@@ -8500,7 +8500,7 @@ namespace _1v1.lol_cheat
 			float num = float.MaxValue;
 			foreach (Character allCharacter in Character.AllCharacters)
 			{
-				if (!((Object)(object)allCharacter == (Object)(object)entityChar) && !((Object)(object)allCharacter == (Object)(object)Character.localCharacter) && !(allCharacter.data == null) && !allCharacter.data.dead && !allCharacter.data.fullyPassedOut && (includeBots || !allCharacter.isBot))
+				if (!(allCharacter == entityChar) && !(allCharacter == Character.localCharacter) && !(allCharacter.data == null) && !allCharacter.data.dead && !allCharacter.data.fullyPassedOut && (includeBots || !allCharacter.isBot))
 				{
 					float num2 = Vector3.Distance(entityChar.Center, allCharacter.Center);
 					if (num2 < num && num2 <= maxDistance)
@@ -8544,7 +8544,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityControl] Error updating camera: " + ex.Message));
+				Debug.LogError(("[EntityControl] Error updating camera: " + ex.Message));
 			}
 		}
 
@@ -8608,7 +8608,7 @@ namespace _1v1.lol_cheat
 			{
 				foreach (Bodypart part in Character.localCharacter.refs.ragdoll.partList)
 				{
-					if ((Object)(object)((part != null) ? part.Rig : null) != (Object)null)
+					if (((part != null) ? part.Rig : null) != null)
 					{
 						part.Rig.isKinematic = true;
 						part.Rig.linearVelocity = Vector3.zero;
@@ -8679,7 +8679,7 @@ namespace _1v1.lol_cheat
 
 		private static void MakeHeadInvisible(GameObject entity, Character charComponent)
 		{
-			if ((Object)(object)charComponent.refs?.head == (Object)null)
+			if (charComponent.refs?.head == null)
 			{
 				return;
 			}
@@ -8699,9 +8699,9 @@ namespace _1v1.lol_cheat
 			SkinnedMeshRenderer[] componentsInChildren2 = charComponent.refs.head.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>(true);
 			foreach (SkinnedMeshRenderer val2 in componentsInChildren2)
 			{
-				if (val2 != null && !_originalHeadRendererStates[entity].ContainsKey((Renderer)(object)val2))
+				if (val2 != null && !_originalHeadRendererStates[entity].ContainsKey((Renderer)val2))
 				{
-					_originalHeadRendererStates[entity][(Renderer)(object)val2] = ((Renderer)val2).enabled;
+					_originalHeadRendererStates[entity][(Renderer)val2] = ((Renderer)val2).enabled;
 					((Renderer)val2).enabled = false;
 				}
 			}
@@ -8714,7 +8714,7 @@ namespace _1v1.lol_cheat
 				return;
 			}
 			Character component = entity.GetComponent<Character>();
-			if ((Object)(object)component?.refs?.head == (Object)null)
+			if (component?.refs?.head == null)
 			{
 				if (_originalHeadRendererStates.ContainsKey(entity))
 				{
@@ -8781,10 +8781,10 @@ namespace _1v1.lol_cheat
 			{
 				if (!(val == null))
 				{
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					if (name == "Scoutmaster" || name == "MushroomZombie")
 					{
-						Debug.Log((object)("[EntityControl] " + name + " component kept enabled - will use AI logic with player input"));
+						Debug.Log(("[EntityControl] " + name + " component kept enabled - will use AI logic with player input"));
 					}
 				}
 			}
@@ -8802,7 +8802,7 @@ namespace _1v1.lol_cheat
 				{
 					_disabledAIComponentsByEntity.Remove(entity);
 				}
-				Debug.Log((object)"[EntityControl] Entity AI restored to normal operation");
+				Debug.Log("[EntityControl] Entity AI restored to normal operation");
 			}
 		}
 
@@ -8848,7 +8848,7 @@ namespace _1v1.lol_cheat
 
 		private static void SwitchCameraToEntity(GameObject entity)
 		{
-			if (!((Object)(object)entity.GetComponent<Character>() == (Object)null))
+			if (!(entity.GetComponent<Character>() == null))
 			{
 				MainCamera instance = MainCamera.instance;
 				if (instance != null)
@@ -8870,7 +8870,7 @@ namespace _1v1.lol_cheat
 			}
 			if (_cameraOverrideObject != null)
 			{
-				Object.Destroy((Object)(object)_cameraOverrideObject);
+				Object.Destroy(_cameraOverrideObject);
 				_cameraOverrideObject = null;
 			}
 		}
@@ -8909,16 +8909,16 @@ namespace _1v1.lol_cheat
 			{
 				val.x += 1f;
 			}
-			if (((Vector2)(ref val)).magnitude > 1f)
+			if (val.magnitude > 1f)
 			{
-				val = ((Vector2)(ref val)).normalized;
+				val = val.normalized;
 			}
 			charComponent.input.movementInput = val;
-			if ((Object)(object)charComponent.refs?.climbing != (Object)null && val.y > 0.1f)
+			if (charComponent.refs?.climbing != null && val.y > 0.1f)
 			{
 				try
 				{
-					MethodInfo method = ((object)charComponent.refs.climbing).GetType().GetMethod("TryClimb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					MethodInfo method = charComponent.refs.climbing.GetType().GetMethod("TryClimb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (method != null)
 					{
 						method.Invoke(charComponent.refs.climbing, new object[1] { 1.25f });
@@ -8928,7 +8928,7 @@ namespace _1v1.lol_cheat
 				{
 				}
 			}
-			if (charComponent.data != null && charComponent.data.isClimbing && Input.GetKey((KeyCode)304) && ((Vector2)(ref val)).magnitude > 0.1f)
+			if (charComponent.data != null && charComponent.data.isClimbing && Input.GetKey((KeyCode)304) && val.magnitude > 0.1f)
 			{
 				charComponent.input.sprintIsPressed = true;
 				charComponent.input.sprintToggleIsPressed = true;
@@ -8973,7 +8973,7 @@ namespace _1v1.lol_cheat
 			float axis = Input.GetAxis("Mouse X");
 			float axis2 = Input.GetAxis("Mouse Y");
 			charComponent.input.lookInput = new Vector2(axis, axis2);
-			if (!((Object)(object)charComponent.refs?.movement != (Object)null))
+			if (!(charComponent.refs?.movement != null))
 			{
 				return;
 			}
@@ -9036,7 +9036,7 @@ namespace _1v1.lol_cheat
 			{
 			}
 			Vector2 lookInput = charComponent.input.lookInput;
-			if (((Vector2)(ref lookInput)).magnitude > 0.01f)
+			if (lookInput.magnitude > 0.01f)
 			{
 				charComponent.data.lookValues.x += lookInput.x * num * (float)num2;
 				charComponent.data.lookValues.y += lookInput.y * num * (float)num3;
@@ -9092,7 +9092,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] EntityLookAt failed: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] EntityLookAt failed: " + ex.Message));
 			}
 		}
 
@@ -9137,9 +9137,9 @@ namespace _1v1.lol_cheat
 					}
 				}
 				charComponent.input.movementInput = new Vector2(0f, mult);
-				if (tryClimb && (Object)(object)charComponent.refs?.climbing != (Object)null)
+				if (tryClimb && charComponent.refs?.climbing != null)
 				{
-					MethodInfo method2 = ((object)charComponent.refs.climbing).GetType().GetMethod("TryClimb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					MethodInfo method2 = charComponent.refs.climbing.GetType().GetMethod("TryClimb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (method2 != null)
 					{
 						method2.Invoke(charComponent.refs.climbing, new object[1] { 1.25f });
@@ -9182,7 +9182,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] EntityWalkTowards failed: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] EntityWalkTowards failed: " + ex.Message));
 			}
 		}
 
@@ -9198,9 +9198,9 @@ namespace _1v1.lol_cheat
 				MethodInfo method = typeof(Character).GetMethod("GetBodypart", BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[1] { typeof(BodypartType) }, null);
 				if (method != null)
 				{
-					object obj = method.Invoke(charComponent, new object[1] { (object)(BodypartType)2 });
+					object obj = method.Invoke(charComponent, new object[1] { (BodypartType)2 });
 					Bodypart val = (Bodypart)((obj is Bodypart) ? obj : null);
-					if (val != null && (Object)(object)val.transform != (Object)null)
+					if (val != null && val.transform != null)
 					{
 						float num = Mathf.Clamp(val.transform.InverseTransformPoint(targetPos).x * 0.25f, -1f, 1f);
 						charComponent.input.movementInput = new Vector2(num, mult);
@@ -9210,7 +9210,7 @@ namespace _1v1.lol_cheat
 				{
 					foreach (Bodypart part in charComponent.refs.ragdoll.partList)
 					{
-						if (part != null && (int)part.partType == 2 && (Object)(object)part.transform != (Object)null)
+						if (part != null && (int)part.partType == 2 && part.transform != null)
 						{
 							float num2 = Mathf.Clamp(part.transform.InverseTransformPoint(targetPos).x * 0.25f, -1f, 1f);
 							charComponent.input.movementInput = new Vector2(num2, mult);
@@ -9225,7 +9225,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] EntityClimbTowards failed: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] EntityClimbTowards failed: " + ex.Message));
 			}
 		}
 
@@ -9263,7 +9263,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[EntityControl] EntityCanSeeTarget failed: " + ex.Message));
+				Debug.LogWarning(("[EntityControl] EntityCanSeeTarget failed: " + ex.Message));
 			}
 			return false;
 		}
@@ -9376,11 +9376,11 @@ namespace _1v1.lol_cheat
 						val.enabled = true;
 					}
 				}
-				Debug.Log((object)("[EntityManager] Initialized entity: " + ((Object)entity).name));
+				Debug.Log(("[EntityManager] Initialized entity: " + entity.name));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityManager] Error initializing entity: " + ex.Message));
+				Debug.LogError(("[EntityManager] Error initializing entity: " + ex.Message));
 			}
 		}
 
@@ -9397,17 +9397,17 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				if ((Object)(object)CheatConfig.CurrentlyControlledEntity == (Object)(object)entity)
+				if (CheatConfig.CurrentlyControlledEntity == entity)
 				{
 					EntityControl.DisableControl(entity);
 				}
 				PhotonNetwork.Destroy(entity);
 				CheatConfig.SpawnedEntities.Remove(entity);
-				Debug.Log((object)("[EntityManager] Killed entity: " + ((Object)entity).name));
+				Debug.Log(("[EntityManager] Killed entity: " + entity.name));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityManager] Error killing entity: " + ex.Message));
+				Debug.LogError(("[EntityManager] Error killing entity: " + ex.Message));
 			}
 		}
 
@@ -9421,11 +9421,11 @@ namespace _1v1.lol_cheat
 			{
 				Vector3 position = Character.localCharacter.transform.position + Vector3.up * 1f;
 				entity.transform.position = position;
-				Debug.Log((object)("[EntityManager] Teleported entity to player: " + ((Object)entity).name));
+				Debug.Log(("[EntityManager] Teleported entity to player: " + entity.name));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityManager] Error teleporting entity: " + ex.Message));
+				Debug.LogError(("[EntityManager] Error teleporting entity: " + ex.Message));
 			}
 		}
 
@@ -9439,11 +9439,11 @@ namespace _1v1.lol_cheat
 			{
 				Vector3 position = targetPlayer.transform.position + Vector3.up * 1f;
 				entity.transform.position = position;
-				Debug.Log((object)("[EntityManager] Teleported entity to player: " + ((Object)entity).name));
+				Debug.Log(("[EntityManager] Teleported entity to player: " + entity.name));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[EntityManager] Error teleporting entity to player: " + ex.Message));
+				Debug.LogError(("[EntityManager] Error teleporting entity to player: " + ex.Message));
 			}
 		}
 
@@ -9459,7 +9459,7 @@ namespace _1v1.lol_cheat
 			{
 				if (!(val == null))
 				{
-					string name = ((object)val).GetType().Name;
+					string name = val.GetType().Name;
 					if (name.Contains("AI") || name.Contains("Enemy") || name.Contains("Zombie") || name.Contains("Behavior") || name.Contains("Controller") || name.Contains("Agent") || name.Contains("StateMachine"))
 					{
 						list.Add(val);
@@ -9489,7 +9489,7 @@ namespace _1v1.lol_cheat
 				{
 					continue;
 				}
-				Type type = ((object)val).GetType();
+				Type type = val.GetType();
 				MethodInfo method = type.GetMethod("Initialize", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				if (method != null && method.GetParameters().Length == 0)
 				{
@@ -9591,19 +9591,19 @@ namespace _1v1.lol_cheat
 				if (lobbyID == 0L)
 				{
 					LastJoinMessage = "Invalid lobby ID (cannot be 0)";
-					Debug.LogError((object)"[LobbyJoiner] Invalid lobby ID");
+					Debug.LogError("[LobbyJoiner] Invalid lobby ID");
 					return false;
 				}
 				SteamLobbyHandler steamLobbyHandler = GetSteamLobbyHandler();
 				if (steamLobbyHandler == null)
 				{
 					LastJoinMessage = "Failed to get SteamLobbyHandler service";
-					Debug.LogError((object)"[LobbyJoiner] SteamLobbyHandler not found");
+					Debug.LogError("[LobbyJoiner] SteamLobbyHandler not found");
 					return false;
 				}
 				if (PhotonNetwork.InRoom)
 				{
-					Debug.Log((object)"[LobbyJoiner] Leaving current room before joining new lobby");
+					Debug.Log("[LobbyJoiner] Leaving current room before joining new lobby");
 					PhotonNetwork.LeaveRoom(true);
 				}
 				try
@@ -9612,7 +9612,7 @@ namespace _1v1.lol_cheat
 					MethodInfo method = typeFromHandle.GetMethod("InSteamLobby", BindingFlags.Instance | BindingFlags.Public, null, new Type[0], null);
 					if (method != null && (bool)method.Invoke(steamLobbyHandler, null))
 					{
-						Debug.Log((object)"[LobbyJoiner] Leaving current Steam lobby before joining new one");
+						Debug.Log("[LobbyJoiner] Leaving current Steam lobby before joining new one");
 						MethodInfo method2 = typeFromHandle.GetMethod("LeaveLobby", BindingFlags.Instance | BindingFlags.Public);
 						if (method2 != null)
 						{
@@ -9622,19 +9622,19 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogWarning((object)("[LobbyJoiner] Could not check/leave current lobby: " + ex.Message));
+					Debug.LogWarning(("[LobbyJoiner] Could not check/leave current lobby: " + ex.Message));
 				}
 				CSteamID val = default(CSteamID);
-				((CSteamID)(ref val))..ctor(lobbyID);
+				new CSteamID(lobbyID);
 				steamLobbyHandler.TryJoinLobby(val);
 				LastJoinMessage = $"Attempting to join lobby: {lobbyID}";
-				Debug.Log((object)$"[LobbyJoiner] Attempting to join lobby: {lobbyID}");
+				Debug.Log($"[LobbyJoiner] Attempting to join lobby: {lobbyID}");
 				return true;
 			}
 			catch (Exception ex2)
 			{
 				LastJoinMessage = "Error: " + ex2.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error joining lobby: " + ex2.Message + "\n" + ex2.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error joining lobby: " + ex2.Message + "\n" + ex2.StackTrace));
 				return false;
 			}
 		}
@@ -9663,18 +9663,18 @@ namespace _1v1.lol_cheat
 				{
 					isSearchingLobbies = false;
 					LastJoinMessage = "Failed to request lobby list";
-					Debug.LogError((object)"[LobbyJoiner] Failed to request lobby list");
+					Debug.LogError("[LobbyJoiner] Failed to request lobby list");
 					return false;
 				}
 				LastJoinMessage = $"Searching public lobbies for Steam ID {targetSteamID}...";
-				Debug.Log((object)$"[LobbyJoiner] Searching public lobbies for Steam ID {targetSteamID}");
+				Debug.Log($"[LobbyJoiner] Searching public lobbies for Steam ID {targetSteamID}");
 				return true;
 			}
 			catch (Exception ex)
 			{
 				isSearchingLobbies = false;
 				LastJoinMessage = "Error: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error searching by Steam ID: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error searching by Steam ID: " + ex.Message + "\n" + ex.StackTrace));
 				return false;
 			}
 		}
@@ -9691,7 +9691,7 @@ namespace _1v1.lol_cheat
 				return JoinLobbyByID(result);
 			}
 			LastJoinMessage = "Invalid lobby ID format (must be a number)";
-			Debug.LogError((object)("[LobbyJoiner] Invalid lobby ID format: " + lobbyIDString));
+			Debug.LogError(("[LobbyJoiner] Invalid lobby ID format: " + lobbyIDString));
 			return false;
 		}
 
@@ -9705,13 +9705,13 @@ namespace _1v1.lol_cheat
 					return false;
 				}
 				CSteamID val = default(CSteamID);
-				((CSteamID)(ref val))..ctor(steamID);
+				new CSteamID(steamID);
 				FriendGameInfo_t val2 = default(FriendGameInfo_t);
 				if (SteamFriends.HasFriend(val, (EFriendFlags)0) && SteamFriends.GetFriendGamePlayed(val, ref val2) && val2.m_steamIDLobby.m_SteamID != 0L)
 				{
 					ulong steamID2 = val2.m_steamIDLobby.m_SteamID;
 					LastJoinMessage = $"Found lobby {steamID2} for friend {steamID}, attempting to join...";
-					Debug.Log((object)$"[LobbyJoiner] Found lobby {steamID2} for friend {steamID}");
+					Debug.Log($"[LobbyJoiner] Found lobby {steamID2} for friend {steamID}");
 					return JoinLobbyByID(steamID2);
 				}
 				SteamFriends.RequestUserInformation(val, true);
@@ -9720,17 +9720,17 @@ namespace _1v1.lol_cheat
 				{
 					ulong steamID3 = val3.m_steamIDLobby.m_SteamID;
 					LastJoinMessage = $"Found lobby {steamID3} from public profile {steamID}, attempting to join...";
-					Debug.Log((object)$"[LobbyJoiner] Found lobby {steamID3} from public profile {steamID}");
+					Debug.Log($"[LobbyJoiner] Found lobby {steamID3} from public profile {steamID}");
 					return JoinLobbyByID(steamID3);
 				}
 				LastJoinMessage = $"Profile method failed, searching public lobbies for Steam ID {steamID}...";
-				Debug.Log((object)$"[LobbyJoiner] Profile method failed for {steamID}, searching public lobbies...");
+				Debug.Log($"[LobbyJoiner] Profile method failed for {steamID}, searching public lobbies...");
 				return SearchAndJoinBySteamID(steamID);
 			}
 			catch (Exception ex)
 			{
 				LastJoinMessage = "Error: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error joining lobby by Steam ID: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error joining lobby by Steam ID: " + ex.Message + "\n" + ex.StackTrace));
 				return false;
 			}
 		}
@@ -9747,7 +9747,7 @@ namespace _1v1.lol_cheat
 				return JoinLobbyByPlayerSteamID(result);
 			}
 			LastJoinMessage = "Invalid Steam ID format (must be a number)";
-			Debug.LogError((object)("[LobbyJoiner] Invalid Steam ID format: " + steamIDString));
+			Debug.LogError(("[LobbyJoiner] Invalid Steam ID format: " + steamIDString));
 			return false;
 		}
 
@@ -9758,7 +9758,7 @@ namespace _1v1.lol_cheat
 				MethodInfo method = typeof(GameHandler).GetMethod("GetService", BindingFlags.Static | BindingFlags.Public);
 				if (method == null)
 				{
-					Debug.LogError((object)"[LobbyJoiner] GetService method not found on GameHandler");
+					Debug.LogError("[LobbyJoiner] GetService method not found on GameHandler");
 					return null;
 				}
 				object obj = method.MakeGenericMethod(typeof(SteamLobbyHandler)).Invoke(null, null);
@@ -9767,12 +9767,12 @@ namespace _1v1.lol_cheat
 				{
 					return val;
 				}
-				Debug.LogError((object)"[LobbyJoiner] GetService returned null or wrong type");
+				Debug.LogError("[LobbyJoiner] GetService returned null or wrong type");
 				return null;
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[LobbyJoiner] Error getting SteamLobbyHandler: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error getting SteamLobbyHandler: " + ex.Message + "\n" + ex.StackTrace));
 				return null;
 			}
 		}
@@ -9784,9 +9784,9 @@ namespace _1v1.lol_cheat
 			try
 			{
 				AppId_t appID = SteamUtils.GetAppID();
-				Debug.Log((object)$"[LobbyJoiner] Finding players playing Peak (AppID: {appID.m_AppId})...");
+				Debug.Log($"[LobbyJoiner] Finding players playing Peak (AppID: {appID.m_AppId})...");
 				int friendCount = SteamFriends.GetFriendCount((EFriendFlags)65535);
-				Debug.Log((object)$"[LobbyJoiner] Checking {friendCount} friends for Peak lobbies...");
+				Debug.Log($"[LobbyJoiner] Checking {friendCount} friends for Peak lobbies...");
 				int num = 0;
 				FriendGameInfo_t val = default(FriendGameInfo_t);
 				for (int i = 0; i < friendCount; i++)
@@ -9796,7 +9796,7 @@ namespace _1v1.lol_cheat
 						break;
 					}
 					CSteamID friendByIndex = SteamFriends.GetFriendByIndex(i, (EFriendFlags)65535);
-					if (friendByIndex == CSteamID.Nil || !SteamFriends.GetFriendGamePlayed(friendByIndex, ref val) || ((CGameID)(ref val.m_gameID)).AppID().m_AppId != appID.m_AppId)
+					if (friendByIndex == CSteamID.Nil || !SteamFriends.GetFriendGamePlayed(friendByIndex, ref val) || val.m_gameID.AppID().m_AppId != appID.m_AppId)
 					{
 						continue;
 					}
@@ -9826,11 +9826,11 @@ namespace _1v1.lol_cheat
 						if (flag)
 						{
 							joinableLobbies.Add(item);
-							Debug.Log((object)$"[LobbyJoiner] Found joinable Peak lobby: {steamID} hosted by {text} ({numLobbyMembers}/{((lobbyMemberLimit > 0) ? lobbyMemberLimit : 4)} players)");
+							Debug.Log($"[LobbyJoiner] Found joinable Peak lobby: {steamID} hosted by {text} ({numLobbyMembers}/{((lobbyMemberLimit > 0) ? lobbyMemberLimit : 4)} players)");
 						}
 						else
 						{
-							Debug.Log((object)$"[LobbyJoiner] Found Peak lobby {steamID} but not joinable (full: {numLobbyMembers >= lobbyMemberLimit})");
+							Debug.Log($"[LobbyJoiner] Found Peak lobby {steamID} but not joinable (full: {numLobbyMembers >= lobbyMemberLimit})");
 						}
 					}
 				}
@@ -9841,7 +9841,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					((CSteamID)(ref val3))..ctor(searchResult.lobbyID);
+					new CSteamID(searchResult.lobbyID);
 					int memberCount = searchResult.memberCount;
 					int lobbyMemberLimit2 = SteamMatchmaking.GetLobbyMemberLimit(val3);
 					if (lobbyMemberLimit2 == 0 || memberCount < lobbyMemberLimit2)
@@ -9865,11 +9865,11 @@ namespace _1v1.lol_cheat
 				}
 				joinableLobbies.Sort((JoinableLobbyInfo a, JoinableLobbyInfo b) => b.currentPlayers.CompareTo(a.currentPlayers));
 				LastJoinMessage = $"Found {num} Peak players, {joinableLobbies.Count} joinable lobby/lobbies";
-				Debug.Log((object)$"[LobbyJoiner] Found {num} Peak players, {joinableLobbies.Count} joinable lobbies");
+				Debug.Log($"[LobbyJoiner] Found {num} Peak players, {joinableLobbies.Count} joinable lobbies");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[LobbyJoiner] Error finding joinable Peak lobbies: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error finding joinable Peak lobbies: " + ex.Message + "\n" + ex.StackTrace));
 				LastJoinMessage = "Error: " + ex.Message;
 			}
 			return joinableLobbies;
@@ -9881,7 +9881,7 @@ namespace _1v1.lol_cheat
 			try
 			{
 				int friendCount = SteamFriends.GetFriendCount((EFriendFlags)65535);
-				Debug.Log((object)$"[LobbyJoiner] Checking {friendCount} friends for lobby IDs...");
+				Debug.Log($"[LobbyJoiner] Checking {friendCount} friends for lobby IDs...");
 				FriendGameInfo_t val = default(FriendGameInfo_t);
 				for (int i = 0; i < friendCount; i++)
 				{
@@ -9900,17 +9900,17 @@ namespace _1v1.lol_cheat
 						if (!list.Contains(steamID))
 						{
 							list.Add(steamID);
-							Debug.Log((object)$"[LobbyJoiner] Discovered lobby {steamID} from friend {SteamFriends.GetFriendPersonaName(friendByIndex)}");
+							Debug.Log($"[LobbyJoiner] Discovered lobby {steamID} from friend {SteamFriends.GetFriendPersonaName(friendByIndex)}");
 						}
 					}
 					string.IsNullOrEmpty(SteamFriends.GetFriendRichPresence(friendByIndex, "steam_player_group"));
 				}
 				LastJoinMessage = $"Discovered {list.Count} lobby/lobbies from friends";
-				Debug.Log((object)$"[LobbyJoiner] Discovered {list.Count} lobbies");
+				Debug.Log($"[LobbyJoiner] Discovered {list.Count} lobbies");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[LobbyJoiner] Error discovering lobbies: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error discovering lobbies: " + ex.Message + "\n" + ex.StackTrace));
 			}
 			return list;
 		}
@@ -9924,7 +9924,7 @@ namespace _1v1.lol_cheat
 				return list;
 			}
 			LastJoinMessage = $"Brute forcing lobby IDs around {baseLobbyID} (�{range})... This may take a while...";
-			Debug.LogWarning((object)"[LobbyJoiner] WARNING: Brute forcing lobby IDs is slow and unlikely to work!");
+			Debug.LogWarning("[LobbyJoiner] WARNING: Brute forcing lobby IDs is slow and unlikely to work!");
 			try
 			{
 				int num = 0;
@@ -9951,7 +9951,7 @@ namespace _1v1.lol_cheat
 						{
 							list.Add(num4);
 							num2++;
-							Debug.Log((object)$"[LobbyJoiner] Found potential lobby: {num4}");
+							Debug.Log($"[LobbyJoiner] Found potential lobby: {num4}");
 							if (num2 >= maxResults)
 							{
 								break;
@@ -9964,11 +9964,11 @@ namespace _1v1.lol_cheat
 					}
 				}
 				LastJoinMessage = $"Brute force complete: checked {num} IDs, found {num2} potential lobbies";
-				Debug.Log((object)$"[LobbyJoiner] Brute force: checked {num}, found {num2}");
+				Debug.Log($"[LobbyJoiner] Brute force: checked {num}, found {num2}");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[LobbyJoiner] Error brute forcing: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error brute forcing: " + ex.Message + "\n" + ex.StackTrace));
 				LastJoinMessage = "Brute force error: " + ex.Message;
 			}
 			return list;
@@ -9996,7 +9996,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[LobbyJoiner] Error getting current lobby ID: " + ex.Message));
+				Debug.LogError(("[LobbyJoiner] Error getting current lobby ID: " + ex.Message));
 				return 0uL;
 			}
 		}
@@ -10022,20 +10022,20 @@ namespace _1v1.lol_cheat
 				{
 					isSearchingLobbies = false;
 					LastJoinMessage = "Failed to request lobby list";
-					Debug.LogError((object)"[LobbyJoiner] Failed to request lobby list");
+					Debug.LogError("[LobbyJoiner] Failed to request lobby list");
 					return false;
 				}
 				SearchUsername = "";
 				SearchMaxResults = maxResults;
 				LastJoinMessage = "Fetching all available lobbies...";
-				Debug.Log((object)"[LobbyJoiner] Fetching all available lobbies");
+				Debug.Log("[LobbyJoiner] Fetching all available lobbies");
 				return true;
 			}
 			catch (Exception ex)
 			{
 				isSearchingLobbies = false;
 				LastJoinMessage = "Error: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error fetching lobbies: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error fetching lobbies: " + ex.Message + "\n" + ex.StackTrace));
 				return false;
 			}
 		}
@@ -10066,20 +10066,20 @@ namespace _1v1.lol_cheat
 				{
 					isSearchingLobbies = false;
 					LastJoinMessage = "Failed to request lobby list";
-					Debug.LogError((object)"[LobbyJoiner] Failed to request lobby list");
+					Debug.LogError("[LobbyJoiner] Failed to request lobby list");
 					return false;
 				}
 				SearchUsername = username.ToLower();
 				SearchMaxResults = maxResults;
 				LastJoinMessage = "Searching for lobbies with username '" + username + "'...";
-				Debug.Log((object)("[LobbyJoiner] Searching for lobbies with username '" + username + "'"));
+				Debug.Log(("[LobbyJoiner] Searching for lobbies with username '" + username + "'"));
 				return true;
 			}
 			catch (Exception ex)
 			{
 				isSearchingLobbies = false;
 				LastJoinMessage = "Error: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error searching lobbies: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error searching lobbies: " + ex.Message + "\n" + ex.StackTrace));
 				return false;
 			}
 		}
@@ -10092,7 +10092,7 @@ namespace _1v1.lol_cheat
 				searchResults.Clear();
 				int nLobbiesMatching = (int)param.m_nLobbiesMatching;
 				string arg = ((SearchSteamID != 0L) ? $"Steam ID {SearchSteamID}" : ((!string.IsNullOrEmpty(SearchUsername)) ? ("username '" + SearchUsername + "'") : "all lobbies"));
-				Debug.Log((object)$"[LobbyJoiner] Found {nLobbiesMatching} lobbies, searching for {arg}");
+				Debug.Log($"[LobbyJoiner] Found {nLobbiesMatching} lobbies, searching for {arg}");
 				if (nLobbiesMatching == 0)
 				{
 					if (SearchSteamID != 0L)
@@ -10134,7 +10134,7 @@ namespace _1v1.lol_cheat
 							flag2 = true;
 							flag = true;
 							num3 = lobbyByIndex.m_SteamID;
-							Debug.Log((object)$"[LobbyJoiner] Found target Steam ID {SearchSteamID} in lobby {lobbyByIndex.m_SteamID}!");
+							Debug.Log($"[LobbyJoiner] Found target Steam ID {SearchSteamID} in lobby {lobbyByIndex.m_SteamID}!");
 						}
 						string friendPersonaName = SteamFriends.GetFriendPersonaName(lobbyMemberByIndex);
 						if (!string.IsNullOrEmpty(friendPersonaName))
@@ -10150,7 +10150,7 @@ namespace _1v1.lol_cheat
 					{
 						isSearchingLobbies = false;
 						LastJoinMessage = $"Found player with Steam ID {SearchSteamID} in lobby {num3}, joining...";
-						Debug.Log((object)$"[LobbyJoiner] Found target player, joining lobby {num3}");
+						Debug.Log($"[LobbyJoiner] Found target player, joining lobby {num3}");
 						SearchSteamID = 0uL;
 						JoinLobbyByID(num3);
 						return;
@@ -10166,7 +10166,7 @@ namespace _1v1.lol_cheat
 						lobbySearchResult.memberNames = list2;
 						LobbySearchResult item = lobbySearchResult;
 						list.Add(item);
-						Debug.Log((object)$"[LobbyJoiner] Found lobby: {lobbyByIndex.m_SteamID} with host '{text}' ({numLobbyMembers} players)");
+						Debug.Log($"[LobbyJoiner] Found lobby: {lobbyByIndex.m_SteamID} with host '{text}' ({numLobbyMembers} players)");
 					}
 				}
 				list.Sort((LobbySearchResult a, LobbySearchResult b) => b.memberCount.CompareTo(a.memberCount));
@@ -10200,7 +10200,7 @@ namespace _1v1.lol_cheat
 			{
 				isSearchingLobbies = false;
 				LastJoinMessage = "Error processing search results: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error in OnLobbyMatchList: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error in OnLobbyMatchList: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
@@ -10229,7 +10229,7 @@ namespace _1v1.lol_cheat
 				int num = 0;
 				int num2 = 0;
 				LastJoinMessage = $"Searching {friendCount} friends for '{username}'...";
-				Debug.Log((object)$"[LobbyJoiner] Searching {friendCount} friends for '{username}'");
+				Debug.Log($"[LobbyJoiner] Searching {friendCount} friends for '{username}'");
 				FriendGameInfo_t val = default(FriendGameInfo_t);
 				for (int i = 0; i < friendCount; i++)
 				{
@@ -10271,7 +10271,7 @@ namespace _1v1.lol_cheat
 						LobbySearchResult item = lobbySearchResult;
 						searchResults.Add(item);
 						num2++;
-						Debug.Log((object)$"[LobbyJoiner] Found matching lobby in friend's game: {steamIDLobby.m_SteamID}");
+						Debug.Log($"[LobbyJoiner] Found matching lobby in friend's game: {steamIDLobby.m_SteamID}");
 					}
 				}
 				if (num2 > 0)
@@ -10287,7 +10287,7 @@ namespace _1v1.lol_cheat
 			catch (Exception ex)
 			{
 				LastJoinMessage = "Error: " + ex.Message;
-				Debug.LogError((object)("[LobbyJoiner] Error searching friends' lobbies: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[LobbyJoiner] Error searching friends' lobbies: " + ex.Message + "\n" + ex.StackTrace));
 				return false;
 			}
 		}
@@ -10377,11 +10377,11 @@ namespace _1v1.lol_cheat
 					originalGetSteamAuthTicket = steamAuthTicketServiceType.GetMethod("GetSteamAuthTicket", BindingFlags.Static | BindingFlags.Public);
 				}
 				initialized = true;
-				Debug.Log((object)"[SteamSpoofing] Initialized successfully");
+				Debug.Log("[SteamSpoofing] Initialized successfully");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[SteamSpoofing] Failed to initialize: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[SteamSpoofing] Failed to initialize: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
@@ -10418,23 +10418,23 @@ namespace _1v1.lol_cheat
 				if (PhotonNetwork.IsConnected)
 				{
 					string text2 = (PhotonNetwork.NickName = ((SpoofedUsername.Length > 32767) ? SpoofedUsername.Substring(0, 32767) : SpoofedUsername));
-					Debug.Log((object)$"[SteamSpoofing] Set Photon nickname to: {text2} (length: {text2.Length})");
+					Debug.Log($"[SteamSpoofing] Set Photon nickname to: {text2} (length: {text2.Length})");
 				}
 				if (PhotonNetwork.AuthValues != null)
 				{
 					PhotonNetwork.AuthValues.UserId = SpoofedPhotonUserID;
-					Debug.Log((object)("[SteamSpoofing] Set Photon UserID to: " + SpoofedPhotonUserID));
+					Debug.Log(("[SteamSpoofing] Set Photon UserID to: " + SpoofedPhotonUserID));
 				}
 				PlayerPrefs.SetString("UserID", SpoofedPhotonUserID);
 				PlayerPrefs.Save();
-				Debug.Log((object)$"[SteamSpoofing] Spoofing applied - Username: {SpoofedUsername}, SteamID: {SpoofedSteamID}, PhotonID: {SpoofedPhotonUserID}");
-				Debug.Log((object)"[SteamSpoofing] P2P MODE: Since this is P2P, other players see your Photon UserId, not your Steam ID directly!");
-				Debug.Log((object)"[SteamSpoofing] Your spoofed Photon UserId will be sent to other players via PublishUserId=true");
-				Debug.LogWarning((object)"[SteamSpoofing] Note: If other players check Steam ID client-side, they may still see your real Steam ID. But Photon UserId spoofing should bypass most P2P ban lists!");
+				Debug.Log($"[SteamSpoofing] Spoofing applied - Username: {SpoofedUsername}, SteamID: {SpoofedSteamID}, PhotonID: {SpoofedPhotonUserID}");
+				Debug.Log("[SteamSpoofing] P2P MODE: Since this is P2P, other players see your Photon UserId, not your Steam ID directly!");
+				Debug.Log("[SteamSpoofing] Your spoofed Photon UserId will be sent to other players via PublishUserId=true");
+				Debug.LogWarning("[SteamSpoofing] Note: If other players check Steam ID client-side, they may still see your real Steam ID. But Photon UserId spoofing should bypass most P2P ban lists!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[SteamSpoofing] Failed to apply spoofing: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[SteamSpoofing] Failed to apply spoofing: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
@@ -10454,20 +10454,20 @@ namespace _1v1.lol_cheat
 					}
 					PhotonNetwork.AuthValues.UserId = SpoofedPhotonUserID;
 					string text2 = (PhotonNetwork.NickName = ((SpoofedUsername.Length > 32767) ? SpoofedUsername.Substring(0, 32767) : SpoofedUsername));
-					Debug.Log((object)$"[SteamSpoofing] Pre-configured Photon with spoofed values (nickname length: {text2.Length})");
+					Debug.Log($"[SteamSpoofing] Pre-configured Photon with spoofed values (nickname length: {text2.Length})");
 				}
 				if (!string.IsNullOrEmpty(SpoofedPhotonUserID))
 				{
 					PlayerPrefs.SetString("UserID", SpoofedPhotonUserID);
 					PlayerPrefs.Save();
-					Debug.Log((object)("[SteamSpoofing] Patched PlayerPrefs UserID to: " + SpoofedPhotonUserID));
+					Debug.Log(("[SteamSpoofing] Patched PlayerPrefs UserID to: " + SpoofedPhotonUserID));
 				}
 				methodsPatched = true;
-				Debug.Log((object)"[SteamSpoofing] Game methods patched for P2P spoofing");
+				Debug.Log("[SteamSpoofing] Game methods patched for P2P spoofing");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[SteamSpoofing] Could not patch game methods: " + ex.Message));
+				Debug.LogWarning(("[SteamSpoofing] Could not patch game methods: " + ex.Message));
 			}
 		}
 
@@ -10481,17 +10481,17 @@ namespace _1v1.lol_cheat
 					try
 					{
 						string text = (PhotonNetwork.NickName = SteamFriends.GetPersonaName());
-						Debug.Log((object)("[SteamSpoofing] Restored Photon nickname to: " + text));
+						Debug.Log(("[SteamSpoofing] Restored Photon nickname to: " + text));
 					}
 					catch
 					{
 					}
 				}
-				Debug.Log((object)"[SteamSpoofing] Spoofing removed");
+				Debug.Log("[SteamSpoofing] Spoofing removed");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[SteamSpoofing] Failed to remove spoofing: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[SteamSpoofing] Failed to remove spoofing: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
@@ -10502,7 +10502,7 @@ namespace _1v1.lol_cheat
 			{
 				SpoofedSteamID = GenerateRandomSteamID();
 			}
-			Debug.Log((object)$"[SteamSpoofing] Set spoofed Steam ID to: {SpoofedSteamID}");
+			Debug.Log($"[SteamSpoofing] Set spoofed Steam ID to: {SpoofedSteamID}");
 		}
 
 		public static ulong GetCurrentSteamID()
@@ -10533,7 +10533,7 @@ namespace _1v1.lol_cheat
 			else if (username.Length > 32767)
 			{
 				SpoofedUsername = username.Substring(0, 32767);
-				Debug.LogWarning((object)$"[SteamSpoofing] Username truncated from {username.Length} to {32767} characters to prevent Photon join issues");
+				Debug.LogWarning($"[SteamSpoofing] Username truncated from {username.Length} to {32767} characters to prevent Photon join issues");
 			}
 			else
 			{
@@ -10542,7 +10542,7 @@ namespace _1v1.lol_cheat
 			if (SpoofEnabled && PhotonNetwork.IsConnected)
 			{
 				PhotonNetwork.NickName = SpoofedUsername;
-				Debug.Log((object)$"[SteamSpoofing] Updated spoofed username to: {SpoofedUsername} (length: {SpoofedUsername.Length})");
+				Debug.Log($"[SteamSpoofing] Updated spoofed username to: {SpoofedUsername} (length: {SpoofedUsername.Length})");
 			}
 		}
 
@@ -10564,7 +10564,7 @@ namespace _1v1.lol_cheat
 				}
 				PlayerPrefs.SetString("UserID", SpoofedPhotonUserID);
 				PlayerPrefs.Save();
-				Debug.Log((object)("[SteamSpoofing] Updated spoofed Photon UserID to: " + SpoofedPhotonUserID));
+				Debug.Log(("[SteamSpoofing] Updated spoofed Photon UserID to: " + SpoofedPhotonUserID));
 			}
 		}
 
@@ -10631,13 +10631,13 @@ namespace _1v1.lol_cheat
 				if (PhotonNetwork.AuthValues != null && PhotonNetwork.AuthValues.UserId != SpoofedPhotonUserID)
 				{
 					PhotonNetwork.AuthValues.UserId = SpoofedPhotonUserID;
-					Debug.Log((object)("[SteamSpoofing] Forced Photon UserID to: " + SpoofedPhotonUserID));
+					Debug.Log(("[SteamSpoofing] Forced Photon UserID to: " + SpoofedPhotonUserID));
 				}
 				string text = ((SpoofedUsername.Length > 32767) ? SpoofedUsername.Substring(0, 32767) : SpoofedUsername);
 				if (PhotonNetwork.NickName != text)
 				{
 					PhotonNetwork.NickName = text;
-					Debug.Log((object)$"[SteamSpoofing] Forced Photon NickName to: {text} (length: {text.Length})");
+					Debug.Log($"[SteamSpoofing] Forced Photon NickName to: {text} (length: {text.Length})");
 				}
 				if (PlayerPrefs.GetString("UserID") != SpoofedPhotonUserID)
 				{
@@ -10688,7 +10688,7 @@ namespace _1v1.lol_cheat
 					appVersionField = typeFromHandle.GetField("AppVersion", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
 				}
 				FindInternalVersionFields(typeFromHandle);
-				Debug.Log((object)("[VersionBypass] Initialized. Original version: " + originalAppVersion));
+				Debug.Log(("[VersionBypass] Initialized. Original version: " + originalAppVersion));
 				initialized = true;
 				if (CheatConfig.VersionBypassEnabled)
 				{
@@ -10697,7 +10697,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[VersionBypass] Error initializing: " + ex.Message));
+				Debug.LogError(("[VersionBypass] Error initializing: " + ex.Message));
 			}
 		}
 
@@ -10712,7 +10712,7 @@ namespace _1v1.lol_cheat
 					if ((text.Contains("appversion") || text.Contains("app_version") || text.Contains("version")) && fieldInfo.FieldType == typeof(string))
 					{
 						internalAppVersionField = fieldInfo;
-						Debug.Log((object)("[VersionBypass] Found internal version field: " + fieldInfo.Name));
+						Debug.Log(("[VersionBypass] Found internal version field: " + fieldInfo.Name));
 					}
 				}
 				PropertyInfo[] properties = photonNetworkType.GetProperties(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
@@ -10722,13 +10722,13 @@ namespace _1v1.lol_cheat
 					if ((text2.Contains("appversion") || text2.Contains("app_version") || text2.Contains("version")) && propertyInfo.PropertyType == typeof(string))
 					{
 						internalAppVersionProperty = propertyInfo;
-						Debug.Log((object)("[VersionBypass] Found internal version property: " + propertyInfo.Name));
+						Debug.Log(("[VersionBypass] Found internal version property: " + propertyInfo.Name));
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[VersionBypass] Error finding internal version fields: " + ex.Message));
+				Debug.LogWarning(("[VersionBypass] Error finding internal version fields: " + ex.Message));
 			}
 		}
 
@@ -10758,7 +10758,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[VersionBypass] Error in Update: " + ex.Message));
+				Debug.LogError(("[VersionBypass] Error in Update: " + ex.Message));
 			}
 		}
 
@@ -10828,7 +10828,7 @@ namespace _1v1.lol_cheat
 								string text3 = text.Substring(num2 + 1, num3 - num2 - 1).Trim();
 								if (Regex.IsMatch(text3, "^\\d+\\.\\d+$"))
 								{
-									Debug.Log((object)("[VersionBypass] Detected host version from dialog: " + text3));
+									Debug.Log(("[VersionBypass] Detected host version from dialog: " + text3));
 									return text3;
 								}
 							}
@@ -10838,7 +10838,7 @@ namespace _1v1.lol_cheat
 					if (match.Success)
 					{
 						string value = match.Groups[1].Value;
-						Debug.Log((object)("[VersionBypass] Detected host version from text: " + value));
+						Debug.Log(("[VersionBypass] Detected host version from text: " + value));
 						return value;
 					}
 				}
@@ -10866,7 +10866,7 @@ namespace _1v1.lol_cheat
 					{
 						continue;
 					}
-					string text = ((Object)val).name.ToLower();
+					string text = val.name.ToLower();
 					if (!text.Contains("version") && !text.Contains("update") && !text.Contains("dialog") && !text.Contains("outofdate"))
 					{
 						continue;
@@ -10904,7 +10904,7 @@ namespace _1v1.lol_cheat
 					if (flag)
 					{
 						val.SetActive(false);
-						Debug.Log((object)("[VersionBypass] Hid version dialog: " + ((Object)val).name));
+						Debug.Log(("[VersionBypass] Hid version dialog: " + val.name));
 					}
 				}
 			}
@@ -10921,13 +10921,13 @@ namespace _1v1.lol_cheat
 				if (appVersionProperty != null)
 				{
 					appVersionProperty.SetValue(null, version);
-					Debug.Log((object)("[VersionBypass] Set AppVersion to: " + version + " (via public property)"));
+					Debug.Log(("[VersionBypass] Set AppVersion to: " + version + " (via public property)"));
 					flag = true;
 				}
 				if (appVersionField != null)
 				{
 					appVersionField.SetValue(null, version);
-					Debug.Log((object)("[VersionBypass] Set AppVersion to: " + version + " (via public field)"));
+					Debug.Log(("[VersionBypass] Set AppVersion to: " + version + " (via public field)"));
 					flag = true;
 				}
 				if (internalAppVersionProperty != null && internalAppVersionProperty.CanWrite)
@@ -10935,7 +10935,7 @@ namespace _1v1.lol_cheat
 					try
 					{
 						internalAppVersionProperty.SetValue(null, version);
-						Debug.Log((object)("[VersionBypass] Set AppVersion to: " + version + " (via internal property)"));
+						Debug.Log(("[VersionBypass] Set AppVersion to: " + version + " (via internal property)"));
 						flag = true;
 					}
 					catch
@@ -10947,7 +10947,7 @@ namespace _1v1.lol_cheat
 					try
 					{
 						internalAppVersionField.SetValue(null, version);
-						Debug.Log((object)("[VersionBypass] Set AppVersion to: " + version + " (via internal field)"));
+						Debug.Log(("[VersionBypass] Set AppVersion to: " + version + " (via internal field)"));
 						flag = true;
 					}
 					catch
@@ -10959,13 +10959,13 @@ namespace _1v1.lol_cheat
 					if (PhotonNetwork.PhotonServerSettings != null && PhotonNetwork.PhotonServerSettings.AppSettings != null)
 					{
 						PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = version;
-						Debug.Log((object)("[VersionBypass] Set PhotonServerSettings.AppSettings.AppVersion to: " + version));
+						Debug.Log(("[VersionBypass] Set PhotonServerSettings.AppSettings.AppVersion to: " + version));
 						flag = true;
 					}
 				}
 				catch (Exception ex)
 				{
-					Debug.LogWarning((object)("[VersionBypass] Could not set PhotonServerSettings.AppSettings.AppVersion: " + ex.Message));
+					Debug.LogWarning(("[VersionBypass] Could not set PhotonServerSettings.AppSettings.AppVersion: " + ex.Message));
 				}
 				try
 				{
@@ -10982,7 +10982,7 @@ namespace _1v1.lol_cheat
 								if (value != null)
 								{
 									field.SetValue(value, version);
-									Debug.Log((object)("[VersionBypass] Set AppVersion in LoadBalancingClient to: " + version));
+									Debug.Log(("[VersionBypass] Set AppVersion in LoadBalancingClient to: " + version));
 									flag = true;
 								}
 							}
@@ -10991,16 +10991,16 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex2)
 				{
-					Debug.LogWarning((object)("[VersionBypass] Could not set version in LoadBalancingClient: " + ex2.Message));
+					Debug.LogWarning(("[VersionBypass] Could not set version in LoadBalancingClient: " + ex2.Message));
 				}
 				if (!flag)
 				{
-					Debug.LogWarning((object)"[VersionBypass] Could not find any AppVersion property/field to set");
+					Debug.LogWarning("[VersionBypass] Could not find any AppVersion property/field to set");
 				}
 			}
 			catch (Exception ex3)
 			{
-				Debug.LogError((object)("[VersionBypass] Error setting AppVersion: " + ex3.Message));
+				Debug.LogError(("[VersionBypass] Error setting AppVersion: " + ex3.Message));
 			}
 		}
 
@@ -11019,10 +11019,10 @@ namespace _1v1.lol_cheat
 					if (text2 != null)
 					{
 						detectedHostVersion = text2;
-						Debug.Log((object)("[VersionBypass] Detected host version from error: " + text2));
+						Debug.Log(("[VersionBypass] Detected host version from error: " + text2));
 						SetAppVersion(text2);
 					}
-					Debug.Log((object)$"[VersionBypass] Detected version mismatch error: {message} (ReturnCode: {returnCode})");
+					Debug.Log($"[VersionBypass] Detected version mismatch error: {message} (ReturnCode: {returnCode})");
 					return true;
 				}
 			}
@@ -11034,7 +11034,7 @@ namespace _1v1.lol_cheat
 			if (!string.IsNullOrEmpty(originalAppVersion))
 			{
 				SetAppVersion(originalAppVersion);
-				Debug.Log((object)("[VersionBypass] Restored original version: " + originalAppVersion));
+				Debug.Log(("[VersionBypass] Restored original version: " + originalAppVersion));
 			}
 		}
 
@@ -11059,7 +11059,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[VersionBypass] Error ensuring version set: " + ex.Message));
+				Debug.LogError(("[VersionBypass] Error ensuring version set: " + ex.Message));
 			}
 		}
 	}
@@ -11087,7 +11087,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[CheaterDetection] Failed to initialize: " + ex.Message));
+				Debug.LogError(("[CheaterDetection] Failed to initialize: " + ex.Message));
 			}
 		}
 
@@ -11097,7 +11097,7 @@ namespace _1v1.lol_cheat
 			{
 				if (typeof(PhotonNetwork).GetMethod("LoadLevel", BindingFlags.Static | BindingFlags.Public) != null)
 				{
-					Debug.Log((object)"[CheaterDetection] Photon RPC hook initialized");
+					Debug.Log("[CheaterDetection] Photon RPC hook initialized");
 				}
 			}
 			catch
@@ -11226,7 +11226,7 @@ namespace _1v1.lol_cheat
 					Item val = ((view != null) ? ((Component)view).GetComponent<Item>() : null);
 					if (val != null)
 					{
-						if (val.holderCharacter == null || (Object)(object)val.holderCharacter.photonView == (Object)null)
+						if (val.holderCharacter == null || val.holderCharacter.photonView == null)
 						{
 							return true;
 						}
@@ -11251,7 +11251,7 @@ namespace _1v1.lol_cheat
 				try
 				{
 					Character val = ((view != null) ? ((Component)view).GetComponent<Character>() : null);
-					if (val != null && (Object)(object)val.photonView != (Object)null && !val.photonView.IsMine && rpcMethodName == "SyncStatusesRPC" && parameters != null && parameters.Length != 0)
+					if (val != null && val.photonView != null && !val.photonView.IsMine && rpcMethodName == "SyncStatusesRPC" && parameters != null && parameters.Length != 0)
 					{
 						return true;
 					}
@@ -11291,7 +11291,7 @@ namespace _1v1.lol_cheat
 			{
 				CheatConfig.DetectedCheaters[playerName] = true;
 				lastDetectionTime[playerName] = Time.time;
-				Debug.LogWarning((object)("[CheaterDetection] CHEATER DETECTED: " + playerName + " - " + reason));
+				Debug.LogWarning(("[CheaterDetection] CHEATER DETECTED: " + playerName + " - " + reason));
 			}
 		}
 
@@ -11329,13 +11329,13 @@ namespace _1v1.lol_cheat
 			{
 				foreach (Character allCharacter in Character.AllCharacters)
 				{
-					if (!(allCharacter == null) && !((Object)(object)allCharacter == (Object)(object)Character.localCharacter) && !((Object)(object)allCharacter.photonView == (Object)null) && !allCharacter.photonView.IsMine)
+					if (!(allCharacter == null) && !(allCharacter == Character.localCharacter) && !(allCharacter.photonView == null) && !allCharacter.photonView.IsMine)
 					{
 						bool flag = allCharacter.player != null;
 						if (!flag)
 						{
 							GameObject gameObject = allCharacter.gameObject;
-							flag = (Object)(object)((gameObject != null) ? gameObject.GetComponent<Player>() : null) != (Object)null;
+							flag = ((gameObject != null) ? gameObject.GetComponent<Player>() : null) != null;
 						}
 						if (flag && !(allCharacter.data == null) && !allCharacter.data.dead)
 						{
@@ -11405,23 +11405,23 @@ namespace _1v1.lol_cheat
 					try
 					{
 						<charComponent>5__2 = dummy.GetComponent<Character>();
-						if ((Object)(object)<charComponent>5__2 == (Object)null)
+						if (<charComponent>5__2 == null)
 						{
 							<charComponent>5__2 = dummy.GetComponentInChildren<Character>();
 						}
-						if ((Object)(object)<charComponent>5__2 == (Object)null)
+						if (<charComponent>5__2 == null)
 						{
-							Debug.LogError((object)"[GUI] Test dummy has no Character component");
+							Debug.LogError("[GUI] Test dummy has no Character component");
 							flag = true;
 						}
 						else
 						{
-							Debug.Log((object)"[GUI] Found Character component on test dummy");
+							Debug.Log("[GUI] Found Character component on test dummy");
 							FieldInfo field2 = typeof(Character).GetField("isBot", BindingFlags.Instance | BindingFlags.Public);
 							if (field2 != null)
 							{
 								field2.SetValue(<charComponent>5__2, true);
-								Debug.Log((object)"[GUI] Set test dummy as bot");
+								Debug.Log("[GUI] Set test dummy as bot");
 							}
 							PhotonView val = dummy.GetComponent<PhotonView>();
 							if (val == null)
@@ -11432,7 +11432,7 @@ namespace _1v1.lol_cheat
 							{
 								val.TransferOwnership(PhotonNetwork.MasterClient);
 							}
-							if ((Object)(object)<charComponent>5__2.data != (Object)null)
+							if (<charComponent>5__2.data != null)
 							{
 								<charComponent>5__2.data.dead = false;
 								<charComponent>5__2.data.passedOut = false;
@@ -11442,10 +11442,10 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex2)
 					{
-						Debug.LogError((object)("[GUI] Failed to initialize test dummy (first phase): " + ex2.Message + "\n" + ex2.StackTrace));
+						Debug.LogError(("[GUI] Failed to initialize test dummy (first phase): " + ex2.Message + "\n" + ex2.StackTrace));
 						flag = true;
 					}
-					if (flag || (Object)(object)<charComponent>5__2 == (Object)null)
+					if (flag || <charComponent>5__2 == null)
 					{
 						return false;
 					}
@@ -11455,13 +11455,13 @@ namespace _1v1.lol_cheat
 				}
 				case 2:
 					<>1__state = -1;
-					if ((Object)(object)<charComponent>5__2 == (Object)null)
+					if (<charComponent>5__2 == null)
 					{
 						return false;
 					}
 					try
 					{
-						if ((Object)(object)<charComponent>5__2.input != (Object)null)
+						if (<charComponent>5__2.input != null)
 						{
 							FieldInfo field = typeof(CharacterInput).GetField("itemSwitchBlocked", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 							if (field != null)
@@ -11473,11 +11473,11 @@ namespace _1v1.lol_cheat
 						{
 							CheatConfig.SpawnedEntities.Add(dummy);
 						}
-						Debug.Log((object)$"[GUI] Successfully initialized test dummy (bot) at {spawnPos}");
+						Debug.Log($"[GUI] Successfully initialized test dummy (bot) at {spawnPos}");
 					}
 					catch (Exception ex)
 					{
-						Debug.LogError((object)("[GUI] Failed to initialize test dummy (second phase): " + ex.Message + "\n" + ex.StackTrace));
+						Debug.LogError(("[GUI] Failed to initialize test dummy (second phase): " + ex.Message + "\n" + ex.StackTrace));
 					}
 					return false;
 				}
@@ -12269,7 +12269,7 @@ namespace _1v1.lol_cheat
 
 		public static void TeleportTo(Vector3 position, bool poof = true)
 		{
-			if (!(Character.localCharacter == null) && !((Object)(object)Character.localCharacter.photonView == (Object)null))
+			if (!(Character.localCharacter == null) && !(Character.localCharacter.photonView == null))
 			{
 				Character.localCharacter.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2] { position, poof });
 			}
@@ -12280,12 +12280,12 @@ namespace _1v1.lol_cheat
 			Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 			foreach (Character val in array)
 			{
-				if (val != null && (Object)(object)val.photonView != (Object)null && !val.photonView.IsMine)
+				if (val != null && val.photonView != null && !val.photonView.IsMine)
 				{
 					val.photonView.RPC("JumpRpc", RpcTarget.All, new object[1] { true });
 				}
 			}
-			Debug.Log((object)"[Cheat] Made all other players jump!");
+			Debug.Log("[Cheat] Made all other players jump!");
 		}
 
 		public static void MakeAllFall()
@@ -12297,7 +12297,7 @@ namespace _1v1.lol_cheat
 					allCharacter.refs.view.RPC("RPCA_Fall", RpcTarget.All, new object[2] { allCharacter, 5 });
 				}
 			}
-			Debug.Log((object)"[Cheat] Made all other players Fall!");
+			Debug.Log("[Cheat] Made all other players Fall!");
 		}
 
 		public static void MakeAllPassout()
@@ -12305,12 +12305,12 @@ namespace _1v1.lol_cheat
 			Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 			foreach (Character val in array)
 			{
-				if (val != null && (Object)(object)val.photonView != (Object)null)
+				if (val != null && val.photonView != null)
 				{
 					val.refs.view.RPC("RPCA_PassOut", RpcTarget.All, new object[2] { val, 5 });
 				}
 			}
-			Debug.Log((object)"[Cheat] Made all other players Fall!");
+			Debug.Log("[Cheat] Made all other players Fall!");
 		}
 
 		public static void RefreshPlayerDict()
@@ -12324,7 +12324,7 @@ namespace _1v1.lol_cheat
 					foreach (Player item in enumerable)
 					{
 						Player val = item;
-						if (val != null && val.character != null && (Object)(object)val.photonView != (Object)null)
+						if (val != null && val.character != null && val.photonView != null)
 						{
 							string nickName = val.photonView.Owner.NickName;
 							if (!string.IsNullOrEmpty(nickName) && !playerDict.ContainsKey(nickName))
@@ -12340,7 +12340,7 @@ namespace _1v1.lol_cheat
 				Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 				foreach (Character val2 in array)
 				{
-					if (val2.player != null && (Object)(object)val2.player.photonView != (Object)null)
+					if (val2.player != null && val2.player.photonView != null)
 					{
 						string nickName2 = val2.player.photonView.Owner.NickName;
 						if (!string.IsNullOrEmpty(nickName2) && !playerDict.ContainsKey(nickName2))
@@ -12350,14 +12350,14 @@ namespace _1v1.lol_cheat
 					}
 				}
 			}
-			Debug.Log((object)("Refreshed playerDict. Players found: " + playerDict.Count));
+			Debug.Log(("Refreshed playerDict. Players found: " + playerDict.Count));
 		}
 
 		public static void CreatePlayersVerticalSelect()
 		{
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 			GUILayout.Label("Players", sectionHeaderStyle, Array.Empty<GUILayoutOption>());
-			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(90f),
 				GUILayout.Height(32f)
@@ -12386,7 +12386,7 @@ namespace _1v1.lol_cheat
 				string text = array[i];
 				Character val = playerDict[text];
 				bool flag = false;
-				if (val != null && (Object)(object)val.photonView != (Object)null && val.photonView.Owner != null)
+				if (val != null && val.photonView != null && val.photonView.Owner != null)
 				{
 					flag = val.photonView.Owner.IsMasterClient;
 				}
@@ -12404,14 +12404,14 @@ namespace _1v1.lol_cheat
 			val2.onActive.textColor = Color.white;
 			val2.onFocused.textColor = Color.white;
 			float num = 36f;
-			selectedPlayerIndex = GUILayout.SelectionGrid(selectedPlayerIndex, array2, 1, val2, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(num * (float)array.Length) });
+			selectedPlayerIndex = GUILayout.SelectionGrid(selectedPlayerIndex, array2, 1, val2, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(num * (float)array.Length) });
 			GUILayout.Space(4f);
 			if (array.Length != 0 && selectedPlayerIndex >= 0 && selectedPlayerIndex < array.Length)
 			{
 				string text3 = array[selectedPlayerIndex];
 				Character val3 = playerDict[text3];
 				bool flag2 = false;
-				if (val3 != null && (Object)(object)val3.photonView != (Object)null && val3.photonView.Owner != null)
+				if (val3 != null && val3.photonView != null && val3.photonView.Owner != null)
 				{
 					flag2 = val3.photonView.Owner.IsMasterClient;
 				}
@@ -12427,16 +12427,16 @@ namespace _1v1.lol_cheat
 		public static void CreateItemsVerticalSelect()
 		{
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-			GUILayout.Label("Filter:", labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+			GUILayout.Label("Filter:", labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 			if (textFieldStyle != null)
 			{
-				itemFilterText = GUILayout.TextField(itemFilterText, textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) });
+				itemFilterText = GUILayout.TextField(itemFilterText, textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) });
 			}
 			else
 			{
-				itemFilterText = GUILayout.TextField(itemFilterText, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) });
+				itemFilterText = GUILayout.TextField(itemFilterText, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) });
 			}
-			if (GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(80f),
 				GUILayout.Height(32f)
@@ -12444,7 +12444,7 @@ namespace _1v1.lol_cheat
 			{
 				itemFilterText = "";
 			}
-			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(90f),
 				GUILayout.Height(32f)
@@ -12491,11 +12491,11 @@ namespace _1v1.lol_cheat
 				text = "No items available";
 			}
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-			if (GUILayout.Button(text + (itemDropdownOpen ? " " : " ?"), buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+			if (GUILayout.Button(text + (itemDropdownOpen ? " " : " ?"), buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 			{
 				itemDropdownOpen = !itemDropdownOpen;
 			}
-			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(90f),
 				GUILayout.Height(36f)
@@ -12507,7 +12507,7 @@ namespace _1v1.lol_cheat
 			if (itemDropdownOpen)
 			{
 				GUILayout.BeginVertical(GUIStyle.op_Implicit("box"), Array.Empty<GUILayoutOption>());
-				itemDropdownScrollPos = GUILayout.BeginScrollView(itemDropdownScrollPos, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(200f) });
+				itemDropdownScrollPos = GUILayout.BeginScrollView(itemDropdownScrollPos, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(200f) });
 				if (filteredItems.Length == 0)
 				{
 					GUILayout.Label("No items found", labelStyle, Array.Empty<GUILayoutOption>());
@@ -12525,7 +12525,7 @@ namespace _1v1.lol_cheat
 						{
 							GUIStyle val = new GUIStyle(buttonStyle);
 							val.normal.background = buttonStyle.onNormal.background;
-							obj = (object)val;
+							obj = val;
 						}
 						string text4 = TruncateForDisplay(filteredItems[i], 60);
 						GUIStyle val2 = new GUIStyle((GUIStyle)obj)
@@ -12533,7 +12533,7 @@ namespace _1v1.lol_cheat
 							fontSize = 12,
 							wordWrap = false
 						};
-						if (GUILayout.Button(text4, val2, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+						if (GUILayout.Button(text4, val2, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 						{
 							int num = Array.IndexOf(items, filteredItems[i]);
 							if (num >= 0)
@@ -12560,16 +12560,16 @@ namespace _1v1.lol_cheat
 		public static void CreateEntityDropdown()
 		{
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-			GUILayout.Label("Filter:", labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+			GUILayout.Label("Filter:", labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 			if (textFieldStyle != null)
 			{
-				entityFilterText = GUILayout.TextField(entityFilterText, textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) });
+				entityFilterText = GUILayout.TextField(entityFilterText, textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) });
 			}
 			else
 			{
-				entityFilterText = GUILayout.TextField(entityFilterText, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) });
+				entityFilterText = GUILayout.TextField(entityFilterText, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) });
 			}
-			if (GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(80f),
 				GUILayout.Height(32f)
@@ -12577,7 +12577,7 @@ namespace _1v1.lol_cheat
 			{
 				entityFilterText = "";
 			}
-			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if (GUILayout.Button("Refresh", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(90f),
 				GUILayout.Height(32f)
@@ -12613,7 +12613,7 @@ namespace _1v1.lol_cheat
 			filteredEntities = ItemSpawning.FilterEntities(entityFilterText);
 			string text = "Select Entity...";
 			text = ((filteredEntities.Length != 0) ? ("Select Entity... (" + filteredEntities.Length + " available)") : ((num <= 0) ? "No entities available" : "No entities match filter"));
-			if (GUILayout.Button(text + (entityDropdownOpen ? " " : " ?"), buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+			if (GUILayout.Button(text + (entityDropdownOpen ? " " : " ?"), buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 			{
 				entityDropdownOpen = !entityDropdownOpen;
 			}
@@ -12622,7 +12622,7 @@ namespace _1v1.lol_cheat
 				GUILayout.BeginVertical(GUIStyle.op_Implicit("box"), Array.Empty<GUILayoutOption>());
 				float num2 = Mathf.Min((float)filteredEntities.Length * 22f + 20f, 200f);
 				num2 = Mathf.Max(num2, 100f);
-				entityDropdownScrollPos = GUILayout.BeginScrollView(entityDropdownScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(num2) });
+				entityDropdownScrollPos = GUILayout.BeginScrollView(entityDropdownScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(num2) });
 				if (filteredEntities.Length == 0)
 				{
 					GUILayout.Label("No entities found", labelStyle, Array.Empty<GUILayoutOption>());
@@ -12631,7 +12631,7 @@ namespace _1v1.lol_cheat
 				{
 					for (int i = 0; i < filteredEntities.Length; i++)
 					{
-						if (GUILayout.Button(filteredEntities[i], buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+						if (GUILayout.Button(filteredEntities[i], buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 						{
 							SpawnEntity(filteredEntities[i]);
 							entityDropdownOpen = false;
@@ -12691,23 +12691,23 @@ namespace _1v1.lol_cheat
 			}
 			try
 			{
-				Debug.Log((object)("[Cheat] Initializing spawned entity: " + ((Object)entity).name));
+				Debug.Log(("[Cheat] Initializing spawned entity: " + entity.name));
 				entity.SetActive(true);
 				Character component = entity.GetComponent<Character>();
 				if (component != null)
 				{
 					((Behaviour)component).enabled = true;
-					Debug.Log((object)("[Cheat] Enabled Character component on " + ((Object)entity).name));
-					if ((Object)(object)component != (Object)(object)Character.localCharacter && (Object)(object)component.photonView != (Object)null && component.photonView.IsMine)
+					Debug.Log(("[Cheat] Enabled Character component on " + entity.name));
+					if (component != Character.localCharacter && component.photonView != null && component.photonView.IsMine)
 					{
 						try
 						{
 							component.photonView.TransferOwnership(PhotonNetwork.MasterClient);
-							Debug.Log((object)("[Cheat] Transferred ownership of " + ((Object)entity).name + " to master client"));
+							Debug.Log(("[Cheat] Transferred ownership of " + entity.name + " to master client"));
 						}
 						catch
 						{
-							Debug.LogWarning((object)("[Cheat] Could not transfer ownership of " + ((Object)entity).name));
+							Debug.LogWarning(("[Cheat] Could not transfer ownership of " + entity.name));
 						}
 					}
 				}
@@ -12715,55 +12715,55 @@ namespace _1v1.lol_cheat
 				if (component2 != null)
 				{
 					((Behaviour)component2).enabled = true;
-					Debug.Log((object)("[Cheat] Enabled CharacterMovement on " + ((Object)entity).name));
+					Debug.Log(("[Cheat] Enabled CharacterMovement on " + entity.name));
 				}
 				MonoBehaviour[] components = entity.GetComponents<MonoBehaviour>();
 				foreach (MonoBehaviour val in components)
 				{
 					if (val != null)
 					{
-						string name = ((object)val).GetType().Name;
+						string name = val.GetType().Name;
 						if (name.Contains("AI") || name.Contains("Enemy") || name.Contains("Zombie") || name.Contains("Behavior") || name.Contains("Controller"))
 						{
 							((Behaviour)val).enabled = true;
-							Debug.Log((object)("[Cheat] Enabled AI component: " + name + " on " + ((Object)entity).name));
+							Debug.Log(("[Cheat] Enabled AI component: " + name + " on " + entity.name));
 						}
 					}
 				}
 				try
 				{
-					MethodInfo method = ((object)entity).GetType().GetMethod("Initialize", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					MethodInfo method = entity.GetType().GetMethod("Initialize", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (method != null)
 					{
 						method.Invoke(entity, null);
-						Debug.Log((object)("[Cheat] Called Initialize on " + ((Object)entity).name));
+						Debug.Log(("[Cheat] Called Initialize on " + entity.name));
 					}
-					MethodInfo method2 = ((object)entity).GetType().GetMethod("Activate", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+					MethodInfo method2 = entity.GetType().GetMethod("Activate", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					if (method2 != null)
 					{
 						method2.Invoke(entity, null);
-						Debug.Log((object)("[Cheat] Called Activate on " + ((Object)entity).name));
+						Debug.Log(("[Cheat] Called Activate on " + entity.name));
 					}
 					if (component != null)
 					{
-						MethodInfo method3 = ((object)component).GetType().GetMethod("Initialize", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+						MethodInfo method3 = component.GetType().GetMethod("Initialize", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 						if (method3 != null)
 						{
 							method3.Invoke(component, null);
-							Debug.Log((object)"[Cheat] Called Initialize on Character component");
+							Debug.Log("[Cheat] Called Initialize on Character component");
 						}
 					}
 				}
 				catch (Exception ex)
 				{
-					Debug.Log((object)("[Cheat] Could not call Initialize/Activate methods: " + ex.Message));
+					Debug.Log(("[Cheat] Could not call Initialize/Activate methods: " + ex.Message));
 				}
 				Rigidbody component3 = entity.GetComponent<Rigidbody>();
 				if (component3 != null)
 				{
 					component3.isKinematic = false;
 					component3.useGravity = true;
-					Debug.Log((object)("[Cheat] Enabled Rigidbody on " + ((Object)entity).name));
+					Debug.Log(("[Cheat] Enabled Rigidbody on " + entity.name));
 				}
 				Collider[] componentsInChildren = entity.GetComponentsInChildren<Collider>();
 				foreach (Collider val2 in componentsInChildren)
@@ -12773,12 +12773,12 @@ namespace _1v1.lol_cheat
 						val2.enabled = true;
 					}
 				}
-				Debug.Log((object)("[Cheat] Successfully initialized entity: " + ((Object)entity).name));
+				Debug.Log(("[Cheat] Successfully initialized entity: " + entity.name));
 			}
 			catch (Exception ex2)
 			{
-				Debug.LogError((object)("[Cheat] Failed to initialize entity: " + ex2.Message));
-				Debug.LogError((object)("[Cheat] Stack trace: " + ex2.StackTrace));
+				Debug.LogError(("[Cheat] Failed to initialize entity: " + ex2.Message));
+				Debug.LogError(("[Cheat] Stack trace: " + ex2.StackTrace));
 			}
 		}
 
@@ -12820,7 +12820,7 @@ namespace _1v1.lol_cheat
 				{
 					try
 					{
-						if (val == null || (Object)(object)val.gameObject == (Object)null || (Object)(object)val == (Object)(object)Character.localCharacter)
+						if (val == null || val.gameObject == null || val == Character.localCharacter)
 						{
 							continue;
 						}
@@ -12844,7 +12844,7 @@ namespace _1v1.lol_cheat
 							}
 							if (!flag)
 							{
-								if ((Object)(object)val.gameObject.GetComponent<Player>() == (Object)null)
+								if (val.gameObject.GetComponent<Player>() == null)
 								{
 									flag = true;
 									goto end_IL_00a6;
@@ -12869,7 +12869,7 @@ namespace _1v1.lol_cheat
 							{
 								try
 								{
-									if (!((Object)(object)val.gameObject.GetComponent<Player>() == (Object)null))
+									if (!(val.gameObject.GetComponent<Player>() == null))
 									{
 										goto end_IL_017b;
 									}
@@ -12892,7 +12892,7 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex)
 					{
-						Debug.LogWarning((object)("[GUI] Error processing character in GetAllEntitiesInGame: " + ex.Message));
+						Debug.LogWarning(("[GUI] Error processing character in GetAllEntitiesInGame: " + ex.Message));
 					}
 				}
 				try
@@ -12903,10 +12903,10 @@ namespace _1v1.lol_cheat
 						Object[] array2 = Object.FindObjectsByType(type, FindObjectsSortMode.None);
 						foreach (Object val2 in array2)
 						{
-							if (!(val2 == (Object)null))
+							if (!(val2 == null))
 							{
-								GameObject val3 = (GameObject)(object)((val2 is GameObject) ? val2 : null);
-								if (!(val3 == null) && !((Object)(object)val3.GetComponent<Character>() != (Object)null) && !list.Contains(val3))
+								GameObject val3 = (GameObject)((val2 is GameObject) ? val2 : null);
+								if (!(val3 == null) && !(val3.GetComponent<Character>() != null) && !list.Contains(val3))
 								{
 									list.Add(val3);
 								}
@@ -12919,10 +12919,10 @@ namespace _1v1.lol_cheat
 						Object[] array2 = Object.FindObjectsByType(type2, FindObjectsSortMode.None);
 						foreach (Object val4 in array2)
 						{
-							if (!(val4 == (Object)null))
+							if (!(val4 == null))
 							{
-								GameObject val5 = (GameObject)(object)((val4 is GameObject) ? val4 : null);
-								if (!(val5 == null) && !((Object)(object)val5.GetComponent<Character>() != (Object)null) && !list.Contains(val5))
+								GameObject val5 = (GameObject)((val4 is GameObject) ? val4 : null);
+								if (!(val5 == null) && !(val5.GetComponent<Character>() != null) && !list.Contains(val5))
 								{
 									list.Add(val5);
 								}
@@ -12932,12 +12932,12 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex2)
 				{
-					Debug.Log((object)("[GUI] Error finding additional entities: " + ex2.Message));
+					Debug.Log(("[GUI] Error finding additional entities: " + ex2.Message));
 				}
 			}
 			catch (Exception ex3)
 			{
-				Debug.LogWarning((object)("[GUI] Error finding entities: " + ex3.Message));
+				Debug.LogWarning(("[GUI] Error finding entities: " + ex3.Message));
 			}
 			CheatConfig._cachedEntityList = list;
 			CheatConfig._lastEntityListUpdate = Time.time;
@@ -12978,7 +12978,7 @@ namespace _1v1.lol_cheat
 						{
 							if (!(val == null))
 							{
-								switch (((object)val).GetType().Name)
+								switch (val.GetType().Name)
 								{
 								case "Scoutmaster":
 									return "Scoutmaster";
@@ -12995,7 +12995,7 @@ namespace _1v1.lol_cheat
 					}
 					try
 					{
-						if ((Object)(object)component.gameObject.GetComponent<Player>() != (Object)null && (Object)(object)component.photonView != (Object)null && component.photonView.Owner != null)
+						if (component.gameObject.GetComponent<Player>() != null && component.photonView != null && component.photonView.Owner != null)
 						{
 							return TruncateForDisplay(component.photonView.Owner.NickName ?? "Unknown");
 						}
@@ -13017,7 +13017,7 @@ namespace _1v1.lol_cheat
 				}
 				try
 				{
-					string text = ((Object)entity).name ?? "Unknown";
+					string text = entity.name ?? "Unknown";
 					text = text.Replace("(Clone)", "").Trim();
 					text = text.Replace("Character_", "");
 					text = text.Replace("_", " ");
@@ -13044,8 +13044,8 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[GUI] Error in GetEntityDisplayName: " + ex.Message));
-				return ((entity != null) ? ((Object)entity).name : null) ?? "Unknown";
+				Debug.LogWarning(("[GUI] Error in GetEntityDisplayName: " + ex.Message));
+				return ((entity != null) ? entity.name : null) ?? "Unknown";
 			}
 		}
 
@@ -13085,7 +13085,7 @@ namespace _1v1.lol_cheat
 							{
 								continue;
 							}
-							string name = ((object)val).GetType().Name;
+							string name = val.GetType().Name;
 							switch (name)
 							{
 							case "Scoutmaster":
@@ -13114,7 +13114,7 @@ namespace _1v1.lol_cheat
 					}
 					try
 					{
-						if ((Object)(object)component.gameObject.GetComponent<Player>() != (Object)null && (Object)(object)component.photonView != (Object)null && component.photonView.Owner != null)
+						if (component.gameObject.GetComponent<Player>() != null && component.photonView != null && component.photonView.Owner != null)
 						{
 							return component.photonView.IsMine ? "Player (You)" : "Player";
 						}
@@ -13143,7 +13143,7 @@ namespace _1v1.lol_cheat
 						{
 							continue;
 						}
-						string name2 = ((object)val2).GetType().Name;
+						string name2 = val2.GetType().Name;
 						switch (name2)
 						{
 						case "Scoutmaster":
@@ -13180,7 +13180,7 @@ namespace _1v1.lol_cheat
 				}
 				try
 				{
-					string text = ((Object)entity).name ?? "";
+					string text = entity.name ?? "";
 					if (text.Contains("Scoutmaster") || text.Contains("ScoutMaster") || text.Contains("Scout Master"))
 					{
 						return "Scoutmaster";
@@ -13205,7 +13205,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[GUI] Error in GetEntityType: " + ex.Message));
+				Debug.LogWarning(("[GUI] Error in GetEntityType: " + ex.Message));
 				return "Unknown";
 			}
 		}
@@ -13260,7 +13260,7 @@ namespace _1v1.lol_cheat
 				Character component = entity.GetComponent<Character>();
 				if (component != null && component.input != null)
 				{
-					Vector3 normalized = ((Vector3)(ref component.data.lookDirection_Flat)).normalized;
+					Vector3 normalized = component.data.lookDirection_Flat.$3;
 					Vector3 val = Vector3.Cross(Vector3.up, normalized);
 					Vector3 normalized2 = (val).normalized;
 					Vector3 val2 = normalized * direction.z + normalized2 * direction.x;
@@ -13277,7 +13277,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Cheat] Failed to move entity: " + ex.Message));
+				Debug.LogError(("[Cheat] Failed to move entity: " + ex.Message));
 			}
 		}
 
@@ -13299,7 +13299,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Cheat] Failed to stop entity: " + ex.Message));
+				Debug.LogError(("[Cheat] Failed to stop entity: " + ex.Message));
 			}
 		}
 
@@ -13331,7 +13331,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Cheat] Failed to make entity jump: " + ex.Message));
+				Debug.LogError(("[Cheat] Failed to make entity jump: " + ex.Message));
 			}
 		}
 
@@ -13404,7 +13404,7 @@ namespace _1v1.lol_cheat
 						Character component = key.GetComponent<Character>();
 						if (component != null && component.input != null)
 						{
-							Vector3 normalized = ((Vector3)(ref component.data.lookDirection_Flat)).normalized;
+							Vector3 normalized = component.data.lookDirection_Flat.$3;
 							val3 = Vector3.Cross(Vector3.up, normalized);
 							Vector3 normalized2 = (val3).normalized;
 							float num = Vector3.Dot(val2, normalized);
@@ -13424,7 +13424,7 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogError((object)("[Cheat] Error updating follow for entity: " + ex.Message));
+					Debug.LogError(("[Cheat] Error updating follow for entity: " + ex.Message));
 				}
 			}
 			foreach (KeyValuePair<GameObject, Vector3> item2 in targetPositions.ToList())
@@ -13444,7 +13444,7 @@ namespace _1v1.lol_cheat
 					Character component2 = key2.GetComponent<Character>();
 					if (component2 != null && component2.input != null)
 					{
-						Vector3 normalized3 = ((Vector3)(ref component2.data.lookDirection_Flat)).normalized;
+						Vector3 normalized3 = component2.data.lookDirection_Flat.$3;
 						val3 = Vector3.Cross(Vector3.up, normalized3);
 						Vector3 normalized4 = (val3).normalized;
 						float num3 = Vector3.Dot(val4, normalized3);
@@ -13478,9 +13478,9 @@ namespace _1v1.lol_cheat
 				val = GetLocalPlayer();
 			}
 			object obj;
-			if (!(val != null) || !((Object)(object)val.photonView != (Object)null) || !val.photonView.IsMine)
+			if (!(val != null) || !(val.photonView != null) || !val.photonView.IsMine)
 			{
-				if (!(val != null) || !((Object)(object)val.photonView != (Object)null))
+				if (!(val != null) || !(val.photonView != null))
 				{
 					obj = "Spawn on Me";
 				}
@@ -13494,12 +13494,12 @@ namespace _1v1.lol_cheat
 			{
 				obj = "Spawn on Me";
 			}
-			if (GUILayout.Button((string)obj, buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+			if (GUILayout.Button((string)obj, buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 			{
 				if (val == null)
 				{
 					RefreshPlayerDict();
-					Debug.LogWarning((object)"No target player found for spawning item");
+					Debug.LogWarning("No target player found for spawning item");
 					return;
 				}
 				try
@@ -13516,11 +13516,11 @@ namespace _1v1.lol_cheat
 				}
 				catch (Exception ex)
 				{
-					Debug.LogError((object)("[GUI] Failed to spawn item: " + ex.Message));
+					Debug.LogError(("[GUI] Failed to spawn item: " + ex.Message));
 				}
 			}
 			GUILayout.Space(4f);
-			if (!GUILayout.Button("Spawn on Everyone", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+			if (!GUILayout.Button("Spawn on Everyone", buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 			{
 				return;
 			}
@@ -13560,7 +13560,7 @@ namespace _1v1.lol_cheat
 						obj2 = "Unknown";
 					}
 					string text = TruncateForDisplay((string)obj2);
-					Debug.LogError((object)("[GUI] Failed to spawn item on " + text + ": " + ex2.Message));
+					Debug.LogError(("[GUI] Failed to spawn item on " + text + ": " + ex2.Message));
 				}
 			}
 		}
@@ -13580,7 +13580,7 @@ namespace _1v1.lol_cheat
 				return;
 			}
 			Character val = playerDict[array[selectedPlayerIndex]];
-			if (GUILayout.Button("Warp to Player", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(30f) }) && val != null)
+			if (GUILayout.Button("Warp to Player", buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(30f) }) && val != null)
 			{
 				localPlayer.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2]
 				{
@@ -13589,7 +13589,7 @@ namespace _1v1.lol_cheat
 				});
 			}
 			GUILayout.Space(4f);
-			if (GUILayout.Button("Warp Player to Me", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(30f) }) && val != null)
+			if (GUILayout.Button("Warp Player to Me", buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(30f) }) && val != null)
 			{
 				val.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2]
 				{
@@ -13598,13 +13598,13 @@ namespace _1v1.lol_cheat
 				});
 			}
 			GUILayout.Space(4f);
-			if (!GUILayout.Button("Warp Everyone to Me", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(30f) }))
+			if (!GUILayout.Button("Warp Everyone to Me", buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(30f) }))
 			{
 				return;
 			}
 			foreach (Character value in playerDict.Values)
 			{
-				if (value != null && (Object)(object)value.photonView != (Object)null)
+				if (value != null && value.photonView != null)
 				{
 					value.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2]
 					{
@@ -13676,7 +13676,7 @@ namespace _1v1.lol_cheat
 
 		public static void CreateKillPlayerButton()
 		{
-			if (GUILayout.Button("Kill Player", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && playerDict.Count != 0)
+			if (GUILayout.Button("Kill Player", buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && playerDict.Count != 0)
 			{
 				Character val = playerDict.Values.First((Character x) => x.player.photonView.Owner.NickName == playerDict.Keys.ToArray()[selectedPlayerIndex]);
 				val.photonView.RPC("RPCA_Die", RpcTarget.All, new object[1] { val.Center });
@@ -13712,9 +13712,9 @@ namespace _1v1.lol_cheat
 					MethodInfo method = typeof(Character).GetMethod("GetBodypart", BindingFlags.Instance | BindingFlags.NonPublic);
 					if (method != null)
 					{
-						object obj = method.Invoke(targetPlayer, new object[1] { (object)(BodypartType)0 });
+						object obj = method.Invoke(targetPlayer, new object[1] { (BodypartType)0 });
 						Bodypart val2 = (Bodypart)((obj is Bodypart) ? obj : null);
-						if (val2 != null && (Object)(object)val2.transform != (Object)null)
+						if (val2 != null && val2.transform != null)
 						{
 							val = targetPlayer.Center + val2.transform.forward * 0.6f;
 						}
@@ -13725,11 +13725,11 @@ namespace _1v1.lol_cheat
 				}
 				targetPlayer.refs.items.photonView.RPC("DropItemFromSlotRPC", RpcTarget.All, new object[2] { slotID, val });
 				string text = TruncateForDisplay(targetPlayer.photonView.Owner.NickName);
-				Debug.Log((object)("[Inventory] Dropped " + itemSlot.prefab.GetName() + " from " + text + "!"));
+				Debug.Log(("[Inventory] Dropped " + itemSlot.prefab.GetName() + " from " + text + "!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Inventory] Failed to drop item: " + ex.Message));
+				Debug.LogWarning(("[Inventory] Failed to drop item: " + ex.Message));
 			}
 		}
 
@@ -13749,17 +13749,17 @@ namespace _1v1.lol_cheat
 					{
 						targetPlayer.player.EmptySlot(Optionable<byte>.Some(slotID));
 						string text = TruncateForDisplay(targetPlayer.photonView.Owner.NickName);
-						Debug.Log((object)("[Inventory] Stole " + itemSlot.prefab.GetName() + " from " + text + "!"));
+						Debug.Log(("[Inventory] Stole " + itemSlot.prefab.GetName() + " from " + text + "!"));
 					}
 					else
 					{
-						Debug.LogWarning((object)"[Inventory] Failed to steal item - local inventory full!");
+						Debug.LogWarning("[Inventory] Failed to steal item - local inventory full!");
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Inventory] Failed to steal item: " + ex.Message));
+				Debug.LogWarning(("[Inventory] Failed to steal item: " + ex.Message));
 			}
 		}
 
@@ -13798,31 +13798,31 @@ namespace _1v1.lol_cheat
 					ItemCooking component = ((Component)val).GetComponent<ItemCooking>();
 					if (component != null && component.canBeCooked)
 					{
-						if ((Object)(object)val.photonView != (Object)null && val.photonView.IsMine)
+						if (val.photonView != null && val.photonView.IsMine)
 						{
 							component.FinishCooking();
 							string text = TruncateForDisplay(targetPlayer.photonView.Owner.NickName);
-							Debug.Log((object)("[Inventory] Cooked " + itemSlot.prefab.GetName() + " for " + text + "!"));
+							Debug.Log(("[Inventory] Cooked " + itemSlot.prefab.GetName() + " for " + text + "!"));
 						}
 						else
 						{
 							val.photonView.RPC("FinishCookingRPC", RpcTarget.All, Array.Empty<object>());
-							Debug.Log((object)("[Inventory] Attempted to cook " + itemSlot.prefab.GetName() + " via RPC!"));
+							Debug.Log(("[Inventory] Attempted to cook " + itemSlot.prefab.GetName() + " via RPC!"));
 						}
 					}
 					else
 					{
-						Debug.LogWarning((object)("[Inventory] Item " + itemSlot.prefab.GetName() + " cannot be cooked!"));
+						Debug.LogWarning(("[Inventory] Item " + itemSlot.prefab.GetName() + " cannot be cooked!"));
 					}
 				}
 				else
 				{
-					Debug.LogWarning((object)"[Inventory] Item not found in world - cannot cook!");
+					Debug.LogWarning("[Inventory] Item not found in world - cannot cook!");
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Inventory] Failed to cook item: " + ex.Message));
+				Debug.LogWarning(("[Inventory] Failed to cook item: " + ex.Message));
 			}
 		}
 
@@ -13835,17 +13835,17 @@ namespace _1v1.lol_cheat
 		{
 			if (!PhotonNetwork.InRoom)
 			{
-				Debug.LogWarning((object)"[GUI] Cannot spawn test dummy - not in room");
+				Debug.LogWarning("[GUI] Cannot spawn test dummy - not in room");
 				return;
 			}
 			if (!PhotonNetwork.IsMasterClient)
 			{
-				Debug.LogWarning((object)"[GUI] Cannot spawn test dummy - must be master client");
+				Debug.LogWarning("[GUI] Cannot spawn test dummy - must be master client");
 				return;
 			}
 			if (Character.localCharacter == null || Camera.main == null)
 			{
-				Debug.LogWarning((object)"[GUI] Cannot spawn test dummy - character or camera not found");
+				Debug.LogWarning("[GUI] Cannot spawn test dummy - character or camera not found");
 				return;
 			}
 			try
@@ -13861,26 +13861,26 @@ namespace _1v1.lol_cheat
 						val2 = PhotonNetwork.Instantiate(text, val, Quaternion.identity, (byte)0, (object[])null);
 						if (val2 != null)
 						{
-							Debug.Log((object)("[GUI] Successfully spawned test dummy using prefab: " + text));
+							Debug.Log(("[GUI] Successfully spawned test dummy using prefab: " + text));
 							break;
 						}
 					}
 					catch (Exception ex)
 					{
-						Debug.Log((object)("[GUI] Failed to spawn with " + text + ": " + ex.Message));
+						Debug.Log(("[GUI] Failed to spawn with " + text + ": " + ex.Message));
 					}
 				}
 				if (val2 == null)
 				{
-					Debug.LogError((object)"[GUI] PhotonNetwork.Instantiate returned null");
+					Debug.LogError("[GUI] PhotonNetwork.Instantiate returned null");
 					return;
 				}
-				Debug.Log((object)("[GUI] Spawned player GameObject: " + ((Object)val2).name));
+				Debug.Log(("[GUI] Spawned player GameObject: " + val2.name));
 				((MonoBehaviour)Cheat.instance).StartCoroutine(InitializeTestDummy(val2, val));
 			}
 			catch (Exception ex2)
 			{
-				Debug.LogError((object)("[GUI] Failed to spawn test dummy: " + ex2.Message + "\n" + ex2.StackTrace));
+				Debug.LogError(("[GUI] Failed to spawn test dummy: " + ex2.Message + "\n" + ex2.StackTrace));
 			}
 		}
 
@@ -13915,18 +13915,18 @@ namespace _1v1.lol_cheat
 						{
 							flag = (bool)field.GetValue(component);
 						}
-						if ((flag || CheatConfig.SpawnedEntities.Contains(val)) && (Object)(object)component.photonView != (Object)null && component.photonView.IsMine)
+						if ((flag || CheatConfig.SpawnedEntities.Contains(val)) && component.photonView != null && component.photonView.IsMine)
 						{
 							component.photonView.RPC("RPCA_Die", RpcTarget.All, new object[1] { component.Center });
 							num++;
 						}
 					}
 				}
-				Debug.Log((object)$"[GUI] Killed {num} test dummies");
+				Debug.Log($"[GUI] Killed {num} test dummies");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[GUI] Failed to kill test dummies: " + ex.Message));
+				Debug.LogError(("[GUI] Failed to kill test dummies: " + ex.Message));
 			}
 		}
 
@@ -13936,29 +13936,29 @@ namespace _1v1.lol_cheat
 			{
 				return null;
 			}
-			return playerDict?.Values.FirstOrDefault((Character c) => c != null && (Object)(object)c.player == (Object)(object)Player.localPlayer);
+			return playerDict?.Values.FirstOrDefault((Character c) => c != null && c.player == Player.localPlayer);
 		}
 
 		private static void InitializeStyles()
 		{
 			Color col = default(Color);
-			((Color)(ref col))..ctor(0.05f, 0.05f, 0.05f, 0.95f);
+			new Color(0.05f, 0.05f, 0.05f, 0.95f);
 			Color col2 = default(Color);
-			((Color)(ref col2))..ctor(0.03f, 0.03f, 0.03f, 1f);
+			new Color(0.03f, 0.03f, 0.03f, 1f);
 			Color col3 = default(Color);
-			((Color)(ref col3))..ctor(0.12f, 0.12f, 0.12f, 1f);
+			new Color(0.12f, 0.12f, 0.12f, 1f);
 			Color col4 = default(Color);
-			((Color)(ref col4))..ctor(0.2f, 0.2f, 0.2f, 1f);
+			new Color(0.2f, 0.2f, 0.2f, 1f);
 			Color col5 = default(Color);
-			((Color)(ref col5))..ctor(0.08f, 0.08f, 0.08f, 1f);
+			new Color(0.08f, 0.08f, 0.08f, 1f);
 			Color textColor = default(Color);
-			((Color)(ref textColor))..ctor(0f, 0.6f, 1f, 1f);
+			new Color(0f, 0.6f, 1f, 1f);
 			Color col6 = default(Color);
-			((Color)(ref col6))..ctor(0.15f, 0.15f, 0.15f, 1f);
+			new Color(0.15f, 0.15f, 0.15f, 1f);
 			Color col7 = default(Color);
-			((Color)(ref col7))..ctor(0.08f, 0.08f, 0.08f, 1f);
+			new Color(0.08f, 0.08f, 0.08f, 1f);
 			Color col8 = default(Color);
-			((Color)(ref col8))..ctor(0.18f, 0.18f, 0.18f, 1f);
+			new Color(0.18f, 0.18f, 0.18f, 1f);
 			new Color(0.2f, 0.2f, 0.2f, 0.8f);
 			new Color(0f, 0.6f, 1f, 0.2f);
 			windowStyle = new GUIStyle(GUI.skin.window);
@@ -14053,19 +14053,19 @@ namespace _1v1.lol_cheat
 			GUI.contentColor = new Color(1f, 1f, 1f, 1f);
 			GUI.color = new Color(1f, 1f, 1f, 1f);
 			Color col = default(Color);
-			((Color)(ref col))..ctor(0.05f, 0.05f, 0.05f, 0.95f);
+			new Color(0.05f, 0.05f, 0.05f, 0.95f);
 			Color col2 = default(Color);
-			((Color)(ref col2))..ctor(0.03f, 0.03f, 0.03f, 1f);
+			new Color(0.03f, 0.03f, 0.03f, 1f);
 			Color col3 = default(Color);
-			((Color)(ref col3))..ctor(0.12f, 0.12f, 0.12f, 1f);
+			new Color(0.12f, 0.12f, 0.12f, 1f);
 			Color col4 = default(Color);
-			((Color)(ref col4))..ctor(0.2f, 0.2f, 0.2f, 1f);
+			new Color(0.2f, 0.2f, 0.2f, 1f);
 			Color col5 = default(Color);
-			((Color)(ref col5))..ctor(0.08f, 0.08f, 0.08f, 1f);
+			new Color(0.08f, 0.08f, 0.08f, 1f);
 			Color col6 = default(Color);
-			((Color)(ref col6))..ctor(0.08f, 0.08f, 0.08f, 1f);
+			new Color(0.08f, 0.08f, 0.08f, 1f);
 			Color col7 = default(Color);
-			((Color)(ref col7))..ctor(0.12f, 0.12f, 0.12f, 1f);
+			new Color(0.12f, 0.12f, 0.12f, 1f);
 			if (windowStyle != null)
 			{
 				Texture2D val = windowStyle.normal.background;
@@ -14154,7 +14154,7 @@ namespace _1v1.lol_cheat
 				{
 					val2 = GUIHelpers.styleCache[key];
 				}
-				if (GUILayout.Button(tabnames[i], val2, (GUILayoutOption[])(object)new GUILayoutOption[2]
+				if (GUILayout.Button(tabnames[i], val2, (GUILayoutOption[])new GUILayoutOption[2]
 				{
 					GUILayout.Height(40f),
 					GUILayout.Width(((GUIRect).width - 32f) / (float)tabnames.Length)
@@ -14167,37 +14167,37 @@ namespace _1v1.lol_cheat
 			GUILayout.Space(2f);
 			GUILayout.EndHorizontal();
 			GUILayout.Space(6f);
-			GUI.DrawTexture(GUILayoutUtility.GetRect((GUIRect).width - 16f, 1f), (Texture)(object)GUIHelpers.MakeTex(1, 1, new Color(0.2f, 0.2f, 0.2f, 0.8f)));
+			GUI.DrawTexture(GUILayoutUtility.GetRect((GUIRect).width - 16f, 1f), (Texture)GUIHelpers.MakeTex(1, 1, new Color(0.2f, 0.2f, 0.2f, 0.8f)));
 			GUILayout.Space(8f);
 			switch (selected_tab)
 			{
 			case 0:
-				visualScrollPos = GUILayout.BeginScrollView(visualScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				visualScrollPos = GUILayout.BeginScrollView(visualScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawSelfOptionsTab();
 				GUILayout.EndScrollView();
 				break;
 			case 1:
-				itemScrollPos = GUILayout.BeginScrollView(itemScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				itemScrollPos = GUILayout.BeginScrollView(itemScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawWorldTab();
 				GUILayout.EndScrollView();
 				break;
 			case 2:
-				visualScrollPos = GUILayout.BeginScrollView(visualScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				visualScrollPos = GUILayout.BeginScrollView(visualScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawVisualsTab();
 				GUILayout.EndScrollView();
 				break;
 			case 3:
-				playersScrollPos = GUILayout.BeginScrollView(playersScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				playersScrollPos = GUILayout.BeginScrollView(playersScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawPlayersTab();
 				GUILayout.EndScrollView();
 				break;
 			case 4:
-				networkScrollPos = GUILayout.BeginScrollView(networkScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				networkScrollPos = GUILayout.BeginScrollView(networkScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawMiscTab();
 				GUILayout.EndScrollView();
 				break;
 			case 5:
-				settingsScrollPos = GUILayout.BeginScrollView(settingsScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
+				settingsScrollPos = GUILayout.BeginScrollView(settingsScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(GetScrollViewHeight()) });
 				DrawSettingsTab();
 				GUILayout.EndScrollView();
 				break;
@@ -14236,13 +14236,13 @@ namespace _1v1.lol_cheat
 			Color backgroundColor = GUI.backgroundColor;
 			Color contentColor = GUI.contentColor;
 			Color val = default(Color);
-			((Color)(ref val))..ctor(0f, 0.5f, 0.85f, 1f);
+			new Color(0f, 0.5f, 0.85f, 1f);
 			Color col = default(Color);
-			((Color)(ref col))..ctor(0.1f, 0.6f, 0.9f, 1f);
+			new Color(0.1f, 0.6f, 0.9f, 1f);
 			Color val2 = default(Color);
-			((Color)(ref val2))..ctor(0.12f, 0.12f, 0.12f, 1f);
+			new Color(0.12f, 0.12f, 0.12f, 1f);
 			Color col2 = default(Color);
-			((Color)(ref col2))..ctor(0.18f, 0.18f, 0.18f, 1f);
+			new Color(0.18f, 0.18f, 0.18f, 1f);
 			if (currentState)
 			{
 				GUI.backgroundColor = val;
@@ -14276,7 +14276,7 @@ namespace _1v1.lol_cheat
 			val3.fontStyle = (FontStyle)0;
 			val3.border = new RectOffset(6, 6, 6, 6);
 			string text = (currentState ? ("� " + label) : ("  " + label));
-			bool result = GUILayout.Toggle(currentState, text, val3, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(40f) });
+			bool result = GUILayout.Toggle(currentState, text, val3, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(40f) });
 			GUI.backgroundColor = backgroundColor;
 			GUI.contentColor = contentColor;
 			return result;
@@ -14308,7 +14308,7 @@ namespace _1v1.lol_cheat
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 			GUILayout.Space(4f);
 			string text = (flag ? title.Replace("?", "") : title);
-			bool flag2 = GUILayout.Toggle(flag, text, val, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) });
+			bool flag2 = GUILayout.Toggle(flag, text, val, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) });
 			GUILayout.EndHorizontal();
 			if (flag2 != flag)
 			{
@@ -14352,7 +14352,7 @@ namespace _1v1.lol_cheat
 			{
 				text = featureName;
 			}
-			GUILayout.Label(text, labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(150f) });
+			GUILayout.Label(text, labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(150f) });
 			KeyCode hotkey = HotkeyManager.GetHotkey(featureName);
 			string text2 = (((int)hotkey == 0) ? "None" : HotkeyManager.GetKeyDisplayName(hotkey));
 			if (hotkeyEditingFeature == featureName)
@@ -14363,7 +14363,7 @@ namespace _1v1.lol_cheat
 					{
 						textColor = new Color(1f, 1f, 0.4f, 1f)
 					}
-				}, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				}, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				if (Time.time - lastHotkeyEditTime > 0.1f)
 				{
 					foreach (KeyCode value in Enum.GetValues(typeof(KeyCode)))
@@ -14378,7 +14378,7 @@ namespace _1v1.lol_cheat
 					}
 				}
 			}
-			else if (GUILayout.Button(text2, buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			else if (GUILayout.Button(text2, buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(120f),
 				GUILayout.Height(24f)
@@ -14387,7 +14387,7 @@ namespace _1v1.lol_cheat
 				hotkeyEditingFeature = featureName;
 				lastHotkeyEditTime = Time.time;
 			}
-			if ((int)hotkey != 0 && GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+			if ((int)hotkey != 0 && GUILayout.Button("Clear", buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 			{
 				GUILayout.Width(60f),
 				GUILayout.Height(24f)
@@ -14407,7 +14407,7 @@ namespace _1v1.lol_cheat
 
 		public static float GetScrollViewHeight()
 		{
-			return Mathf.Max(((Rect)(ref GUI.GUIRect)).height - 140f, 500f);
+			return Mathf.Max(GUI.GUIRect.height - 140f, 500f);
 		}
 
 		public static string TruncateForDisplay(string text, int maxLength = 64)
@@ -14426,12 +14426,12 @@ namespace _1v1.lol_cheat
 		public static Texture2D MakeTex(int width, int height, Color col)
 		{
 			Color key = default(Color);
-			((Color)(ref key))..ctor(Mathf.Round(col.r * 1000f) / 1000f, Mathf.Round(col.g * 1000f) / 1000f, Mathf.Round(col.b * 1000f) / 1000f, Mathf.Round(col.a * 1000f) / 1000f);
+			new Color(Mathf.Round(col.r * 1000f) / 1000f, Mathf.Round(col.g * 1000f) / 1000f, Mathf.Round(col.b * 1000f) / 1000f, Mathf.Round(col.a * 1000f) / 1000f);
 			if (textureCache.ContainsKey(key))
 			{
 				return textureCache[key];
 			}
-			Color[] array = (Color[])(object)new Color[width * height];
+			Color[] array = (Color[])new Color[width * height];
 			for (int i = 0; i < array.Length; i++)
 			{
 				array[i] = col;
@@ -14449,7 +14449,7 @@ namespace _1v1.lol_cheat
 			{
 				if (value != null)
 				{
-					Object.DestroyImmediate((Object)(object)value);
+					Object.DestroyImmediate(value);
 				}
 			}
 			textureCache.Clear();
@@ -14461,13 +14461,13 @@ namespace _1v1.lol_cheat
 			Color backgroundColor = GUI.backgroundColor;
 			Color contentColor = GUI.contentColor;
 			Color val = default(Color);
-			((Color)(ref val))..ctor(0f, 0.5f, 0.85f, 1f);
+			new Color(0f, 0.5f, 0.85f, 1f);
 			Color col = default(Color);
-			((Color)(ref col))..ctor(0.1f, 0.6f, 0.9f, 1f);
+			new Color(0.1f, 0.6f, 0.9f, 1f);
 			Color val2 = default(Color);
-			((Color)(ref val2))..ctor(0.12f, 0.12f, 0.12f, 1f);
+			new Color(0.12f, 0.12f, 0.12f, 1f);
 			Color col2 = default(Color);
-			((Color)(ref col2))..ctor(0.18f, 0.18f, 0.18f, 1f);
+			new Color(0.18f, 0.18f, 0.18f, 1f);
 			if (currentState)
 			{
 				GUI.backgroundColor = val;
@@ -14511,7 +14511,7 @@ namespace _1v1.lol_cheat
 				val3 = styleCache[key];
 			}
 			string text = (currentState ? ("� " + label) : ("  " + label));
-			bool result = GUILayout.Toggle(currentState, text, val3, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(40f) });
+			bool result = GUILayout.Toggle(currentState, text, val3, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(40f) });
 			GUI.backgroundColor = backgroundColor;
 			GUI.contentColor = contentColor;
 			return result;
@@ -14525,7 +14525,7 @@ namespace _1v1.lol_cheat
 			}
 			bool flag = CheatConfig.CollapsibleSections[key];
 			Color val = (Color)(((??)titleColor) ?? new Color(0.9f, 0.95f, 1f, 1f));
-			string key2 = $"foldout_{key}_{((object)(Color)(ref val)).GetHashCode()}_{flag}";
+			string key2 = $"foldout_{key}_{GetHashCode.$2()}_{flag}";
 			GUIStyle val2;
 			if (!styleCache.ContainsKey(key2))
 			{
@@ -14553,7 +14553,7 @@ namespace _1v1.lol_cheat
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 			GUILayout.Space(4f);
 			string text = (flag ? title.Replace("?", "") : title);
-			bool flag2 = GUILayout.Toggle(flag, text, val2, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) });
+			bool flag2 = GUILayout.Toggle(flag, text, val2, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) });
 			GUILayout.EndHorizontal();
 			if (flag2 != flag)
 			{
@@ -14595,7 +14595,7 @@ namespace _1v1.lol_cheat
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 					GUILayout.Label("Entities:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Refresh", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+					if (GUILayout.Button("Refresh", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 					{
 						GUILayout.Width(90f),
 						GUILayout.Height(32f)
@@ -14623,7 +14623,7 @@ namespace _1v1.lol_cheat
 						{
 							try
 							{
-								if ((Object)(object)list[i] == (Object)null)
+								if (list[i] == null)
 								{
 									continue;
 								}
@@ -14641,8 +14641,8 @@ namespace _1v1.lol_cheat
 								}
 								catch (Exception ex)
 								{
-									Debug.LogWarning((object)("[GUI] Error getting entity name/type: " + ex.Message));
-									text = ((Object)val).name ?? "Unknown";
+									Debug.LogWarning(("[GUI] Error getting entity name/type: " + ex.Message));
+									text = val.name ?? "Unknown";
 								}
 								string text2 = $"[{i}] {text} ({arg})";
 								try
@@ -14665,7 +14665,7 @@ namespace _1v1.lol_cheat
 									GUI.contentColor = Color.white;
 								}
 								GUILayout.BeginHorizontal(GUIStyle.op_Implicit("box"), Array.Empty<GUILayoutOption>());
-								if (GUILayout.Toggle(flag, "", (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(20f) }))
+								if (GUILayout.Toggle(flag, "", (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(20f) }))
 								{
 									GUI.selectedEntityIndex = i;
 								}
@@ -14673,14 +14673,14 @@ namespace _1v1.lol_cheat
 								{
 									GUI.selectedEntityIndex = -1;
 								}
-								GUILayout.Label(text2, GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
+								GUILayout.Label(text2, GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
 								GUILayout.EndHorizontal();
 								GUI.backgroundColor = backgroundColor;
 								GUI.contentColor = contentColor;
 							}
 							catch (Exception ex2)
 							{
-								Debug.LogWarning((object)$"[GUI] Error rendering entity {i}: {ex2.Message}");
+								Debug.LogWarning($"[GUI] Error rendering entity {i}: {ex2.Message}");
 							}
 						}
 						if (list.Count > num)
@@ -14697,7 +14697,7 @@ namespace _1v1.lol_cheat
 					}
 					GUIHelpers.EndCollapsibleSection();
 				}
-				if (list != null && GUI.selectedEntityIndex >= 0 && GUI.selectedEntityIndex < list.Count && (Object)(object)list[GUI.selectedEntityIndex] != (Object)null)
+				if (list != null && GUI.selectedEntityIndex >= 0 && GUI.selectedEntityIndex < list.Count && list[GUI.selectedEntityIndex] != null)
 				{
 					try
 					{
@@ -14709,12 +14709,12 @@ namespace _1v1.lol_cheat
 						}
 						catch
 						{
-							text3 = ((Object)val2).name ?? "Unknown";
+							text3 = val2.name ?? "Unknown";
 						}
 						if (GUIHelpers.DrawCollapsibleSection("EntityActions", "? Actions for: " + text3, Color.white))
 						{
 							GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-							if (GUILayout.Button("Teleport to Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+							if (GUILayout.Button("Teleport to Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 							{
 								try
 								{
@@ -14722,10 +14722,10 @@ namespace _1v1.lol_cheat
 								}
 								catch (Exception ex3)
 								{
-									Debug.LogError((object)("[GUI] Error teleporting entity: " + ex3.Message));
+									Debug.LogError(("[GUI] Error teleporting entity: " + ex3.Message));
 								}
 							}
-							if (GUILayout.Button("Kill", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+							if (GUILayout.Button("Kill", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 							{
 								try
 								{
@@ -14734,7 +14734,7 @@ namespace _1v1.lol_cheat
 								}
 								catch (Exception ex4)
 								{
-									Debug.LogError((object)("[GUI] Error killing entity: " + ex4.Message));
+									Debug.LogError(("[GUI] Error killing entity: " + ex4.Message));
 								}
 							}
 							GUILayout.EndHorizontal();
@@ -14763,10 +14763,10 @@ namespace _1v1.lol_cheat
 									}
 									catch (Exception ex5)
 									{
-										Debug.LogError((object)("[GUI] Error toggling entity control: " + ex5.Message));
+										Debug.LogError(("[GUI] Error toggling entity control: " + ex5.Message));
 									}
 								}
-								if (flag2 && (Object)(object)GUI.currentlyControlledEntity == (Object)(object)val2)
+								if (flag2 && GUI.currentlyControlledEntity == val2)
 								{
 									GUILayout.Label("� Currently controlling this entity", new GUIStyle(GUI.labelStyle)
 									{
@@ -14780,7 +14780,7 @@ namespace _1v1.lol_cheat
 							}
 							catch (Exception ex6)
 							{
-								Debug.LogWarning((object)("[GUI] Error in control toggle: " + ex6.Message));
+								Debug.LogWarning(("[GUI] Error in control toggle: " + ex6.Message));
 								try
 								{
 									flag2 = GUI.controlledEntities.ContainsKey(val2) && GUI.controlledEntities[val2];
@@ -14805,13 +14805,13 @@ namespace _1v1.lol_cheat
 									}
 									catch (Exception ex7)
 									{
-										Debug.LogError((object)("[GUI] Error toggling follow player: " + ex7.Message));
+										Debug.LogError(("[GUI] Error toggling follow player: " + ex7.Message));
 									}
 								}
 							}
 							catch (Exception ex8)
 							{
-								Debug.LogWarning((object)("[GUI] Error in follow toggle: " + ex8.Message));
+								Debug.LogWarning(("[GUI] Error in follow toggle: " + ex8.Message));
 							}
 							GUILayout.Space(4f);
 							if (GUIHelpers.DrawCollapsibleSection("AIControl", "? AI Control", Color.white))
@@ -14828,19 +14828,19 @@ namespace _1v1.lol_cheat
 											{
 												if (val3 != null)
 												{
-													string name = ((object)val3).GetType().Name;
+													string name = val3.GetType().Name;
 													bool enabled = ((Behaviour)val3).enabled;
 													bool flag6 = GUIHelpers.DrawToggleButton(enabled, name);
 													if (flag6 != enabled)
 													{
 														((Behaviour)val3).enabled = flag6;
-														Debug.Log((object)("[Cheat] " + (flag6 ? "Enabled" : "Disabled") + " AI component: " + name));
+														Debug.Log(("[Cheat] " + (flag6 ? "Enabled" : "Disabled") + " AI component: " + name));
 													}
 												}
 											}
 											catch (Exception ex9)
 											{
-												Debug.LogWarning((object)("[GUI] Error processing AI component: " + ex9.Message));
+												Debug.LogWarning(("[GUI] Error processing AI component: " + ex9.Message));
 											}
 										}
 									}
@@ -14854,14 +14854,14 @@ namespace _1v1.lol_cheat
 								}
 								catch (Exception ex10)
 								{
-									Debug.LogWarning((object)("[GUI] Error getting AI components: " + ex10.Message));
+									Debug.LogWarning(("[GUI] Error getting AI components: " + ex10.Message));
 									GUILayout.Label("Error loading AI components", new GUIStyle(GUI.labelStyle)
 									{
 										fontSize = 11
 									}, Array.Empty<GUILayoutOption>());
 								}
 								GUILayout.Space(4f);
-								if (GUILayout.Button("Reinitialize Entity", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+								if (GUILayout.Button("Reinitialize Entity", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 								{
 									try
 									{
@@ -14869,7 +14869,7 @@ namespace _1v1.lol_cheat
 									}
 									catch (Exception ex11)
 									{
-										Debug.LogError((object)("[GUI] Error reinitializing entity: " + ex11.Message));
+										Debug.LogError(("[GUI] Error reinitializing entity: " + ex11.Message));
 									}
 								}
 								GUIHelpers.EndCollapsibleSection();
@@ -14879,37 +14879,37 @@ namespace _1v1.lol_cheat
 							{
 								GUILayout.Label("Movement Controls:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
 								GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-								GUILayout.Label("Speed:", (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(60f) });
+								GUILayout.Label("Speed:", (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(60f) });
 								GUI.entityControlSpeed = GUILayout.HorizontalSlider(GUI.entityControlSpeed, 1f, 20f, Array.Empty<GUILayoutOption>());
-								GUILayout.Label(GUI.entityControlSpeed.ToString("F1"), (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(40f) });
+								GUILayout.Label(GUI.entityControlSpeed.ToString("F1"), (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(40f) });
 								GUILayout.EndHorizontal();
 								GUILayout.Space(4f);
 								GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-								if (GUILayout.Button("Move Forward", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Move Forward", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.MoveEntity(val2, Vector3.forward);
 								}
-								if (GUILayout.Button("Move Back", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Move Back", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.MoveEntity(val2, Vector3.back);
 								}
 								GUILayout.EndHorizontal();
 								GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-								if (GUILayout.Button("Move Left", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Move Left", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.MoveEntity(val2, Vector3.left);
 								}
-								if (GUILayout.Button("Move Right", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Move Right", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.MoveEntity(val2, Vector3.right);
 								}
 								GUILayout.EndHorizontal();
 								GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-								if (GUILayout.Button("Jump", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Jump", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.MakeEntityJump(val2);
 								}
-								if (GUILayout.Button("Stop", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(34f) }))
+								if (GUILayout.Button("Stop", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(34f) }))
 								{
 									GUI.StopEntity(val2);
 								}
@@ -14920,7 +14920,7 @@ namespace _1v1.lol_cheat
 							if (GUI.playerDict != null && GUI.playerDict.Count > 0)
 							{
 								string[] array2 = GUI.playerDict.Keys.ToArray();
-								int num4 = GUILayout.SelectionGrid(-1, array2, 2, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
+								int num4 = GUILayout.SelectionGrid(-1, array2, 2, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
 								if (num4 >= 0 && num4 < array2.Length)
 								{
 									Character val4 = GUI.playerDict[array2[num4]];
@@ -14942,7 +14942,7 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex12)
 					{
-						Debug.LogError((object)("[GUI] Error in actions section: " + ex12.Message));
+						Debug.LogError(("[GUI] Error in actions section: " + ex12.Message));
 						GUIHelpers.EndCollapsibleSection();
 					}
 				}
@@ -14960,7 +14960,7 @@ namespace _1v1.lol_cheat
 					return;
 				}
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Kill All", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Kill All", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					foreach (GameObject item in GUI.GetAllEntitiesInGame())
 					{
@@ -14971,7 +14971,7 @@ namespace _1v1.lol_cheat
 					}
 					GUI.selectedEntityIndex = -1;
 				}
-				if (GUILayout.Button("Teleport All to Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Teleport All to Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					foreach (GameObject item2 in GUI.GetAllEntitiesInGame())
 					{
@@ -14983,7 +14983,7 @@ namespace _1v1.lol_cheat
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.Space(4f);
-				if (GUILayout.Button("Refresh List", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+				if (GUILayout.Button("Refresh List", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 				{
 					GUI.CleanupDestroyedEntities();
 				}
@@ -14991,7 +14991,7 @@ namespace _1v1.lol_cheat
 			}
 			catch (Exception ex13)
 			{
-				Debug.LogError((object)("[GUI] Error in DrawEntityManager: " + ex13.Message + "\n" + ex13.StackTrace));
+				Debug.LogError(("[GUI] Error in DrawEntityManager: " + ex13.Message + "\n" + ex13.StackTrace));
 				GUILayout.BeginVertical(GUIStyle.op_Implicit("box"), Array.Empty<GUILayoutOption>());
 				GUILayout.Label("Error loading entity manager", new GUIStyle(GUI.labelStyle)
 				{
@@ -15017,7 +15017,7 @@ namespace _1v1.lol_cheat
 				return;
 			}
 			GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-			GUILayout.Button("Refresh Items", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
+			GUILayout.Button("Refresh Items", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
 			GUILayout.EndHorizontal();
 			GUILayout.Space(5f);
 			List<Item> list = (from item in Object.FindObjectsByType<Item>(FindObjectsSortMode.None)
@@ -15049,7 +15049,7 @@ namespace _1v1.lol_cheat
 					float num3 = ((Character.localCharacter != null) ? Vector3.Distance(Character.localCharacter.Center, val.Center()) : 0f);
 					string text = $"{name} ({num3:F1}m)";
 					bool flag = GUI.selectedWorldItemIndex == i;
-					if (GUILayout.Toggle(flag, text, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(24f) }))
+					if (GUILayout.Toggle(flag, text, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(24f) }))
 					{
 						GUI.selectedWorldItemIndex = i;
 					}
@@ -15082,7 +15082,7 @@ namespace _1v1.lol_cheat
 					}, Array.Empty<GUILayoutOption>());
 					GUILayout.Space(5f);
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Teleport To Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }) && Character.localCharacter != null)
+					if (GUILayout.Button("Teleport To Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }) && Character.localCharacter != null)
 					{
 						Vector3 val3 = Character.localCharacter.Center + Vector3.up * 2f;
 						val2.photonView.RPC("SetKinematicRPC", RpcTarget.AllBuffered, new object[3]
@@ -15092,21 +15092,21 @@ namespace _1v1.lol_cheat
 							Quaternion.identity
 						});
 					}
-					if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }) && val2.rig != null)
+					if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }) && val2.rig != null)
 					{
 						val2.rig.linearVelocity = Vector3.up * 20f;
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Cook Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+					if (GUILayout.Button("Cook Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 					{
 						ItemCooking component = ((Component)val2).GetComponent<ItemCooking>();
-						if (component != null && component.canBeCooked && (Object)(object)val2.photonView != (Object)null)
+						if (component != null && component.canBeCooked && val2.photonView != null)
 						{
 							val2.photonView.RPC("FinishCookingRPC", RpcTarget.All, Array.Empty<object>());
 						}
 					}
-					if (GUILayout.Button("Delete Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }) && (Object)(object)val2.photonView != (Object)null && (val2.photonView.IsMine || PhotonNetwork.IsMasterClient))
+					if (GUILayout.Button("Delete Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }) && val2.photonView != null && (val2.photonView.IsMine || PhotonNetwork.IsMasterClient))
 					{
 						PhotonNetwork.Destroy(val2.gameObject);
 					}
@@ -15154,14 +15154,14 @@ namespace _1v1.lol_cheat
 			GUILayout.Space(5f);
 			float num = Mathf.Min(GUIHelpers.GetScrollViewHeight() - 150f, 300f);
 			num = Mathf.Max(num, 150f);
-			GUI.inventoryScrollPos = GUILayout.BeginScrollView(GUI.inventoryScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(num) });
+			GUI.inventoryScrollPos = GUILayout.BeginScrollView(GUI.inventoryScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(num) });
 			for (byte b = 0; b < 3; b++)
 			{
 				ItemSlot itemSlot = val.player.GetItemSlot(b);
 				string text = $"Slot {b}: ";
 				text = ((!itemSlot.IsEmpty()) ? (text + ((itemSlot.prefab != null) ? itemSlot.prefab.GetName() : "Unknown Item")) : (text + "Empty"));
 				bool flag = GUI.selectedInventorySlotIndex == b;
-				if (GUILayout.Toggle(flag, text, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+				if (GUILayout.Toggle(flag, text, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 				{
 					GUI.selectedInventorySlotIndex = b;
 				}
@@ -15176,7 +15176,7 @@ namespace _1v1.lol_cheat
 				string text2 = "Backpack: ";
 				text2 = (itemSlot2.IsEmpty() ? (text2 + "Empty") : ((!(itemSlot2.prefab != null)) ? (text2 + "Backpack") : (text2 + itemSlot2.prefab.GetName())));
 				bool flag2 = GUI.selectedInventorySlotIndex == 3;
-				if (GUILayout.Toggle(flag2, text2, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+				if (GUILayout.Toggle(flag2, text2, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 				{
 					GUI.selectedInventorySlotIndex = 3;
 				}
@@ -15242,7 +15242,7 @@ namespace _1v1.lol_cheat
 			string text3 = "Temp Slot: ";
 			text3 = ((!itemSlot3.IsEmpty()) ? (text3 + ((itemSlot3.prefab != null) ? itemSlot3.prefab.GetName() : "Unknown Item")) : (text3 + "Empty"));
 			bool flag3 = GUI.selectedInventorySlotIndex == 250;
-			if (GUILayout.Toggle(flag3, text3, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+			if (GUILayout.Toggle(flag3, text3, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 			{
 				GUI.selectedInventorySlotIndex = 250;
 			}
@@ -15275,24 +15275,24 @@ namespace _1v1.lol_cheat
 						}, Array.Empty<GUILayoutOption>());
 						GUILayout.Space(5f);
 						GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-						if (GUILayout.Button("Drop Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+						if (GUILayout.Button("Drop Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 						{
 							GUI.DropItemFromPlayer(val, b2);
 							GUI.selectedInventorySlotIndex = -1;
 						}
-						if (GUILayout.Button("Steal Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+						if (GUILayout.Button("Steal Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 						{
 							GUI.StealItemFromPlayer(val, b2);
 							GUI.selectedInventorySlotIndex = -1;
 						}
 						GUILayout.EndHorizontal();
 						GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-						if (GUILayout.Button("Delete Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+						if (GUILayout.Button("Delete Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 						{
 							val.player.EmptySlot(Optionable<byte>.Some(b2));
 							GUI.selectedInventorySlotIndex = -1;
 						}
-						if (GUILayout.Button("Cook Item", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+						if (GUILayout.Button("Cook Item", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 						{
 							GUI.CookPlayerItem(val, b2);
 						}
@@ -15381,7 +15381,7 @@ namespace _1v1.lol_cheat
 				}
 				GUILayout.Space(8f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Disconnect from Room", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Disconnect from Room", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15394,7 +15394,7 @@ namespace _1v1.lol_cheat
 					{
 					}
 				}
-				if (GUILayout.Button("Disconnect from Photon", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Disconnect from Photon", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15422,7 +15422,7 @@ namespace _1v1.lol_cheat
 					GUILayout.Label("Not in a lobby", GUI.labelStyle, Array.Empty<GUILayoutOption>());
 				}
 				GUILayout.Space(6f);
-				if (GUILayout.Button("Join Current Lobby", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Join Current Lobby", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15433,12 +15433,12 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							Debug.LogError((object)"[GUI] No current lobby ID available");
+							Debug.LogError("[GUI] No current lobby ID available");
 						}
 					}
 					catch (Exception ex)
 					{
-						Debug.LogError((object)("[GUI] Failed to join current lobby: " + ex.Message));
+						Debug.LogError(("[GUI] Failed to join current lobby: " + ex.Message));
 					}
 				}
 				GUIHelpers.EndCollapsibleSection();
@@ -15446,9 +15446,9 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("JoinByLobbyID", "? Join by Lobby ID", Color.white))
 			{
 				GUILayout.Label("Lobby ID:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
-				GUI.lobbyIDInput = GUILayout.TextField(GUI.lobbyIDInput, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
+				GUI.lobbyIDInput = GUILayout.TextField(GUI.lobbyIDInput, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
 				GUILayout.Space(4f);
-				if (GUILayout.Button("Join Lobby", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Join Lobby", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15458,12 +15458,12 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							Debug.LogError((object)"[GUI] Invalid lobby ID format");
+							Debug.LogError("[GUI] Invalid lobby ID format");
 						}
 					}
 					catch (Exception ex2)
 					{
-						Debug.LogError((object)("[GUI] Failed to join lobby by ID: " + ex2.Message));
+						Debug.LogError(("[GUI] Failed to join lobby by ID: " + ex2.Message));
 					}
 				}
 				GUIHelpers.EndCollapsibleSection();
@@ -15471,9 +15471,9 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("JoinByPlayerSteamID", "? Join by Player Steam ID", Color.white))
 			{
 				GUILayout.Label("Player Steam ID:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
-				GUI.playerSteamIDInput = GUILayout.TextField(GUI.playerSteamIDInput, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
+				GUI.playerSteamIDInput = GUILayout.TextField(GUI.playerSteamIDInput, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
 				GUILayout.Space(4f);
-				if (GUILayout.Button("Join Player's Lobby", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Join Player's Lobby", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15483,19 +15483,19 @@ namespace _1v1.lol_cheat
 						}
 						else
 						{
-							Debug.LogError((object)"[GUI] Invalid Steam ID format");
+							Debug.LogError("[GUI] Invalid Steam ID format");
 						}
 					}
 					catch (Exception ex3)
 					{
-						Debug.LogError((object)("[GUI] Failed to join lobby by Steam ID: " + ex3.Message));
+						Debug.LogError(("[GUI] Failed to join lobby by Steam ID: " + ex3.Message));
 					}
 				}
 				GUIHelpers.EndCollapsibleSection();
 			}
 			if (GUIHelpers.DrawCollapsibleSection("BrowseAllLobbies", "? Browse All Lobbies", Color.white))
 			{
-				if (GUILayout.Button("Refresh Lobbies", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Refresh Lobbies", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15503,7 +15503,7 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex4)
 					{
-						Debug.LogError((object)("[GUI] Failed to refresh lobbies: " + ex4.Message));
+						Debug.LogError(("[GUI] Failed to refresh lobbies: " + ex4.Message));
 					}
 				}
 				List<LobbyJoiner.JoinableLobbyInfo> joinableLobbies = LobbyJoiner.JoinableLobbies;
@@ -15511,12 +15511,12 @@ namespace _1v1.lol_cheat
 				{
 					GUILayout.Space(4f);
 					float num = Mathf.Min((float)joinableLobbies.Count * 32f + 10f, 300f);
-					GUI.searchResultsScrollPos = GUILayout.BeginScrollView(GUI.searchResultsScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(num) });
+					GUI.searchResultsScrollPos = GUILayout.BeginScrollView(GUI.searchResultsScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(num) });
 					foreach (LobbyJoiner.JoinableLobbyInfo item in joinableLobbies)
 					{
 						GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-						GUILayout.Label($"Lobby {item.lobbyID} ({item.currentPlayers}/{item.maxPlayers} players)", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
-						if (GUILayout.Button("Join", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+						GUILayout.Label($"Lobby {item.lobbyID} ({item.currentPlayers}/{item.maxPlayers} players)", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
+						if (GUILayout.Button("Join", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 						{
 							GUILayout.Width(60f),
 							GUILayout.Height(28f)
@@ -15528,7 +15528,7 @@ namespace _1v1.lol_cheat
 							}
 							catch (Exception ex5)
 							{
-								Debug.LogError((object)("[GUI] Failed to join lobby: " + ex5.Message));
+								Debug.LogError(("[GUI] Failed to join lobby: " + ex5.Message));
 							}
 						}
 						GUILayout.EndHorizontal();
@@ -15544,9 +15544,9 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("SearchLobbiesByUsername", "? Search Lobbies by Username", Color.white))
 			{
 				GUILayout.Label("Username:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
-				GUI.usernameSearchInput = GUILayout.TextField(GUI.usernameSearchInput, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
+				GUI.usernameSearchInput = GUILayout.TextField(GUI.usernameSearchInput, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
 				GUILayout.Space(4f);
-				if (GUILayout.Button("Search", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Search", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					try
 					{
@@ -15554,7 +15554,7 @@ namespace _1v1.lol_cheat
 					}
 					catch (Exception ex6)
 					{
-						Debug.LogError((object)("[GUI] Failed to search lobbies: " + ex6.Message));
+						Debug.LogError(("[GUI] Failed to search lobbies: " + ex6.Message));
 					}
 				}
 				List<LobbyJoiner.LobbySearchResult> searchResults = LobbyJoiner.SearchResults;
@@ -15562,12 +15562,12 @@ namespace _1v1.lol_cheat
 				{
 					GUILayout.Space(4f);
 					float num2 = Mathf.Min((float)searchResults.Count * 32f + 10f, 200f);
-					GUI.searchResultsScrollPos = GUILayout.BeginScrollView(GUI.searchResultsScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(num2) });
+					GUI.searchResultsScrollPos = GUILayout.BeginScrollView(GUI.searchResultsScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(num2) });
 					foreach (LobbyJoiner.LobbySearchResult item2 in searchResults)
 					{
 						GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-						GUILayout.Label($"Lobby {item2.lobbyID} - {item2.hostName} ({item2.memberCount} players)", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
-						if (GUILayout.Button("Join", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+						GUILayout.Label($"Lobby {item2.lobbyID} - {item2.hostName} ({item2.memberCount} players)", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
+						if (GUILayout.Button("Join", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 						{
 							GUILayout.Width(60f),
 							GUILayout.Height(28f)
@@ -15579,7 +15579,7 @@ namespace _1v1.lol_cheat
 							}
 							catch (Exception ex7)
 							{
-								Debug.LogError((object)("[GUI] Failed to join lobby: " + ex7.Message));
+								Debug.LogError(("[GUI] Failed to join lobby: " + ex7.Message));
 							}
 						}
 						GUILayout.EndHorizontal();
@@ -15606,8 +15606,8 @@ namespace _1v1.lol_cheat
 						}
 					}, Array.Empty<GUILayoutOption>());
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("New Steam ID:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
-					if (ulong.TryParse(GUILayout.TextField(SteamSpoofing.SpoofedSteamID.ToString(), GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) }), out var result3) && result3 != SteamSpoofing.SpoofedSteamID)
+					GUILayout.Label("New Steam ID:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
+					if (ulong.TryParse(GUILayout.TextField(SteamSpoofing.SpoofedSteamID.ToString(), GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) }), out var result3) && result3 != SteamSpoofing.SpoofedSteamID)
 					{
 						SteamSpoofing.SetSpoofedSteamID(result3);
 					}
@@ -15624,8 +15624,8 @@ namespace _1v1.lol_cheat
 						}
 					}, Array.Empty<GUILayoutOption>());
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("New Username:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
-					string text3 = GUILayout.TextField(SteamSpoofing.SpoofedUsername, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
+					GUILayout.Label("New Username:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
+					string text3 = GUILayout.TextField(SteamSpoofing.SpoofedUsername, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
 					if (text3 != SteamSpoofing.SpoofedUsername)
 					{
 						SteamSpoofing.SetSpoofedUsername(text3);
@@ -15643,8 +15643,8 @@ namespace _1v1.lol_cheat
 						}
 					}, Array.Empty<GUILayoutOption>());
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("New Photon ID:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
-					string text5 = GUILayout.TextField(SteamSpoofing.SpoofedPhotonUserID, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
+					GUILayout.Label("New Photon ID:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
+					string text5 = GUILayout.TextField(SteamSpoofing.SpoofedPhotonUserID, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.ExpandWidth(true) });
 					if (text5 != SteamSpoofing.SpoofedPhotonUserID)
 					{
 						SteamSpoofing.SetSpoofedPhotonUserID(text5);
@@ -15726,7 +15726,7 @@ namespace _1v1.lol_cheat
 						GUILayout.EndHorizontal();
 					}
 					GUILayout.Space(4f);
-					if (GUILayout.Button("Clear Cheater List", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+					if (GUILayout.Button("Clear Cheater List", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 					{
 						CheatConfig.DetectedCheaters.Clear();
 					}
@@ -15763,29 +15763,29 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("BasicActions", "Basic Actions", Color.white))
 			{
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Kill", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && (Object)(object)val.photonView != (Object)null)
+				if (GUILayout.Button("Kill", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && val.photonView != null)
 				{
 					val.photonView.RPC("RPCA_Die", RpcTarget.All, new object[1] { val.Center });
 				}
-				if (GUILayout.Button("Revive", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Revive", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.RevivePlayer(val, applyStatus: false, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Pass Out", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Pass Out", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.MakePlayerPassOut(val, CheatConfig.TrollIncludeSelf);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Make Fall", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Make Fall", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.MakePlayerFall(val, 5f, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Stop Fall", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Stop Fall", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.UnFallPlayer(val, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Zombify", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Zombify", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.ZombifyPlayer(val, CheatConfig.TrollIncludeSelf);
 				}
@@ -15795,7 +15795,7 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("Teleportation", "Teleportation", Color.white))
 			{
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Warp to Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && (Object)(object)Character.localCharacter.photonView != (Object)null)
+				if (GUILayout.Button("Warp to Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && Character.localCharacter.photonView != null)
 				{
 					Character.localCharacter.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2]
 					{
@@ -15803,7 +15803,7 @@ namespace _1v1.lol_cheat
 						false
 					});
 				}
-				if (GUILayout.Button("Warp Player to Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && (Object)(object)val.photonView != (Object)null)
+				if (GUILayout.Button("Warp Player to Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && val.photonView != null)
 				{
 					val.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2]
 					{
@@ -15813,16 +15813,16 @@ namespace _1v1.lol_cheat
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Walk Off Cliff", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Walk Off Cliff", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.MakePlayerWalkOffCliff(val, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Warp Everyone to Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && (Object)(object)Character.localCharacter.photonView != (Object)null)
+				if (GUILayout.Button("Warp Everyone to Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && Character.localCharacter.photonView != null)
 				{
 					Vector3 position = Character.localCharacter.refs.head.transform.position;
 					foreach (Character value in GUI.playerDict.Values)
 					{
-						if (value != null && (Object)(object)value.photonView != (Object)null)
+						if (value != null && value.photonView != null)
 						{
 							value.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2] { position, false });
 						}
@@ -15834,36 +15834,36 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("TrollActions", "Troll Actions", Color.white))
 			{
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.LaunchPlayer(val, Vector3.up, CheatConfig.TrollLaunchForce, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Spin Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Spin Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.MakePlayerSpin(val, CheatConfig.TrollSpinSpeed, CheatConfig.TrollSpinDuration, CheatConfig.TrollIncludeSelf);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Antigrav", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Antigrav", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.ApplyAntigrav(val, CheatConfig.TrollAntigravDuration, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Stick Body Part", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Stick Body Part", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.StickPlayerBodyPart(val, (BodypartType)0, val.Center, (STATUSTYPE)0, 0f, CheatConfig.TrollIncludeSelf);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Unstick", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Unstick", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.UnstickPlayer(val, CheatConfig.TrollIncludeSelf);
 				}
-				if (GUILayout.Button("Make Me Carry", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
+				if (GUILayout.Button("Make Me Carry", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
 				{
 					TrollFeatures.StartCarryPlayer(Character.localCharacter, val, CheatConfig.TrollIncludeSelf);
 				}
 				GUILayout.EndHorizontal();
-				if (GUILayout.Button("Drop Carried", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
+				if (GUILayout.Button("Drop Carried", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
 				{
 					TrollFeatures.DropCarriedPlayer(Character.localCharacter, val, CheatConfig.TrollIncludeSelf);
 				}
@@ -15872,29 +15872,29 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("TrollSettings", "Troll Settings", Color.white))
 			{
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Launch Force:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Launch Force:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollLaunchForce = GUILayout.HorizontalSlider(CheatConfig.TrollLaunchForce, 10f, 1000f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollLaunchForce.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollLaunchForce.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Spin Speed:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Spin Speed:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollSpinSpeed = GUILayout.HorizontalSlider(CheatConfig.TrollSpinSpeed, 100f, 2000f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollSpinSpeed.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollSpinSpeed.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Spin Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Spin Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollSpinDuration = GUILayout.HorizontalSlider(CheatConfig.TrollSpinDuration, 1f, 30f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollSpinDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollSpinDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Antigrav Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Antigrav Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollAntigravDuration = GUILayout.HorizontalSlider(CheatConfig.TrollAntigravDuration, 1f, 60f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollAntigravDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollAntigravDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Fall Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Fall Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollFallDuration = GUILayout.HorizontalSlider(CheatConfig.TrollFallDuration, 1f, 30f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollFallDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollFallDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.Space(5f);
 				CheatConfig.TrollIncludeSelf = GUILayout.Toggle(CheatConfig.TrollIncludeSelf, "Include Self in Troll Effects", GUI.toggleStyle, Array.Empty<GUILayoutOption>());
@@ -15911,37 +15911,37 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Trigger Relay Bounds", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Trigger Relay Bounds", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_TriggerRelayBounds(val);
 				}
-				if (GUILayout.Button("Tornado Null Refs", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Tornado Null Refs", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_TornadoNullRefs(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Rescue Hook Null", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Rescue Hook Null", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_RescueHookNull(val);
 				}
-				if (GUILayout.Button("Spider Null", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Spider Null", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_SpiderNull(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Character Grab Null", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Character Grab Null", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_CharacterGrabbingNull(val);
 				}
-				if (GUILayout.Button("Direct Player RPCs", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Direct Player RPCs", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_DirectPlayerRPCs(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("All Null Refs", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("All Null Refs", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_AllNullRefs(val);
 				}
@@ -15956,21 +15956,21 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Max Array Size", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Max Array Size", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_MaxArraySize(val);
 				}
-				if (GUILayout.Button("Inventory Crash", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Inventory Crash", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_Inventory(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Status Array Bounds", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Status Array Bounds", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_StatusArrayBounds(val);
 				}
-				if (GUILayout.Button("Object Spam", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Object Spam", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_ObjectSpam(val);
 				}
@@ -15985,31 +15985,31 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Deserialization", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Deserialization", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_Deserialization(val);
 				}
-				if (GUILayout.Button("Statuses", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Statuses", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_Statuses(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Afflictions", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Afflictions", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_Afflictions(val);
 				}
-				if (GUILayout.Button("Thorns", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Thorns", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_Thorns(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Reconnect Data", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Reconnect Data", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_ReconnectData(val);
 				}
-				if (GUILayout.Button("Null References", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Null References", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_NullReferences(val);
 				}
@@ -16024,21 +16024,21 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Division By Zero", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Division By Zero", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_DivisionByZero(val);
 				}
-				if (GUILayout.Button("Extreme Values", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Extreme Values", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_ExtremeValues(val);
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Invalid PhotonView", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Invalid PhotonView", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_InvalidPhotonView(val);
 				}
-				if (GUILayout.Button("Get Fed Item Invalid", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Get Fed Item Invalid", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					TrollFeatures.CrashPlayer_GetFedItemInvalid(val);
 				}
@@ -16053,11 +16053,11 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("All Methods", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("All Methods", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.CrashPlayer_AllMethods(val);
 				}
-				if (GUILayout.Button("Ultimate Crash", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Ultimate Crash", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.CrashPlayer_Ultimate(val);
 				}
@@ -16072,21 +16072,21 @@ namespace _1v1.lol_cheat
 					}
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Crash All Players", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Crash All Players", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.CrashAllPlayersAndDisconnect();
 				}
-				if (GUILayout.Button("Stealth Crash All", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Stealth Crash All", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.CrashAllPlayersStealth();
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Kick Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Kick Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.KickPlayer(val);
 				}
-				if (GUILayout.Button("Force Host", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Force Host", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					TrollFeatures.ForceHost();
 				}
@@ -16096,11 +16096,11 @@ namespace _1v1.lol_cheat
 			GUIPlayerManagement.DrawInventoryManagement();
 			if (GUIHelpers.DrawCollapsibleSection("TestDummy", "Test Dummy", Color.white))
 			{
-				if (GUILayout.Button("Spawn Test Dummy (Bot)", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Spawn Test Dummy (Bot)", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					GUI.SpawnTestDummy();
 				}
-				if (GUILayout.Button("Kill All Test Dummies", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(36f) }))
+				if (GUILayout.Button("Kill All Test Dummies", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(36f) }))
 				{
 					GUI.KillAllTestDummies();
 				}
@@ -16118,25 +16118,25 @@ namespace _1v1.lol_cheat
 				if (GUI.speed)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Speed Multiplier:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Speed Multiplier:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					GUI.speedmultiply = GUILayout.HorizontalSlider(GUI.speedmultiply, 1f, 15f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.speedmultiply:F1}x", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.speedmultiply:F1}x", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUILayout.Space(4f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Climbing Speed:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+				GUILayout.Label("Climbing Speed:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 				GUI.climbingSpeedMultiplier = GUILayout.HorizontalSlider(GUI.climbingSpeedMultiplier, 0.1f, 10f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{GUI.climbingSpeedMultiplier:F2}x", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{GUI.climbingSpeedMultiplier:F2}x", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.Space(4f);
 				GUI.reduceStaminaConsumption = GUIHelpers.DrawToggleButton(GUI.reduceStaminaConsumption, "Reduce Stamina Consumption");
 				if (GUI.reduceStaminaConsumption)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Stamina Usage:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Stamina Usage:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					GUI.staminaConsumptionPercent = GUILayout.HorizontalSlider(GUI.staminaConsumptionPercent, 1f, 100f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.staminaConsumptionPercent:F0}%", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.staminaConsumptionPercent:F0}%", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUILayout.Space(4f);
@@ -16144,9 +16144,9 @@ namespace _1v1.lol_cheat
 				if (GUI.flyMode)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Fly Speed:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Fly Speed:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					CheatConfig.FlySpeed = GUILayout.HorizontalSlider(CheatConfig.FlySpeed, 10f, 200f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{CheatConfig.FlySpeed:F0}", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{CheatConfig.FlySpeed:F0}", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUILayout.Space(4f);
@@ -16156,9 +16156,9 @@ namespace _1v1.lol_cheat
 				if (GUI.superJump)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Jump Multiplier:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Jump Multiplier:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					GUI.jumpMultiplier = GUILayout.HorizontalSlider(GUI.jumpMultiplier, 1f, 5f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.jumpMultiplier:F1}x", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.jumpMultiplier:F1}x", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUIHelpers.EndCollapsibleSection();
@@ -16179,9 +16179,9 @@ namespace _1v1.lol_cheat
 				if (!GUI.noFallDamage)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Fall Damage:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Fall Damage:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					GUI.fallDamagePercent = GUILayout.HorizontalSlider(GUI.fallDamagePercent, 0f, 200f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.fallDamagePercent:F0}%", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.fallDamagePercent:F0}%", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUILayout.Space(4f);
@@ -16196,9 +16196,9 @@ namespace _1v1.lol_cheat
 				if (GUI.rapidfire)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("Time:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(140f) });
+					GUILayout.Label("Time:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(140f) });
 					GUI.fireratecooldown = GUILayout.HorizontalSlider(GUI.fireratecooldown, 0f, 48f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.fireratecooldown:F1}", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.fireratecooldown:F1}", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUILayout.Space(4f);
@@ -16241,24 +16241,24 @@ namespace _1v1.lol_cheat
 				GUILayout.Space(5f);
 				List<string> configList = ConfigManager.GetConfigList();
 				GUILayout.Label("Available Configs:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
-				configListScrollPos = GUILayout.BeginScrollView(configListScrollPos, false, true, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(Mathf.Min((float)configList.Count * 30f + 10f, 150f)) });
+				configListScrollPos = GUILayout.BeginScrollView(configListScrollPos, false, true, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(Mathf.Min((float)configList.Count * 30f + 10f, 150f)) });
 				foreach (string item in configList)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 					if (item == ConfigManager.CurrentConfigName)
 					{
-						GUILayout.Label("�", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(20f) });
+						GUILayout.Label("�", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(20f) });
 					}
 					else
 					{
 						GUILayout.Space(20f);
 					}
-					if (GUILayout.Button(item, GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) }))
+					if (GUILayout.Button(item, GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) }))
 					{
 						ConfigManager.LoadConfig(item);
-						Debug.Log((object)("[Config] Loaded config: " + item));
+						Debug.Log(("[Config] Loaded config: " + item));
 					}
-					if (item != "default" && GUILayout.Button("Delete", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+					if (item != "default" && GUILayout.Button("Delete", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 					{
 						GUILayout.Width(60f),
 						GUILayout.Height(28f)
@@ -16271,17 +16271,17 @@ namespace _1v1.lol_cheat
 				GUILayout.EndScrollView();
 				GUILayout.Space(5f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				if (GUILayout.Button("Save Current Config", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+				if (GUILayout.Button("Save Current Config", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 				{
 					ConfigManager.SaveConfig();
-					Debug.Log((object)("[Config] Saved config: " + ConfigManager.CurrentConfigName));
+					Debug.Log(("[Config] Saved config: " + ConfigManager.CurrentConfigName));
 				}
 				GUILayout.EndHorizontal();
 				GUILayout.Space(5f);
 				GUILayout.Label("Create New Config:", GUI.labelStyle, Array.Empty<GUILayoutOption>());
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				newConfigName = GUILayout.TextField(newConfigName, GUI.textFieldStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(28f) });
-				if (GUILayout.Button("Create & Save", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[2]
+				newConfigName = GUILayout.TextField(newConfigName, GUI.textFieldStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(28f) });
+				if (GUILayout.Button("Create & Save", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[2]
 				{
 					GUILayout.Width(120f),
 					GUILayout.Height(28f)
@@ -16289,7 +16289,7 @@ namespace _1v1.lol_cheat
 				{
 					string text = newConfigName;
 					ConfigManager.SaveConfig(text);
-					Debug.Log((object)("[Config] Created and saved config: " + text));
+					Debug.Log(("[Config] Created and saved config: " + text));
 					newConfigName = "";
 				}
 				GUILayout.EndHorizontal();
@@ -16388,29 +16388,29 @@ namespace _1v1.lol_cheat
 			if (GUIHelpers.DrawCollapsibleSection("TrollSettings", "? Troll Settings", Color.white))
 			{
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Launch Force:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Launch Force:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollLaunchForce = GUILayout.HorizontalSlider(CheatConfig.TrollLaunchForce, 10f, 1000f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollLaunchForce.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollLaunchForce.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Spin Speed:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Spin Speed:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollSpinSpeed = GUILayout.HorizontalSlider(CheatConfig.TrollSpinSpeed, 100f, 2000f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollSpinSpeed.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollSpinSpeed.ToString("F0"), GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Spin Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Spin Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollSpinDuration = GUILayout.HorizontalSlider(CheatConfig.TrollSpinDuration, 1f, 30f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollSpinDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollSpinDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Antigrav Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Antigrav Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollAntigravDuration = GUILayout.HorizontalSlider(CheatConfig.TrollAntigravDuration, 1f, 60f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollAntigravDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollAntigravDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Fall Duration:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Fall Duration:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.TrollFallDuration = GUILayout.HorizontalSlider(CheatConfig.TrollFallDuration, 1f, 30f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label(CheatConfig.TrollFallDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label(CheatConfig.TrollFallDuration.ToString("F1") + "s", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUILayout.Space(5f);
 				CheatConfig.TrollIncludeSelf = GUILayout.Toggle(CheatConfig.TrollIncludeSelf, "Include Self in Troll Effects", GUI.toggleStyle, Array.Empty<GUILayoutOption>());
@@ -16436,22 +16436,22 @@ namespace _1v1.lol_cheat
 				if (GUIHelpers.DrawCollapsibleSection("CriticalExploits", "? Critical Exploits", Color.white))
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Kill Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Kill Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.KillPlayer(val, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Revive Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Revive Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.RevivePlayer(val, applyStatus: false, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Revive & Teleport", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Revive & Teleport", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						Vector3 position = ((Character.localCharacter != null) ? (Character.localCharacter.Center + Vector3.up * 2f) : val.Center);
 						TrollFeatures.RevivePlayerAtPosition(val, position, applyStatus: false, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Zombify", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Zombify", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.ZombifyPlayer(val, CheatConfig.TrollIncludeSelf);
 					}
@@ -16461,62 +16461,62 @@ namespace _1v1.lol_cheat
 				if (GUIHelpers.DrawCollapsibleSection("BasicActionsTroll", "? Basic Actions", Color.white))
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Make Fall", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Make Fall", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.MakePlayerFall(val, CheatConfig.TrollFallDuration, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("UnFall", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("UnFall", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.UnFallPlayer(val, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Pass Out", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Pass Out", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.MakePlayerPassOut(val, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Teleport To Me", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Teleport To Me", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.TeleportPlayerToMe(val, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Walk Off Cliff", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Walk Off Cliff", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.MakePlayerWalkOffCliff(val, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Stick Body Part", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Stick Body Part", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						Vector3 center = val.Center;
 						TrollFeatures.StickPlayerBodyPart(val, (BodypartType)0, center, (STATUSTYPE)0, 0f, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Unstick", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Unstick", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.UnstickPlayer(val, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Make Me Carry", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
+					if (GUILayout.Button("Make Me Carry", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null)
 					{
 						TrollFeatures.StartCarryPlayer(Character.localCharacter, val, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Drop Carried", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && (Object)(object)Character.localCharacter.data.carriedPlayer == (Object)(object)val)
+					if (GUILayout.Button("Drop Carried", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }) && Character.localCharacter != null && Character.localCharacter.data.carriedPlayer == val)
 					{
 						TrollFeatures.DropCarriedPlayer(Character.localCharacter, val, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Launch Up", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.LaunchPlayerUp(val, CheatConfig.TrollLaunchForce, CheatConfig.TrollIncludeSelf);
 					}
 					GUILayout.EndHorizontal();
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					if (GUILayout.Button("Spin Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Spin Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.MakePlayerSpin(val, CheatConfig.TrollSpinSpeed, CheatConfig.TrollSpinDuration, CheatConfig.TrollIncludeSelf);
 					}
-					if (GUILayout.Button("Antigrav Player", GUI.buttonStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Height(32f) }))
+					if (GUILayout.Button("Antigrav Player", GUI.buttonStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Height(32f) }))
 					{
 						TrollFeatures.ApplyAntigrav(val, CheatConfig.TrollAntigravDuration, CheatConfig.TrollIncludeSelf);
 					}
@@ -16553,9 +16553,9 @@ namespace _1v1.lol_cheat
 				CheatConfig.PlayerHealthESP = GUIHelpers.DrawToggleButton(CheatConfig.PlayerHealthESP, "Health ESP");
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.PlayerESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.PlayerESPMaxDistance, 10f, 500f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.PlayerESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.PlayerESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16577,9 +16577,9 @@ namespace _1v1.lol_cheat
 				CheatConfig.EntityDistanceESP = GUIHelpers.DrawToggleButton(CheatConfig.EntityDistanceESP, "Distance ESP");
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.EntityESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.EntityESPMaxDistance, 10f, 500f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.EntityESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.EntityESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16597,9 +16597,9 @@ namespace _1v1.lol_cheat
 				CheatConfig.ItemDistanceESP = GUIHelpers.DrawToggleButton(CheatConfig.ItemDistanceESP, "Distance ESP");
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.ItemESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.ItemESPMaxDistance, 10f, 200f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.ItemESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.ItemESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16612,9 +16612,9 @@ namespace _1v1.lol_cheat
 				CheatConfig.LuggageDistanceESP = GUIHelpers.DrawToggleButton(CheatConfig.LuggageDistanceESP, "Distance ESP");
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.LuggageESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.LuggageESPMaxDistance, 10f, 200f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.LuggageESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.LuggageESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16632,9 +16632,9 @@ namespace _1v1.lol_cheat
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.SporeShroomESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.SporeShroomESPMaxDistance, 10f, 500f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.SporeShroomESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.SporeShroomESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16652,9 +16652,9 @@ namespace _1v1.lol_cheat
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.EnvironmentalESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.EnvironmentalESPMaxDistance, 10f, 500f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.EnvironmentalESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.EnvironmentalESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16672,9 +16672,9 @@ namespace _1v1.lol_cheat
 				}, Array.Empty<GUILayoutOption>());
 				GUILayout.Space(6f);
 				GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+				GUILayout.Label("Max Distance:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 				CheatConfig.ObjectNameESPMaxDistance = GUILayout.HorizontalSlider(CheatConfig.ObjectNameESPMaxDistance, 10f, 500f, Array.Empty<GUILayoutOption>());
-				GUILayout.Label($"{CheatConfig.ObjectNameESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+				GUILayout.Label($"{CheatConfig.ObjectNameESPMaxDistance:F0}m", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 				GUILayout.EndHorizontal();
 				GUIHelpers.EndCollapsibleSection();
 			}
@@ -16698,9 +16698,9 @@ namespace _1v1.lol_cheat
 				if (GUI.setfieldofview)
 				{
 					GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
-					GUILayout.Label("FOV:", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(120f) });
+					GUILayout.Label("FOV:", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(120f) });
 					GUI.fieldofview = GUILayout.HorizontalSlider(GUI.fieldofview, 60f, 180f, Array.Empty<GUILayoutOption>());
-					GUILayout.Label($"{GUI.fieldofview:F0}", GUI.labelStyle, (GUILayoutOption[])(object)new GUILayoutOption[1] { GUILayout.Width(50f) });
+					GUILayout.Label($"{GUI.fieldofview:F0}", GUI.labelStyle, (GUILayoutOption[])new GUILayoutOption[1] { GUILayout.Width(50f) });
 					GUILayout.EndHorizontal();
 				}
 				GUIHelpers.EndCollapsibleSection();
@@ -16767,34 +16767,34 @@ namespace _1v1.lol_cheat.Troll
 		{
 			if (target == null)
 			{
-				Debug.LogWarning((object)("[Troll] CallRPCMethod: target is null for " + methodName));
+				Debug.LogWarning(("[Troll] CallRPCMethod: target is null for " + methodName));
 				return false;
 			}
 			if (!PhotonNetwork.IsConnected)
 			{
-				Debug.LogWarning((object)("[Troll] CallRPCMethod: PhotonNetwork not connected for " + methodName));
+				Debug.LogWarning(("[Troll] CallRPCMethod: PhotonNetwork not connected for " + methodName));
 				return false;
 			}
 			PhotonView photonView = GetPhotonView(target);
 			if (photonView == null)
 			{
-				Debug.LogWarning((object)("[Troll] CallRPCMethod: Could not get PhotonView for " + methodName));
+				Debug.LogWarning(("[Troll] CallRPCMethod: Could not get PhotonView for " + methodName));
 				return false;
 			}
 			if (photonView.ViewID == 0)
 			{
-				Debug.LogWarning((object)("[Troll] CallRPCMethod: PhotonView has invalid ViewID (0) for " + methodName));
+				Debug.LogWarning(("[Troll] CallRPCMethod: PhotonView has invalid ViewID (0) for " + methodName));
 				return false;
 			}
 			try
 			{
 				photonView.RPC(methodName, rpcTarget, parameters);
-				Debug.Log((object)$"[Troll] Successfully called RPC {methodName} on ViewID {photonView.ViewID}");
+				Debug.Log($"[Troll] Successfully called RPC {methodName} on ViewID {photonView.ViewID}");
 				return true;
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] RPC call failed for " + methodName + ": " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogWarning(("[Troll] RPC call failed for " + methodName + ": " + ex.Message + "\n" + ex.StackTrace));
 				try
 				{
 					MethodInfo method = typeof(Character).GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
@@ -16804,14 +16804,14 @@ namespace _1v1.lol_cheat.Troll
 						if (customAttributes != null && customAttributes.Length != 0)
 						{
 							method.Invoke(target, parameters);
-							Debug.Log((object)("[Troll] Called " + methodName + " directly via reflection (local only - not networked)"));
+							Debug.Log(("[Troll] Called " + methodName + " directly via reflection (local only - not networked)"));
 							return true;
 						}
 					}
 				}
 				catch (Exception ex2)
 				{
-					Debug.LogWarning((object)("[Troll] Direct method call also failed for " + methodName + ": " + ex2.Message));
+					Debug.LogWarning(("[Troll] Direct method call also failed for " + methodName + ": " + ex2.Message));
 				}
 				return false;
 			}
@@ -16819,7 +16819,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static bool ShouldSkipPlayer(Character target, bool includeSelf, bool isCrashEffect = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null)
+			if (target == null || target.photonView == null)
 			{
 				return true;
 			}
@@ -16836,7 +16836,7 @@ namespace _1v1.lol_cheat.Troll
 					if (GUI.selectedPlayerIndex < array.Length)
 					{
 						Character val = GUI.playerDict[array[GUI.selectedPlayerIndex]];
-						if (val != null && (Object)(object)val == (Object)(object)Character.localCharacter)
+						if (val != null && val == Character.localCharacter)
 						{
 							return false;
 						}
@@ -16911,7 +16911,7 @@ namespace _1v1.lol_cheat.Troll
 				}
 			}
 			activeCrashCoroutines.Clear();
-			Debug.Log((object)"[Crash] Stopped all active crash coroutines");
+			Debug.Log("[Crash] Stopped all active crash coroutines");
 		}
 
 		public static MonoBehaviour GetCoroutineRunner()
@@ -17174,7 +17174,7 @@ namespace _1v1.lol_cheat.Troll
 					{
 						try
 						{
-							MethodInfo method = ((object)target.photonView).GetType().GetMethod("JumpRpc", BindingFlags.Instance | BindingFlags.Public);
+							MethodInfo method = target.photonView.GetType().GetMethod("JumpRpc", BindingFlags.Instance | BindingFlags.Public);
 							if (method != null)
 							{
 								method.Invoke(target.photonView, new object[1] { true });
@@ -17262,7 +17262,7 @@ namespace _1v1.lol_cheat.Troll
 						if (target.refs != null && target.refs.ragdoll != null)
 						{
 							Vector3 angularVelocity = default(Vector3);
-							(angularVelocity)..ctor(0f, spinSpeed, 0f);
+							new angularVelocity(0f, spinSpeed, 0f);
 							foreach (Bodypart part in target.refs.ragdoll.partList)
 							{
 								if (part != null && part.Rig != null)
@@ -17371,7 +17371,7 @@ namespace _1v1.lol_cheat.Troll
 					if (field != null)
 					{
 						Vector2 val = default(Vector2);
-						((Vector2)(ref val))..ctor(0f, 1f);
+						new Vector2(0f, 1f);
 						field.SetValue(target.input, val);
 					}
 					<elapsed>5__3 += Time.deltaTime;
@@ -17423,11 +17423,11 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)$"[Troll] Made {obj} fall for {seconds} seconds!");
+				Debug.Log($"[Troll] Made {obj} fall for {seconds} seconds!");
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to make player fall - RPC call failed");
+				Debug.LogError("[Troll] Failed to make player fall - RPC call failed");
 			}
 		}
 
@@ -17450,14 +17450,14 @@ namespace _1v1.lol_cheat.Troll
 				if (field != null)
 				{
 					Vector2 val = default(Vector2);
-					((Vector2)(ref val))..ctor(0f, 1f);
+					new Vector2(0f, 1f);
 					field.SetValue(target.input, val);
 					MonoBehaviour coroutineRunner = TrollHelpers.GetCoroutineRunner();
 					if (coroutineRunner != null)
 					{
 						coroutineRunner.StartCoroutine(WalkOffCliffCoroutine(target, lookDirection));
 					}
-					Debug.Log((object)("[Troll] Made " + target.photonView.Owner.NickName + " walk off cliff!"));
+					Debug.Log(("[Troll] Made " + target.photonView.Owner.NickName + " walk off cliff!"));
 					return;
 				}
 				Vector3 val2 = lookDirection * 10f;
@@ -17471,11 +17471,11 @@ namespace _1v1.lol_cheat.Troll
 						}
 					}
 				}
-				Debug.Log((object)("[Troll] Applied forward force to " + target.photonView.Owner.NickName + "!"));
+				Debug.Log(("[Troll] Applied forward force to " + target.photonView.Owner.NickName + "!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to make player walk off cliff: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to make player walk off cliff: " + ex.Message));
 			}
 		}
 
@@ -17511,11 +17511,11 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Stopped " + (string)obj + " from falling!"));
+				Debug.Log(("[Troll] Stopped " + (string)obj + " from falling!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to unfall player - RPC call failed");
+				Debug.LogError("[Troll] Failed to unfall player - RPC call failed");
 			}
 		}
 
@@ -17542,11 +17542,11 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Killed " + (string)obj + "!"));
+				Debug.Log(("[Troll] Killed " + (string)obj + "!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to kill player - RPC call failed");
+				Debug.LogError("[Troll] Failed to kill player - RPC call failed");
 			}
 		}
 
@@ -17573,32 +17573,32 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Revived " + (string)obj + "!"));
+				Debug.Log(("[Troll] Revived " + (string)obj + "!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to revive player - RPC call failed");
+				Debug.LogError("[Troll] Failed to revive player - RPC call failed");
 			}
 		}
 
 		public static void RevivePlayerAtPosition(Character target, Vector3 position, bool applyStatus = false, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				if (TrollHelpers.CallRPCMethod(target, "RPCA_ReviveAtPosition", RpcTarget.All, position, applyStatus))
 				{
-					Debug.Log((object)("[Troll] Revived " + target.photonView.Owner.NickName + " at position!"));
+					Debug.Log(("[Troll] Revived " + target.photonView.Owner.NickName + " at position!"));
 				}
 				else
 				{
-					Debug.LogError((object)"[Troll] Failed to revive player at position - RPC call failed");
+					Debug.LogError("[Troll] Failed to revive player at position - RPC call failed");
 				}
 			}
 		}
 
 		public static void StickPlayerBodyPart(Character target, BodypartType bodypartType, Vector3 position, STATUSTYPE statusType = 0, float statusAmount = 0f, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17619,17 +17619,17 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)$"[Troll] Stuck {obj}'s {bodypartType}!");
+				Debug.Log($"[Troll] Stuck {obj}'s {bodypartType}!");
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to stick player body part - RPC call failed");
+				Debug.LogError("[Troll] Failed to stick player body part - RPC call failed");
 			}
 		}
 
 		public static void UnstickPlayer(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17650,51 +17650,51 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Unstuck " + (string)obj + "!"));
+				Debug.Log(("[Troll] Unstuck " + (string)obj + "!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to unstick player - RPC call failed");
+				Debug.LogError("[Troll] Failed to unstick player - RPC call failed");
 			}
 		}
 
 		public static void StartCarryPlayer(Character carrier, Character target, bool includeSelf = false)
 		{
-			if (carrier == null || target == null || (Object)(object)carrier.photonView == (Object)null || (Object)(object)target.photonView == (Object)null || (!includeSelf && (carrier.photonView.IsMine || target.photonView.IsMine)))
+			if (carrier == null || target == null || carrier.photonView == null || target.photonView == null || (!includeSelf && (carrier.photonView.IsMine || target.photonView.IsMine)))
 			{
 				return;
 			}
 			try
 			{
 				carrier.photonView.RPC("RPCA_StartCarry", RpcTarget.All, new object[1] { target.photonView });
-				Debug.Log((object)("[Troll] Made " + carrier.photonView.Owner.NickName + " carry " + target.photonView.Owner.NickName + "!"));
+				Debug.Log(("[Troll] Made " + carrier.photonView.Owner.NickName + " carry " + target.photonView.Owner.NickName + "!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to start carry: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to start carry: " + ex.Message));
 			}
 		}
 
 		public static void DropCarriedPlayer(Character carrier, Character target, bool includeSelf = false)
 		{
-			if (carrier == null || target == null || (Object)(object)carrier.photonView == (Object)null || (Object)(object)target.photonView == (Object)null || (!includeSelf && (carrier.photonView.IsMine || target.photonView.IsMine)))
+			if (carrier == null || target == null || carrier.photonView == null || target.photonView == null || (!includeSelf && (carrier.photonView.IsMine || target.photonView.IsMine)))
 			{
 				return;
 			}
 			try
 			{
 				carrier.photonView.RPC("RPCA_Drop", RpcTarget.All, new object[1] { target.photonView });
-				Debug.Log((object)("[Troll] Made " + carrier.photonView.Owner.NickName + " drop " + target.photonView.Owner.NickName + "!"));
+				Debug.Log(("[Troll] Made " + carrier.photonView.Owner.NickName + " drop " + target.photonView.Owner.NickName + "!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to drop carried player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to drop carried player: " + ex.Message));
 			}
 		}
 
 		public static void ZombifyPlayer(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17716,17 +17716,17 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Zombified " + (string)obj + "!"));
+				Debug.Log(("[Troll] Zombified " + (string)obj + "!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to zombify player - RPC call failed");
+				Debug.LogError("[Troll] Failed to zombify player - RPC call failed");
 			}
 		}
 
 		public static void MakePlayerPassOut(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17747,17 +17747,17 @@ namespace _1v1.lol_cheat.Troll
 				{
 					obj = "Unknown";
 				}
-				Debug.Log((object)("[Troll] Made " + (string)obj + " pass out!"));
+				Debug.Log(("[Troll] Made " + (string)obj + " pass out!"));
 			}
 			else
 			{
-				Debug.LogError((object)"[Troll] Failed to make player pass out - RPC call failed");
+				Debug.LogError("[Troll] Failed to make player pass out - RPC call failed");
 			}
 		}
 
 		public static void LaunchPlayer(Character target, Vector3 direction, float force = 50f, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17780,7 +17780,7 @@ namespace _1v1.lol_cheat.Troll
 						component.AddForce(val, (ForceMode)1);
 					}
 					Player owner = target.photonView.Owner;
-					Debug.Log((object)string.Format("[Troll] Launched {0} with force {1} (using bodypart impulse)!", ((owner != null) ? owner.NickName : null) ?? "Unknown", force));
+					Debug.Log(string.Format("[Troll] Launched {0} with force {1} (using bodypart impulse)!", ((owner != null) ? owner.NickName : null) ?? "Unknown", force));
 					return;
 				}
 				MethodInfo method = typeof(Character).GetMethod("AddForceAtPosition", BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[3]
@@ -17794,7 +17794,7 @@ namespace _1v1.lol_cheat.Troll
 					Vector3 center = target.Center;
 					method.Invoke(target, new object[3] { val, center, 10f });
 					Player owner2 = target.photonView.Owner;
-					Debug.Log((object)string.Format("[Troll] Launched {0} with force {1} (using AddForceAtPosition)!", ((owner2 != null) ? owner2.NickName : null) ?? "Unknown", force));
+					Debug.Log(string.Format("[Troll] Launched {0} with force {1} (using AddForceAtPosition)!", ((owner2 != null) ? owner2.NickName : null) ?? "Unknown", force));
 					return;
 				}
 				MethodInfo method2 = typeof(Character).GetMethod("AddForce", BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[3]
@@ -17807,12 +17807,12 @@ namespace _1v1.lol_cheat.Troll
 				{
 					method2.Invoke(target, new object[3] { val, 1f, 1f });
 					Player owner3 = target.photonView.Owner;
-					Debug.Log((object)string.Format("[Troll] Launched {0} with force {1}!", ((owner3 != null) ? owner3.NickName : null) ?? "Unknown", force));
+					Debug.Log(string.Format("[Troll] Launched {0} with force {1}!", ((owner3 != null) ? owner3.NickName : null) ?? "Unknown", force));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to launch player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to launch player: " + ex.Message));
 			}
 		}
 
@@ -17843,7 +17843,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void MakePlayerSpin(Character target, float spinSpeed = 720f, float duration = 5f, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				MonoBehaviour coroutineRunner = TrollHelpers.GetCoroutineRunner();
 				if (!(coroutineRunner == null))
@@ -17851,7 +17851,7 @@ namespace _1v1.lol_cheat.Troll
 					TrollHelpers.StopTrollEffects(target);
 					Coroutine coroutine = coroutineRunner.StartCoroutine(SpinPlayerCoroutine(target, spinSpeed, duration));
 					TrollHelpers.RegisterTrollEffect(target, coroutine);
-					Debug.Log((object)("[Troll] Making " + target.photonView.Owner.NickName + " spin!"));
+					Debug.Log(("[Troll] Making " + target.photonView.Owner.NickName + " spin!"));
 				}
 			}
 		}
@@ -17869,7 +17869,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void TeleportPlayerRandomly(Character target, float minDistance = 30f, float maxDistance = 100f, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -17883,11 +17883,11 @@ namespace _1v1.lol_cheat.Troll
 					val = (val2).point + Vector3.up * 2f;
 				}
 				target.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2] { val, true });
-				Debug.Log((object)("[Troll] Teleported " + target.photonView.Owner.NickName + " randomly!"));
+				Debug.Log(("[Troll] Teleported " + target.photonView.Owner.NickName + " randomly!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to teleport player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to teleport player: " + ex.Message));
 			}
 		}
 
@@ -17901,18 +17901,18 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void TeleportPlayerToPosition(Character target, Vector3 position, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
 			try
 			{
 				target.photonView.RPC("WarpPlayerRPC", RpcTarget.All, new object[2] { position, true });
-				Debug.Log((object)("[Troll] Teleported " + target.photonView.Owner.NickName + " to position!"));
+				Debug.Log(("[Troll] Teleported " + target.photonView.Owner.NickName + " to position!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to teleport player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to teleport player: " + ex.Message));
 			}
 		}
 
@@ -17923,7 +17923,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void GrabPlayer(Character target)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || target.photonView.IsMine || Character.localCharacter == null)
+			if (target == null || target.photonView == null || target.photonView.IsMine || Character.localCharacter == null)
 			{
 				return;
 			}
@@ -17943,19 +17943,19 @@ namespace _1v1.lol_cheat.Troll
 							(int)val,
 							zero
 						});
-						Debug.Log((object)("[Troll] Grabbed " + target.photonView.Owner.NickName + "!"));
+						Debug.Log(("[Troll] Grabbed " + target.photonView.Owner.NickName + "!"));
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to grab player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to grab player: " + ex.Message));
 			}
 		}
 
 		public static void ThrowPlayer(Character target, Vector3 direction, float force = 30f)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null)
+			if (target == null || target.photonView == null)
 			{
 				return;
 			}
@@ -17971,7 +17971,7 @@ namespace _1v1.lol_cheat.Troll
 				if (method != null)
 				{
 					method.Invoke(target, new object[3] { val, 1f, 1f });
-					Debug.Log((object)("[Troll] Threw " + target.photonView.Owner.NickName + "!"));
+					Debug.Log(("[Troll] Threw " + target.photonView.Owner.NickName + "!"));
 				}
 				else
 				{
@@ -17986,18 +17986,18 @@ namespace _1v1.lol_cheat.Troll
 							part.Rig.AddForce(val, (ForceMode)5);
 						}
 					}
-					Debug.Log((object)("[Troll] Threw " + target.photonView.Owner.NickName + " (using direct bodypart force)!"));
+					Debug.Log(("[Troll] Threw " + target.photonView.Owner.NickName + " (using direct bodypart force)!"));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to throw player: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to throw player: " + ex.Message));
 			}
 		}
 
 		public static void ApplyAntigrav(Character target, float duration = 10f, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				MonoBehaviour coroutineRunner = TrollHelpers.GetCoroutineRunner();
 				if (!(coroutineRunner == null))
@@ -18019,7 +18019,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void MakePlayerGlow(Character target, bool includeSelf = false)
 		{
-			if (target == null || target.refs == null || target.refs.afflictions == null || (!includeSelf && (Object)(object)target.photonView != (Object)null && target.photonView.IsMine))
+			if (target == null || target.refs == null || target.refs.afflictions == null || (!includeSelf && target.photonView != null && target.photonView.IsMine))
 			{
 				return;
 			}
@@ -18050,18 +18050,18 @@ namespace _1v1.lol_cheat.Troll
 					{
 						obj2 = "player";
 					}
-					Debug.Log((object)("[Troll] Made " + (string)obj2 + " glow!"));
+					Debug.Log(("[Troll] Made " + (string)obj2 + " glow!"));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to make player glow: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to make player glow: " + ex.Message));
 			}
 		}
 
 		public static void MakePlayerJumpRepeatedly(Character target, float interval = 0.5f, float duration = 5f, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				MonoBehaviour coroutineRunner = TrollHelpers.GetCoroutineRunner();
 				if (!(coroutineRunner == null))
@@ -18069,7 +18069,7 @@ namespace _1v1.lol_cheat.Troll
 					TrollHelpers.StopTrollEffects(target);
 					Coroutine coroutine = coroutineRunner.StartCoroutine(JumpRepeatedlyCoroutine(target, interval, duration));
 					TrollHelpers.RegisterTrollEffect(target, coroutine);
-					Debug.Log((object)("[Troll] Making " + target.photonView.Owner.NickName + " jump repeatedly!"));
+					Debug.Log(("[Troll] Making " + target.photonView.Owner.NickName + " jump repeatedly!"));
 				}
 			}
 		}
@@ -18087,13 +18087,13 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void FreezePlayer(Character target, float duration = 5f, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				MonoBehaviour coroutineRunner = TrollHelpers.GetCoroutineRunner();
 				if (!(coroutineRunner == null))
 				{
 					coroutineRunner.StartCoroutine(FreezePlayerCoroutine(target, duration));
-					Debug.Log((object)("[Troll] Freezing " + target.photonView.Owner.NickName + "!"));
+					Debug.Log(("[Troll] Freezing " + target.photonView.Owner.NickName + "!"));
 				}
 			}
 		}
@@ -18112,13 +18112,13 @@ namespace _1v1.lol_cheat.Troll
 		{
 			foreach (Character allCharacter in Character.AllCharacters)
 			{
-				if (!(allCharacter != null) || !((Object)(object)allCharacter.photonView != (Object)null) || (!includeSelf && allCharacter.photonView.IsMine))
+				if (!(allCharacter != null) || !(allCharacter.photonView != null) || (!includeSelf && allCharacter.photonView.IsMine))
 				{
 					continue;
 				}
 				try
 				{
-					MethodInfo method = ((object)allCharacter.photonView).GetType().GetMethod("JumpRpc", BindingFlags.Instance | BindingFlags.Public);
+					MethodInfo method = allCharacter.photonView.GetType().GetMethod("JumpRpc", BindingFlags.Instance | BindingFlags.Public);
 					if (method != null)
 					{
 						method.Invoke(allCharacter.photonView, new object[1] { true });
@@ -18128,7 +18128,7 @@ namespace _1v1.lol_cheat.Troll
 				{
 				}
 			}
-			Debug.Log((object)"[Troll] Made everyone jump!");
+			Debug.Log("[Troll] Made everyone jump!");
 		}
 
 		public static void MakeEveryoneFall(float seconds = 5f, bool includeSelf = false)
@@ -18197,7 +18197,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void MakePlayerJumpOffCliff(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -18207,11 +18207,11 @@ namespace _1v1.lol_cheat.Troll
 				lookDirection.y = 0f;
 				(lookDirection).Normalize();
 				LaunchPlayer(target, lookDirection + Vector3.up * 0.5f, 30f, includeSelf);
-				Debug.Log((object)("[Troll] Made " + target.photonView.Owner.NickName + " jump off cliff!"));
+				Debug.Log(("[Troll] Made " + target.photonView.Owner.NickName + " jump off cliff!"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to make player jump off cliff: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to make player jump off cliff: " + ex.Message));
 			}
 		}
 	}
@@ -18259,7 +18259,7 @@ namespace _1v1.lol_cheat.Troll
 					return false;
 				case 0:
 					<>1__state = -1;
-					<>2__current = (object)new WaitForSeconds(0.5f);
+					<>2__current = new WaitForSeconds(0.5f);
 					<>1__state = 1;
 					return true;
 				case 1:
@@ -18284,7 +18284,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static GameObject SpawnScoutmasterAndTarget(Character targetPlayer, Vector3? spawnPosition = null, bool includeSelf = false)
 		{
-			if (targetPlayer == null || (Object)(object)targetPlayer.photonView == (Object)null)
+			if (targetPlayer == null || targetPlayer.photonView == null)
 			{
 				return null;
 			}
@@ -18308,7 +18308,7 @@ namespace _1v1.lol_cheat.Troll
 					}
 					catch (Exception ex)
 					{
-						Debug.Log((object)("[Troll] InstantiateRoomObject failed: " + ex.Message + ", trying regular Instantiate"));
+						Debug.Log(("[Troll] InstantiateRoomObject failed: " + ex.Message + ", trying regular Instantiate"));
 					}
 				}
 				if (val2 == null)
@@ -18319,7 +18319,7 @@ namespace _1v1.lol_cheat.Troll
 					}
 					catch (Exception ex2)
 					{
-						Debug.LogWarning((object)("[Troll] Regular Instantiate also failed: " + ex2.Message));
+						Debug.LogWarning(("[Troll] Regular Instantiate also failed: " + ex2.Message));
 					}
 				}
 				if (val2 != null)
@@ -18329,13 +18329,13 @@ namespace _1v1.lol_cheat.Troll
 					{
 						coroutineRunner.StartCoroutine(SetScoutmasterTargetDelayed(val2, targetPlayer));
 					}
-					Debug.Log((object)("[Troll] Spawned scoutmaster targeting " + targetPlayer.photonView.Owner.NickName + "!"));
+					Debug.Log(("[Troll] Spawned scoutmaster targeting " + targetPlayer.photonView.Owner.NickName + "!"));
 				}
 				return val2;
 			}
 			catch (Exception ex3)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to spawn scoutmaster: " + ex3.Message));
+				Debug.LogWarning(("[Troll] Failed to spawn scoutmaster: " + ex3.Message));
 				return null;
 			}
 		}
@@ -18365,13 +18365,13 @@ namespace _1v1.lol_cheat.Troll
 					if (method != null)
 					{
 						method.Invoke(component, new object[2] { targetPlayer, 999f });
-						Debug.Log((object)("[Troll] Forced scoutmaster to target " + targetPlayer.photonView.Owner.NickName + "!"));
+						Debug.Log(("[Troll] Forced scoutmaster to target " + targetPlayer.photonView.Owner.NickName + "!"));
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to force scoutmaster target: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to force scoutmaster target: " + ex.Message));
 			}
 		}
 
@@ -18395,14 +18395,14 @@ namespace _1v1.lol_cheat.Troll
 					FieldInfo field = typeof(MushroomZombie).GetField("_currentState", BindingFlags.Instance | BindingFlags.Public);
 					if (field != null)
 					{
-						field.SetValue(component, (object)(State)3);
+						field.SetValue(component, (State)3);
 					}
-					Debug.Log((object)("[Troll] Forced zombie to target " + targetPlayer.photonView.Owner.NickName + "!"));
+					Debug.Log(("[Troll] Forced zombie to target " + targetPlayer.photonView.Owner.NickName + "!"));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to force zombie target: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to force zombie target: " + ex.Message));
 			}
 		}
 
@@ -18428,12 +18428,12 @@ namespace _1v1.lol_cheat.Troll
 					{
 						field.SetValue(component, 0f);
 					}
-					Debug.Log((object)"[Troll] Stopped forcing scoutmaster target");
+					Debug.Log("[Troll] Stopped forcing scoutmaster target");
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to stop forcing scoutmaster target: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to stop forcing scoutmaster target: " + ex.Message));
 			}
 		}
 
@@ -18464,14 +18464,14 @@ namespace _1v1.lol_cheat.Troll
 					FieldInfo field = typeof(MushroomZombie).GetField("_currentState", BindingFlags.Instance | BindingFlags.Public);
 					if (field != null)
 					{
-						field.SetValue(component, (object)(State)2);
+						field.SetValue(component, (State)2);
 					}
-					Debug.Log((object)"[Troll] Stopped forcing zombie target");
+					Debug.Log("[Troll] Stopped forcing zombie target");
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to stop forcing zombie target: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to stop forcing zombie target: " + ex.Message));
 			}
 		}
 
@@ -18480,12 +18480,12 @@ namespace _1v1.lol_cheat.Troll
 			Scoutmaster[] array = Object.FindObjectsByType<Scoutmaster>(FindObjectsSortMode.None);
 			foreach (Scoutmaster val in array)
 			{
-				if (val != null && (Object)(object)val.gameObject != (Object)null)
+				if (val != null && val.gameObject != null)
 				{
 					StopForceScoutmasterTarget(val.gameObject);
 				}
 			}
-			Debug.Log((object)"[Troll] Stopped forcing all scoutmaster targets");
+			Debug.Log("[Troll] Stopped forcing all scoutmaster targets");
 		}
 
 		public static void StopForceAllZombies()
@@ -18493,21 +18493,21 @@ namespace _1v1.lol_cheat.Troll
 			MushroomZombie[] array = Object.FindObjectsByType<MushroomZombie>(FindObjectsSortMode.None);
 			foreach (MushroomZombie val in array)
 			{
-				if (val != null && (Object)(object)val.gameObject != (Object)null)
+				if (val != null && val.gameObject != null)
 				{
 					StopForceZombieTarget(val.gameObject);
 				}
 			}
-			Debug.Log((object)"[Troll] Stopped forcing all zombie targets");
+			Debug.Log("[Troll] Stopped forcing all zombie targets");
 		}
 
 		public static void StartRemoteControl(Character targetPlayer, bool includeSelf = false)
 		{
-			if (!(targetPlayer == null) && !((Object)(object)targetPlayer.photonView == (Object)null) && (includeSelf || !targetPlayer.photonView.IsMine) && (Object)(object)targetPlayer.gameObject != (Object)null)
+			if (!(targetPlayer == null) && !(targetPlayer.photonView == null) && (includeSelf || !targetPlayer.photonView.IsMine) && targetPlayer.gameObject != null)
 			{
 				_1v1.lol_cheat.EntityControl.EnableControl(targetPlayer.gameObject);
 				CheatConfig.CurrentlyControlledEntity = targetPlayer.gameObject;
-				Debug.Log((object)("[Troll] Started remote controlling " + targetPlayer.photonView.Owner.NickName + "!"));
+				Debug.Log(("[Troll] Started remote controlling " + targetPlayer.photonView.Owner.NickName + "!"));
 			}
 		}
 
@@ -18517,7 +18517,7 @@ namespace _1v1.lol_cheat.Troll
 			{
 				_1v1.lol_cheat.EntityControl.DisableControl(CheatConfig.CurrentlyControlledEntity);
 				CheatConfig.CurrentlyControlledEntity = null;
-				Debug.Log((object)"[Troll] Stopped remote control!");
+				Debug.Log("[Troll] Stopped remote control!");
 			}
 		}
 	}
@@ -18532,7 +18532,7 @@ namespace _1v1.lol_cheat.Troll
 				Luggage[] array2 = array;
 				foreach (Luggage val in array2)
 				{
-					if (!(val != null) || !((Object)(object)val.photonView != (Object)null))
+					if (!(val != null) || !(val.photonView != null))
 					{
 						continue;
 					}
@@ -18554,7 +18554,7 @@ namespace _1v1.lol_cheat.Troll
 				}
 				if (num > 0)
 				{
-					Debug.Log((object)$"[Troll] Opened {num} luggage!");
+					Debug.Log($"[Troll] Opened {num} luggage!");
 					return;
 				}
 				FieldInfo field2 = typeof(Luggage).GetField("ALL_LUGGAGE", BindingFlags.Static | BindingFlags.Public);
@@ -18565,17 +18565,17 @@ namespace _1v1.lol_cheat.Troll
 				num = 0;
 				foreach (Luggage item in list)
 				{
-					if (item != null && (Object)(object)item.photonView != (Object)null)
+					if (item != null && item.photonView != null)
 					{
 						item.photonView.RPC("OpenLuggageRPC", RpcTarget.All, new object[1] { true });
 						num++;
 					}
 				}
-				Debug.Log((object)$"[Troll] Opened {num} luggage (via static list)!");
+				Debug.Log($"[Troll] Opened {num} luggage (via static list)!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to open all luggage: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to open all luggage: " + ex.Message));
 			}
 		}
 
@@ -18588,7 +18588,7 @@ namespace _1v1.lol_cheat.Troll
 				Item[] array2 = array;
 				foreach (Item val in array2)
 				{
-					if (val != null && (Object)(object)val.photonView != (Object)null)
+					if (val != null && val.photonView != null)
 					{
 						val.photonView.RPC("SetKinematicRPC", RpcTarget.AllBuffered, new object[3]
 						{
@@ -18599,11 +18599,11 @@ namespace _1v1.lol_cheat.Troll
 						num++;
 					}
 				}
-				Debug.Log((object)$"[Troll] Teleported {num} items to position!");
+				Debug.Log($"[Troll] Teleported {num} items to position!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to teleport all items: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to teleport all items: " + ex.Message));
 			}
 		}
 
@@ -18628,7 +18628,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void ForceDropAllItems(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf))
 			{
 				return;
 			}
@@ -18638,7 +18638,7 @@ namespace _1v1.lol_cheat.Troll
 				if (method != null && target.refs != null && target.refs.items != null)
 				{
 					method.Invoke(target.refs.items, new object[1] { true });
-					Debug.Log((object)("[Troll] Forced " + target.photonView.Owner.NickName + " to drop all items!"));
+					Debug.Log(("[Troll] Forced " + target.photonView.Owner.NickName + " to drop all items!"));
 				}
 				else if (PhotonNetwork.IsMasterClient)
 				{
@@ -18648,12 +18648,12 @@ namespace _1v1.lol_cheat.Troll
 					}
 					target.player.EmptySlot(Optionable<byte>.Some((byte)3));
 					target.player.EmptySlot(Optionable<byte>.Some((byte)250));
-					Debug.Log((object)("[Troll] Forced " + target.photonView.Owner.NickName + " to drop all items (via slots)!"));
+					Debug.Log(("[Troll] Forced " + target.photonView.Owner.NickName + " to drop all items (via slots)!"));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Troll] Failed to force drop all items: " + ex.Message));
+				Debug.LogWarning(("[Troll] Failed to force drop all items: " + ex.Message));
 			}
 		}
 	}
@@ -18661,7 +18661,7 @@ namespace _1v1.lol_cheat.Troll
 	{
 		public static void CrashPlayer_TriggerRelayBounds(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18678,7 +18678,7 @@ namespace _1v1.lol_cheat.Troll
 					}
 					FieldInfo field = typeof(TriggerRelay).GetField("view", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 					PhotonView val2 = null;
-					val2 = (PhotonView)((!(field != null)) ? ((object)((Component)val).GetComponent<PhotonView>()) : ((object)/*isinst with value type is only supported in some contexts*/));
+					val2 = (PhotonView)((!(field != null)) ? (((Component)val).GetComponent<PhotonView>()) : (/*isinst with value type is only supported in some contexts*/));
 					if (val2 != null && val2.ViewID != 0)
 					{
 						int num2 = val.transform.childCount + 9999;
@@ -18702,17 +18702,17 @@ namespace _1v1.lol_cheat.Troll
 				}
 				object arg = num;
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)string.Format("[Crash] Sent {0} TriggerRelay bounds violations to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
+				Debug.Log(string.Format("[Crash] Sent {0} TriggerRelay bounds violations to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] TriggerRelay bounds crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] TriggerRelay bounds crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_TornadoNullRefs(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18728,7 +18728,7 @@ namespace _1v1.lol_cheat.Troll
 						continue;
 					}
 					PhotonView component = ((Component)val).GetComponent<PhotonView>();
-					if (component == null && (Object)(object)val.transform.parent != (Object)null)
+					if (component == null && val.transform.parent != null)
 					{
 						component = ((Component)val.transform.parent).GetComponent<PhotonView>();
 					}
@@ -18763,17 +18763,17 @@ namespace _1v1.lol_cheat.Troll
 				}
 				object arg = num;
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)string.Format("[Crash] Sent {0} Tornado null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
+				Debug.Log(string.Format("[Crash] Sent {0} Tornado null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Tornado null ref crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Tornado null ref crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_RescueHookNull(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18789,7 +18789,7 @@ namespace _1v1.lol_cheat.Troll
 						continue;
 					}
 					PhotonView component = ((Component)val).GetComponent<PhotonView>();
-					if (component == null && (Object)(object)val.transform.parent != (Object)null)
+					if (component == null && val.transform.parent != null)
 					{
 						component = ((Component)val.transform.parent).GetComponent<PhotonView>();
 					}
@@ -18807,17 +18807,17 @@ namespace _1v1.lol_cheat.Troll
 				}
 				object arg = num;
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)string.Format("[Crash] Sent {0} RescueHook null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
+				Debug.Log(string.Format("[Crash] Sent {0} RescueHook null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] RescueHook null crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] RescueHook null crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_SpiderNull(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18847,17 +18847,17 @@ namespace _1v1.lol_cheat.Troll
 				}
 				object arg = num;
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)string.Format("[Crash] Sent {0} Spider null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
+				Debug.Log(string.Format("[Crash] Sent {0} Spider null refs to {1}", arg, ((owner != null) ? owner.NickName : null) ?? "Unknown"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Spider null crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Spider null crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_CharacterGrabbingNull(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18872,7 +18872,7 @@ namespace _1v1.lol_cheat.Troll
 						Vector3.zero
 					});
 					Player owner = target.photonView.Owner;
-					Debug.Log((object)("[Crash] Sent CharacterGrabbing null ref to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+					Debug.Log(("[Crash] Sent CharacterGrabbing null ref to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 				}
 				catch
 				{
@@ -18880,13 +18880,13 @@ namespace _1v1.lol_cheat.Troll
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] CharacterGrabbing null crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] CharacterGrabbing null crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_GetFedItemInvalid(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || target.photonView.IsMine)
+			if (target == null || target.photonView == null || target.photonView.IsMine)
 			{
 				return;
 			}
@@ -18906,17 +18906,17 @@ namespace _1v1.lol_cheat.Troll
 				catch
 				{
 				}
-				Debug.Log((object)("[Crash] Sent invalid GetFedItemRPC  IMMEDIATE CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent invalid GetFedItemRPC  IMMEDIATE CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] GetFedItemRPC crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] GetFedItemRPC crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_DirectPlayerRPCs(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -18948,7 +18948,7 @@ namespace _1v1.lol_cheat.Troll
 					{
 						target.photonView.RPC("WarpPlayerRPC", target.photonView.Owner, new object[2]
 						{
-							(object)new Vector3(float.NaN, float.NaN, float.NaN),
+							new Vector3(float.NaN, float.NaN, float.NaN),
 							false
 						});
 					}
@@ -18959,10 +18959,10 @@ namespace _1v1.lol_cheat.Troll
 					{
 						target.photonView.RPC("RPCA_Stick", target.photonView.Owner, new object[5]
 						{
-							(object)(BodypartType)4,
-							(object)new Vector3(float.NaN, float.NaN, float.NaN),
-							(object)new Vector3(float.NaN, float.NaN, float.NaN),
-							(object)(STATUSTYPE)0,
+							(BodypartType)4,
+							new Vector3(float.NaN, float.NaN, float.NaN),
+							new Vector3(float.NaN, float.NaN, float.NaN),
+							(STATUSTYPE)0,
 							float.NaN
 						});
 					}
@@ -18973,8 +18973,8 @@ namespace _1v1.lol_cheat.Troll
 					{
 						target.photonView.RPC("RPCA_AddForceAtPosition", target.photonView.Owner, new object[3]
 						{
-							(object)new Vector3(float.NaN, float.NaN, float.NaN),
-							(object)new Vector3(float.NaN, float.NaN, float.NaN),
+							new Vector3(float.NaN, float.NaN, float.NaN),
+							new Vector3(float.NaN, float.NaN, float.NaN),
 							float.NaN
 						});
 					}
@@ -18997,20 +18997,20 @@ namespace _1v1.lol_cheat.Troll
 					}
 				}
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)("[Crash] Sent direct player RPC crashes to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.Log(("[Crash] Sent direct player RPC crashes to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Direct player RPC crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Direct player RPC crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_AllNullRefs(Character target, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)("[Crash] Sending ALL null reference exploits to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.Log(("[Crash] Sending ALL null reference exploits to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 				CrashPlayer_DirectPlayerRPCs(target);
 				CrashPlayer_TriggerRelayBounds(target);
 				CrashPlayer_TornadoNullRefs(target);
@@ -19023,7 +19023,7 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void CrashPlayer_MaxArraySize(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19050,19 +19050,19 @@ namespace _1v1.lol_cheat.Troll
 					{
 						byte[] array = (byte[])method.MakeGenericMethod(type).Invoke(null, new object[1] { obj });
 						target.photonView.RPC("SyncStatusesRPC", target.photonView.Owner, new object[1] { array });
-						Debug.Log((object)$"[Crash] Sent maximum array size ({num} elements)  MEMORY EXHAUSTION CRASH (target: {target.photonView.Owner.NickName})");
+						Debug.Log($"[Crash] Sent maximum array size ({num} elements)  MEMORY EXHAUSTION CRASH (target: {target.photonView.Owner.NickName})");
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Max array size failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Max array size failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_Inventory(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19103,17 +19103,17 @@ namespace _1v1.lol_cheat.Troll
 				catch
 				{
 				}
-				Debug.Log((object)("[Crash] Sent corrupted inventory data  MEMORY/DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent corrupted inventory data  MEMORY/DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Inventory crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Inventory crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_StatusArrayBounds(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19140,17 +19140,17 @@ namespace _1v1.lol_cheat.Troll
 						}
 					}
 				}
-				Debug.Log((object)("[Crash] Sent oversized status array  MEMORY EXHAUSTION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent oversized status array  MEMORY EXHAUSTION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Status array bounds crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Status array bounds crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_Deserialization(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19165,17 +19165,17 @@ namespace _1v1.lol_cheat.Troll
 				target.player.photonView.RPC("SyncInventoryRPC", target.photonView.Owner, new object[2] { array, true });
 				target.photonView.RPC("SyncStatusesRPC", target.photonView.Owner, new object[1] { array });
 				target.photonView.RPC("SyncAfflictionsRPC", target.photonView.Owner, new object[1] { array });
-				Debug.Log((object)("[Crash] Sent malformed deserialization data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent malformed deserialization data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Deserialization crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Deserialization crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_NullReferences(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19189,7 +19189,7 @@ namespace _1v1.lol_cheat.Troll
 				try
 				{
 					CharacterSpawner val2 = Object.FindFirstObjectByType<CharacterSpawner>();
-					if (val2 != null && (Object)(object)val2.photonView != (Object)null)
+					if (val2 != null && val2.photonView != null)
 					{
 						object obj = Activator.CreateInstance(typeof(ReconnectData));
 						val2.photonView.RPC("SpawnPlayerRPC", target.photonView.Owner, new object[2] { false, obj });
@@ -19199,17 +19199,17 @@ namespace _1v1.lol_cheat.Troll
 				{
 				}
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)("[Crash] Sent null references to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.Log(("[Crash] Sent null references to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Null reference crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Null reference crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_DivisionByZero(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19223,21 +19223,21 @@ namespace _1v1.lol_cheat.Troll
 				});
 				target.photonView.RPC("WarpPlayerRPC", target.photonView.Owner, new object[2]
 				{
-					(object)new Vector3(float.NaN, float.NaN, float.NaN),
+					new Vector3(float.NaN, float.NaN, float.NaN),
 					false
 				});
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)("[Crash] Sent NaN/Division by zero to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.Log(("[Crash] Sent NaN/Division by zero to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Division by zero crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Division by zero crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_ExtremeValues(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19248,68 +19248,68 @@ namespace _1v1.lol_cheat.Troll
 					target.photonView.RPC("RPCA_Fall", target.photonView.Owner, new object[1] { float.MaxValue });
 					target.photonView.RPC("WarpPlayerRPC", target.photonView.Owner, new object[2]
 					{
-						(object)new Vector3(float.NaN, float.NaN, float.NaN),
+						new Vector3(float.NaN, float.NaN, float.NaN),
 						false
 					});
 					target.photonView.RPC("WarpPlayerRPC", target.photonView.Owner, new object[2]
 					{
-						(object)new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity),
+						new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity),
 						false
 					});
 					target.photonView.RPC("WarpPlayerRPC", target.photonView.Owner, new object[2]
 					{
-						(object)new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity),
+						new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity),
 						false
 					});
 					target.photonView.RPC("RPCA_Stick", target.photonView.Owner, new object[5]
 					{
-						(object)(BodypartType)4,
-						(object)new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity),
-						(object)new Vector3(float.NaN, float.NaN, float.NaN),
-						(object)(STATUSTYPE)0,
+						(BodypartType)4,
+						new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity),
+						new Vector3(float.NaN, float.NaN, float.NaN),
+						(STATUSTYPE)0,
 						float.MaxValue
 					});
 					target.photonView.RPC("RPCA_AddForceAtPosition", target.photonView.Owner, new object[3]
 					{
-						(object)new Vector3(float.MaxValue, float.MaxValue, float.MaxValue),
-						(object)new Vector3(float.NaN, float.NaN, float.NaN),
+						new Vector3(float.MaxValue, float.MaxValue, float.MaxValue),
+						new Vector3(float.NaN, float.NaN, float.NaN),
 						float.MaxValue
 					});
 				}
 				Player owner = target.photonView.Owner;
-				Debug.Log((object)("[Crash] Sent extreme values to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.Log(("[Crash] Sent extreme values to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Extreme values crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Extreme values crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_InvalidPhotonView(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
 			try
 			{
 				PhotonView val = PhotonView.Find(-1);
-				if (target.refs != null && target.refs.carriying != null && (Object)(object)target.photonView != (Object)null)
+				if (target.refs != null && target.refs.carriying != null && target.photonView != null)
 				{
 					target.photonView.RPC("RPCA_StartCarry", target.photonView.Owner, new object[1] { val });
 					Player owner = target.photonView.Owner;
-					Debug.Log((object)("[Crash] Sent invalid PhotonView to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+					Debug.Log(("[Crash] Sent invalid PhotonView to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Invalid PhotonView crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Invalid PhotonView crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_Statuses(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19321,17 +19321,17 @@ namespace _1v1.lol_cheat.Troll
 					array[i] = (byte)(i % 256);
 				}
 				target.photonView.RPC("SyncStatusesRPC", target.photonView.Owner, new object[1] { array });
-				Debug.Log((object)("[Crash] Sent corrupted status data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent corrupted status data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Status crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Status crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_Afflictions(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19343,17 +19343,17 @@ namespace _1v1.lol_cheat.Troll
 					array[i] = 170;
 				}
 				target.photonView.RPC("SyncAfflictionsRPC", target.photonView.Owner, new object[1] { array });
-				Debug.Log((object)("[Crash] Sent corrupted affliction data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent corrupted affliction data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Affliction crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Affliction crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_Thorns(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19365,42 +19365,42 @@ namespace _1v1.lol_cheat.Troll
 					array[i] = 127;
 				}
 				target.photonView.RPC("SyncThornsRPC_Remote", target.photonView.Owner, new object[1] { array });
-				Debug.Log((object)("[Crash] Sent corrupted thorn data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent corrupted thorn data  DESERIALIZATION CRASH (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Thorn crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Thorn crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_ReconnectData(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
 			try
 			{
 				CharacterSpawner val = Object.FindFirstObjectByType<CharacterSpawner>();
-				if (val != null && (Object)(object)val.photonView != (Object)null)
+				if (val != null && val.photonView != null)
 				{
 					object obj = Activator.CreateInstance(typeof(ReconnectData));
 					val.photonView.RPC("SpawnPlayerRPC", target.photonView.Owner, new object[2] { false, obj });
-					Debug.Log((object)("[Crash] Sent invalid ReconnectData  SPAWN CRASH (target: " + target.photonView.Owner.NickName + ")"));
+					Debug.Log(("[Crash] Sent invalid ReconnectData  SPAWN CRASH (target: " + target.photonView.Owner.NickName + ")"));
 				}
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] ReconnectData crash failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] ReconnectData crash failed: " + ex.Message));
 			}
 		}
 
 		public static void CrashPlayer_AllMethods(Character target, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				Player owner = target.photonView.Owner;
-				Debug.LogWarning((object)("[Crash] ULTIMATE CRASH - All immediate methods to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.LogWarning(("[Crash] ULTIMATE CRASH - All immediate methods to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 				CrashPlayer_DirectPlayerRPCs(target);
 				CrashPlayer_AllNullRefs(target);
 				CrashPlayer_InvalidPhotonView(target);
@@ -19420,17 +19420,17 @@ namespace _1v1.lol_cheat.Troll
 
 		public static void CrashPlayer_Ultimate(Character target, bool includeSelf = false)
 		{
-			if (!(target == null) && !((Object)(object)target.photonView == (Object)null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (!(target == null) && !(target.photonView == null) && !TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				Player owner = target.photonView.Owner;
-				Debug.LogWarning((object)("[Crash] ULTIMATE CRASH initiated to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
+				Debug.LogWarning(("[Crash] ULTIMATE CRASH initiated to " + (((owner != null) ? owner.NickName : null) ?? "Unknown")));
 				CrashPlayer_AllMethods(target);
 			}
 		}
 
 		public static void CrashPlayer_ObjectSpam(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
+			if (target == null || target.photonView == null || TrollHelpers.ShouldSkipPlayer(target, includeSelf, isCrashEffect: true))
 			{
 				return;
 			}
@@ -19446,11 +19446,11 @@ namespace _1v1.lol_cheat.Troll
 					{
 					}
 				}
-				Debug.Log((object)("[Crash] Sent RPCA_Die spam  MEMORY EXHAUSTION (target: " + target.photonView.Owner.NickName + ")"));
+				Debug.Log(("[Crash] Sent RPCA_Die spam  MEMORY EXHAUSTION (target: " + target.photonView.Owner.NickName + ")"));
 			}
 			catch (Exception ex)
 			{
-				Debug.LogWarning((object)("[Crash] Object spam failed: " + ex.Message));
+				Debug.LogWarning(("[Crash] Object spam failed: " + ex.Message));
 			}
 		}
 
@@ -19458,7 +19458,7 @@ namespace _1v1.lol_cheat.Troll
 		{
 			try
 			{
-				Debug.Log((object)"[Crash] Starting crash all players in lobby...");
+				Debug.Log("[Crash] Starting crash all players in lobby...");
 				List<Character> list = new List<Character>();
 				try
 				{
@@ -19468,7 +19468,7 @@ namespace _1v1.lol_cheat.Troll
 						foreach (Character item in enumerable)
 						{
 							Character val = item;
-							if (val != null && (Object)(object)val.photonView != (Object)null)
+							if (val != null && val.photonView != null)
 							{
 								list.Add(val);
 							}
@@ -19480,27 +19480,27 @@ namespace _1v1.lol_cheat.Troll
 					Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 					foreach (Character val2 in array)
 					{
-						if (val2 != null && (Object)(object)val2.photonView != (Object)null)
+						if (val2 != null && val2.photonView != null)
 						{
 							list.Add(val2);
 						}
 					}
 				}
-				Debug.Log((object)$"[Crash] Found {list.Count} players to crash");
+				Debug.Log($"[Crash] Found {list.Count} players to crash");
 				foreach (Character item2 in list)
 				{
-					if (item2 != null && (Object)(object)item2.photonView != (Object)null && !item2.photonView.IsMine)
+					if (item2 != null && item2.photonView != null && !item2.photonView.IsMine)
 					{
 						Player owner = item2.photonView.Owner;
-						Debug.Log((object)("[Crash] Crashing " + (((owner != null) ? owner.NickName : null) ?? "Unknown") + "..."));
+						Debug.Log(("[Crash] Crashing " + (((owner != null) ? owner.NickName : null) ?? "Unknown") + "..."));
 						CrashPlayer_AllMethods(item2);
 					}
 				}
-				Debug.Log((object)"[Crash] Crash all players complete!");
+				Debug.Log("[Crash] Crash all players complete!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Crash] Error in CrashAllPlayersAndDisconnect: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[Crash] Error in CrashAllPlayersAndDisconnect: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
@@ -19508,7 +19508,7 @@ namespace _1v1.lol_cheat.Troll
 		{
 			try
 			{
-				Debug.Log((object)"[Stealth Crash] Starting stealth crash on all players...");
+				Debug.Log("[Stealth Crash] Starting stealth crash on all players...");
 				List<Character> list = new List<Character>();
 				try
 				{
@@ -19518,7 +19518,7 @@ namespace _1v1.lol_cheat.Troll
 						foreach (Character item in enumerable)
 						{
 							Character val = item;
-							if (val != null && (Object)(object)val.photonView != (Object)null)
+							if (val != null && val.photonView != null)
 							{
 								list.Add(val);
 							}
@@ -19530,7 +19530,7 @@ namespace _1v1.lol_cheat.Troll
 					Character[] array = Object.FindObjectsByType<Character>(FindObjectsSortMode.None);
 					foreach (Character val2 in array)
 					{
-						if (val2 != null && (Object)(object)val2.photonView != (Object)null)
+						if (val2 != null && val2.photonView != null)
 						{
 							list.Add(val2);
 						}
@@ -19538,24 +19538,24 @@ namespace _1v1.lol_cheat.Troll
 				}
 				foreach (Character item2 in list)
 				{
-					if (item2 != null && (Object)(object)item2.photonView != (Object)null && !item2.photonView.IsMine)
+					if (item2 != null && item2.photonView != null && !item2.photonView.IsMine)
 					{
 						CrashPlayer_TriggerRelayBounds(item2);
 						CrashPlayer_TornadoNullRefs(item2);
 						CrashPlayer_RescueHookNull(item2);
 					}
 				}
-				Debug.Log((object)"[Stealth Crash] Stealth crash initiated on all players!");
+				Debug.Log("[Stealth Crash] Stealth crash initiated on all players!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Stealth Crash] Error: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[Stealth Crash] Error: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 
 		public static void KickPlayer(Character target, bool includeSelf = false)
 		{
-			if (target == null || (Object)(object)target.photonView == (Object)null || (target.photonView.IsMine && !includeSelf))
+			if (target == null || target.photonView == null || (target.photonView.IsMine && !includeSelf))
 			{
 				return;
 			}
@@ -19566,26 +19566,26 @@ namespace _1v1.lol_cheat.Troll
 				{
 					return;
 				}
-				Debug.Log((object)("[Kick] Attempting to kick " + owner.NickName + " from lobby..."));
+				Debug.Log(("[Kick] Attempting to kick " + owner.NickName + " from lobby..."));
 				if (PhotonNetwork.IsMasterClient)
 				{
 					try
 					{
 						PhotonNetwork.CloseConnection(owner);
-						Debug.Log((object)("[Kick] ? Closed connection to " + owner.NickName + " (Master Client)"));
+						Debug.Log(("[Kick] ? Closed connection to " + owner.NickName + " (Master Client)"));
 						return;
 					}
 					catch (Exception ex)
 					{
-						Debug.LogWarning((object)("[Kick] CloseConnection failed: " + ex.Message));
+						Debug.LogWarning(("[Kick] CloseConnection failed: " + ex.Message));
 					}
 				}
-				Debug.Log((object)("[Kick] Not master client - attempting to crash " + owner.NickName + " first..."));
+				Debug.Log(("[Kick] Not master client - attempting to crash " + owner.NickName + " first..."));
 				CrashPlayer_AllMethods(target);
 			}
 			catch (Exception ex2)
 			{
-				Debug.LogWarning((object)("[Kick] Kick failed: " + ex2.Message));
+				Debug.LogWarning(("[Kick] Kick failed: " + ex2.Message));
 			}
 		}
 
@@ -19595,25 +19595,25 @@ namespace _1v1.lol_cheat.Troll
 			{
 				if (!PhotonNetwork.InRoom)
 				{
-					Debug.LogWarning((object)"[Force Host] Not in a Photon room!");
+					Debug.LogWarning("[Force Host] Not in a Photon room!");
 					return;
 				}
 				if (PhotonNetwork.IsMasterClient)
 				{
-					Debug.Log((object)"[Force Host] Already master client!");
+					Debug.Log("[Force Host] Already master client!");
 					return;
 				}
 				Player masterClient = PhotonNetwork.MasterClient;
 				if (masterClient == null)
 				{
-					Debug.LogWarning((object)"[Force Host] No master client found!");
+					Debug.LogWarning("[Force Host] No master client found!");
 					return;
 				}
-				Debug.Log((object)("[Force Host] Current master client: " + masterClient.NickName));
+				Debug.Log(("[Force Host] Current master client: " + masterClient.NickName));
 				Character val = null;
 				foreach (Character allCharacter in Character.AllCharacters)
 				{
-					if (allCharacter != null && (Object)(object)allCharacter.photonView != (Object)null && allCharacter.photonView.Owner != null && allCharacter.photonView.Owner.ActorNumber == masterClient.ActorNumber)
+					if (allCharacter != null && allCharacter.photonView != null && allCharacter.photonView.Owner != null && allCharacter.photonView.Owner.ActorNumber == masterClient.ActorNumber)
 					{
 						val = allCharacter;
 						break;
@@ -19621,18 +19621,18 @@ namespace _1v1.lol_cheat.Troll
 				}
 				if (val != null)
 				{
-					Debug.Log((object)"[Force Host] Found master client character - attempting to crash them...");
+					Debug.Log("[Force Host] Found master client character - attempting to crash them...");
 					CrashPlayer_AllMethods(val);
 				}
 				else
 				{
-					Debug.LogWarning((object)"[Force Host] Could not find master client character");
+					Debug.LogWarning("[Force Host] Could not find master client character");
 				}
-				Debug.Log((object)"[Force Host] Force host attempt initiated!");
+				Debug.Log("[Force Host] Force host attempt initiated!");
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError((object)("[Force Host] Error: " + ex.Message + "\n" + ex.StackTrace));
+				Debug.LogError(("[Force Host] Error: " + ex.Message + "\n" + ex.StackTrace));
 			}
 		}
 	}
